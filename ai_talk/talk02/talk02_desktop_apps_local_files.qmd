@@ -1,0 +1,329 @@
+---
+title: "Using ChatGPT Desktop App, Codex, Local Files, and Google Gemini vs. Google Antigravity"
+author: "Eric A. Suess"
+date: "October 22, 2026"
+date-format: "MMMM D, YYYY"
+subtitle: "12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex & Antigravity.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk02.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+```{r}
+#| label: setup-reticulate
+#| include: false
+matplotlib_cache <- file.path(tempdir(), "matplotlib")
+dir.create(matplotlib_cache, showWarnings = FALSE, recursive = TRUE)
+Sys.setenv(MPLCONFIGDIR = matplotlib_cache)
+reticulate::use_python(Sys.which("python3"), required = TRUE)
+reticulate::py_run_string("import numpy as np\nimport matplotlib.pyplot as plt")
+```
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Distinguish browser-based AI chats from dedicated **Desktop Apps**.
+- Work securely and effectively with **local files, datasets, and scripts**.
+- Navigate the OpenAI ecosystem: **ChatGPT Desktop App**, **Chat**, **Work**, and **Codex**.
+- Compare **Google Gemini (Web/App)** with the **Google Antigravity Desktop Environment**.
+- Understand local file context boundaries, privacy, and execution safety.
+- Run a reproducible statistical simulation in **R (Tidyverse)** and **Python**.
+
+## The evolution of the AI interface
+
+AI interfaces have evolved through three distinct phases:
+
+| Generation | Interface | How it interacts with files |
+|---|---|---|
+| **1. Web Chat** | Browser tab | Manual copy-paste, single file uploads |
+| **2. Desktop Companion** | Global shortcut app | Active window context, local file attachments, system integration |
+| **3. Agentic Workspace** | Dedicated IDE / CLI Harness | Direct filesystem access, multi-file editing, terminal execution, subagents |
+
+Today we focus on Generations 2 & 3: **Desktop Apps & Agentic Environments**.
+
+## Why use a Desktop App instead of a browser?
+
+Dedicated desktop applications offer major workflow advantages:
+
+- **Instant Global Access:** Summon the assistant with a keystroke (e.g., `Option + Space` / `Alt + Space`).
+- **Contextual Awareness:** Reads text or code directly from supported apps (VS Code, RStudio, Terminal).
+- **Direct Local File Access:** Drag and drop local CSVs, PDFs, images, and scripts without navigating web tabs.
+- **Persistent Sessions:** Keeps active project workspaces organized and offline-accessible.
+- **Voice & Multimodal Input:** Low-latency voice interaction and instant screen capture.
+
+## OpenAI Ecosystem: The ChatGPT Desktop App
+
+The **ChatGPT Desktop App** brings ChatGPT directly to your operating system:
+
+- **Companion Window:** Floats above your active IDE, document, or terminal.
+- **Work with Apps:** Connects directly with developer tools (e.g., VS Code, Xcode, Terminal, TextEdit) to pull code into context.
+- **File & Screenshot Ingestion:** Drag local files directly into the prompt or capture a screenshot of a plot with one click.
+- **Model Switching:** Switch between conversational reasoning models and fast coding models in real time.
+
+::: {.callout-tip}
+The Desktop App works with both university Enterprise/Edu accounts and personal accounts.
+:::
+
+## Working with local files in ChatGPT
+
+When you attach local files in ChatGPT:
+
+1. **Text & Code Files (`.R`, `.py`, `.qmd`, `.txt`):** Ingested directly into the active **context window**.
+2. **Data Files (`.csv`, `.xlsx`, `.parquet`):** Loaded into an interactive sandbox environment where Python code inspects columns, summary statistics, and missing values.
+3. **Documents (`.pdf`, `.docx`):** Parsed with optical character recognition (OCR) and text extraction for search and summarization.
+
+::: {.callout-important}
+Files attached in chat are processed in a secure cloud sandbox—they do not grant the model permission to modify files on your local hard drive.
+:::
+
+## OpenAI Codex: The Coding Engine
+
+**Codex** is OpenAI's specialized programming and execution engine integrated within ChatGPT:
+
+- **Interactive Execution:** Writes and runs R and Python code in an isolated sandbox to perform computations, data analysis, and chart generation.
+- **Iterative Refinement:** Automatically reads error tracebacks and adjusts code before presenting the solution.
+- **Exporting Artifacts:** Generates downloadable cleaned datasets, high-resolution plots, and finished scripts.
+
+## Google Ecosystem: Gemini vs. Antigravity
+
+Google provides two fundamentally different AI experiences:
+
+| Dimension | [Google Gemini Desktop / Web](https://gemini.google/desktop/) | [Google Antigravity](https://antigravity.google/) (Desktop / CLI) |
+|---|---|---|
+| **Primary Focus** | General knowledge, multimodal chat, Google Workspace | Agentic software development, data science, deep research |
+| **Execution** | Cloud sandbox | Local machine / terminal execution with user approval |
+| **File Access** | Cloud uploads / Google Drive | Full local filesystem & repository awareness |
+| **Agent Capability** | Single-turn / Multi-turn chat | Multi-agent orchestration, recursive subagents, background jobs |
+| **Tools** | Google Search, Drive, Docs, Sheets | File editor, terminal runner, web search, MCP servers, subagent manager |
+
+## Google Gemini: The Multimodal Assistant
+
+**[Google Gemini](https://gemini.google/desktop/)** excels at general productivity and multimodal workflows:
+
+- **Desktop & Web Access:** Dedicated desktop companion app (<https://gemini.google/desktop/>) and web experience.
+- **Google Workspace Integration:** Direct access to Google Docs, Gmail, Google Drive, and Google Sheets via Extensions.
+- **Gems:** Custom-instructed assistants tailored for specific tasks (e.g., Syllabus Helper, Coding Tutor).
+- **Massive Context Window:** Capable of ingesting entire textbooks, hours of audio, or extensive code repositories in a single prompt.
+- **Fast Multimodal Input:** Real-time video, audio, and image reasoning.
+
+## Google Antigravity: The Agentic Developer Workspace
+
+**[Google Antigravity](https://antigravity.google/) (`agy`)** is an advanced pair-programming and autonomous agent environment:
+
+- **Official Platform:** <https://antigravity.google/>
+- **Local-First & Repository Aware:** Directly navigates directory structures, reads local data in `./data/`, and edits project files.
+- **Automated Verification:** Executes commands (like `quarto render` or `Rscript`) to test changes before marking tasks complete.
+- **Subagent Delegation:** Spawns specialized subagents (e.g., Researcher, Coder, Verifier) that collaborate in parallel.
+- **Custom Skills & Rules:** Follows persistent user rules (e.g., Tidyverse R with `|>`, Quarto HTML with `embed-resources: true`).
+- **Artifacts:** Generates rich markdown artifacts, system diagrams, and interactive reports.
+
+## Architecture Comparison
+
+```
++-------------------------------------------------------------------+
+|                    Google Gemini (Cloud-First)                    |
+|   [ User Prompt ] ---> [ Cloud LLM ] ---> [ Google Workspace ]    |
+|                              |                                    |
+|                       [ Cloud Sandbox ]                           |
++-------------------------------------------------------------------+
+
++-------------------------------------------------------------------+
+|                 Google Antigravity (Local Agentic)                |
+|    [ User Request ] <---> [ Orchestrator Agent ]                  |
+|                                  |                                |
+|               +------------------+------------------+             |
+|               |                  |                  |             |
+|        [ Local Files ]    [ Terminal / Tools ]  [ Subagents ]     |
+|        (R / .qmd / data)  (quarto render, R)    (Research/QA)     |
++-------------------------------------------------------------------+
+```
+
+## How context is handled with local files
+
+When working with local code and datasets, understanding **context limits** is essential:
+
+- **Token Budget:** Every model has a maximum context window. Including massive 100MB CSVs directly in prompts wastes tokens.
+- **Smart Data Ingestion:**
+  - Share the **structure** (`glimpse(df)` or `df.info()`) and first 5 rows rather than the entire raw dataset.
+  - Let the code execution engine compute statistics directly on the file.
+- **Project Scope:** Keep related files inside a project directory (e.g., `./data/`, `./scripts/`, `./presentations/`).
+
+## Statistical demonstration: Central Limit Theorem (CLT)
+
+Let $X_1, X_2, \dots, X_n$ be independent and identically distributed (i.i.d.) random variables from a skewed distribution (e.g., $\text{Exponential}(\lambda)$) with mean $\mu$ and variance $\sigma^2$.
+
+The sample mean is:
+$$
+\bar{X}_n = \frac{1}{n} \sum_{i=1}^n X_i
+$$
+
+The **Central Limit Theorem** states that as $n \to \infty$, the standardized sample mean converges in distribution to a standard normal distribution:
+
+$$
+Z_n = \frac{\bar{X}_n - \mu}{\sigma / \sqrt{n}} \xrightarrow{d} N(0, 1)
+$$
+
+Let's explore this using both R and Python on local simulation data.
+
+## Reproducible R simulation (Tidyverse)
+
+```{r}
+#| label: fig-clt-r
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show the R code"
+#| fig-width: 10
+#| fig-height: 4.8
+#| fig-align: center
+#| out-width: "88%"
+#| fig-alt: "Histograms showing the distribution of sample means becoming bell-shaped as sample size increases from 2 to 30."
+
+library(tidyverse)
+
+set.seed(310)
+
+# Simulate 2,000 sample means for n = 2, 10, 30 from Exponential(rate = 0.5)
+# True mean = 1/0.5 = 2.0
+sim_clt <- crossing(
+  sample_size = c("n = 2", "n = 10", "n = 30"),
+  replicate_id = 1:2000
+) |>
+  mutate(
+    n_numeric = case_when(
+      sample_size == "n = 2"  ~ 2,
+      sample_size == "n = 10" ~ 10,
+      sample_size == "n = 30" ~ 30
+    ),
+    sample_mean = map_dbl(n_numeric, \(n) mean(rexp(n, rate = 0.5)))
+  ) |>
+  mutate(sample_size = factor(sample_size, levels = c("n = 2", "n = 10", "n = 30")))
+
+sim_clt |>
+  ggplot(aes(x = sample_mean, fill = sample_size)) +
+  geom_histogram(aes(y = after_stat(density)), bins = 35, color = "white", alpha = 0.8) +
+  geom_vline(xintercept = 2.0, linetype = "dashed", color = "darkred", linewidth = 0.8) +
+  facet_wrap(~ sample_size, scales = "free_y") +
+  scale_fill_brewer(palette = "Blues") +
+  labs(
+    title = "Central Limit Theorem Simulation (Exponential Parent Distribution)",
+    subtitle = "As sample size n increases, the distribution of sample means approaches normality",
+    x = "Sample Mean",
+    y = "Density",
+    caption = "Dashed line: True population mean = 2.0"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(legend.position = "none", plot.title = element_text(face = "bold"))
+```
+
+## Reproducible Python simulation
+
+```{python}
+#| label: fig-clt-python
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show the Python code"
+#| fig-width: 10
+#| fig-height: 4.8
+#| fig-align: center
+#| out-width: "88%"
+#| fig-alt: "Python matplotlib figure displaying three subplots showing convergence of sample means to normal curve."
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(310)
+replications = 2000
+sample_sizes = [2, 10, 30]
+
+fig, axes = plt.subplots(1, 3, figsize=(10, 4.5), sharey=False)
+
+for ax, n in zip(axes, sample_sizes):
+    samples = rng.exponential(scale=2.0, size=(replications, n))
+    means = samples.mean(axis=1)
+    
+    ax.hist(means, bins=35, density=True, color="#2b7bba", edgecolor="white", alpha=0.85)
+    ax.axvline(2.0, color="#b22222", linestyle="--", linewidth=1.5)
+    ax.set_title(f"Sample Size n = {n}", fontsize=12, fontweight="bold")
+    ax.set_xlabel("Sample Mean")
+    ax.grid(color="#e0e0e0", linestyle=":", linewidth=0.8)
+    ax.spines[["top", "right"]].set_visible(False)
+
+axes[0].set_ylabel("Density")
+fig.suptitle("Python Simulation: Central Limit Theorem (Exp λ=0.5)", fontsize=14, fontweight="bold")
+fig.text(0.98, 0.01, "Dashed line: True mean = 2.0", ha="right", fontsize=9)
+fig.tight_layout(rect=(0, 0.04, 1, 0.95))
+plt.show()
+```
+
+## Choosing the right tool for the job
+
+| Scenario | Best Tool | Why |
+|---|---|---|
+| **Quick code review or snippet explanation** | ChatGPT Desktop App | Fast keyboard shortcut, instant floating window over IDE |
+| **Collaborative lesson planning in Google Docs** | Google Gemini App | Native Workspace integration, shared drive access |
+| **Multi-file R/Quarto project development** | Google Antigravity | Full filesystem awareness, runs `quarto render`, verifies outputs |
+| **Statistical data cleaning & exploratory analysis** | ChatGPT (Codex) / Antigravity | Automated sandbox execution and plotting |
+| **Offline / Sensitive research data** | Local Models (via Ollama / Antigravity) | Zero external data transmission |
+
+## Privacy, Security & Data Safety
+
+When using Desktop Apps with local files:
+
+- **Understand Where Code Runs:**
+  - *ChatGPT Desktop:* Files uploaded are processed in OpenAI’s secure cloud sandbox.
+  - *Google Gemini:* Processed in Google’s cloud.
+  - *Antigravity:* Orchestrates tools locally on your workstation with explicit permission gates.
+- **FERPA & Institutional Data:**
+  - Never upload student grades, PII (Personally Identifiable Information), or sensitive research data to public models.
+  - Check whether your university's Enterprise agreement includes a **zero-data-retention (ZDR)** policy.
+- **Inspect Generated Scripts Before Running:**
+  - Always read shell or database scripts before executing them on production machines.
+
+## Practical tips for local file workflows
+
+1. **Organize Clean Project Directories:**
+   - Keep datasets in `./data/`, scripts in `./R/` or `./scripts/`, and reports in the project root.
+2. **Provide Data Schema First:**
+   - Paste `str(df)` or `glimpse(df)` to give the AI the exact column names and types before asking for analysis code.
+3. **Use Explicit Output Constraints:**
+   - Mention your preferred packages (e.g., `tidyverse`, `ggplot2`, `broom`) and formatting rules (e.g., native pipe `|>`, Quarto HTML).
+4. **Leverage Version Control (Git):**
+   - Commit before having an agent perform large refactors so you can easily review diffs.
+
+## Key takeaways
+
+- **Desktop Apps** provide immediate, friction-free access compared to browser tabs.
+- **ChatGPT with Codex** provides a powerful cloud sandbox for interactive data analysis and plotting.
+- **Google Gemini** connects deeply with Google Workspace and general multimodal tasks.
+- **Google Antigravity** provides an autonomous, local-first agentic workspace capable of editing, building, and verifying complete projects.
+- **Context, privacy, and verification** remain essential whenever connecting AI to local files and research data.
+
+## References {.smaller}
+
+All links were accessed October 2026.
+
+- OpenAI: [ChatGPT Desktop App](https://chatgpt.com/download/), [Working with Files in ChatGPT](https://help.openai.com/en/articles/8555545-file-uploads-in-chatgpt), and [OpenAI Codex](https://openai.com/codex/)
+- Google: [Google Gemini Desktop](https://gemini.google/desktop/), [Gemini in Google Workspace](https://workspace.google.com/solutions/ai/), and [Google Antigravity](https://antigravity.google/)
+- Quarto & R: [Quarto Revealjs Presentations](https://quarto.org/docs/presentations/revealjs/), [Tidyverse Ecosystem](https://www.tidyverse.org/), and [R-Core Team](https://www.r-project.org/)
+
+Product availability and features may vary depending on university licensing, operating system, and administrative settings.
+
+## Questions and discussion
+
+What local file workflows or AI desktop tools are you most excited to explore?
+
+**Date:** October 22, 2026 | **Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>

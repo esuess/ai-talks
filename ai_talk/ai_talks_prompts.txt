@@ -1,0 +1,14 @@
+Talk02 Codex
+
+Make the same kind of presentation for the second title in the /ai_talk/talk02 folder.
+
+
+Talk01 Codex
+
+Please read the ai_talks_titles.txt Give me a summary of an R Quarto presentation for the first title.
+
+I would like to see an explaination of what is Context for an LLM and what is the purpose of the Library is.  In Microsoft Copilot mention the Library and Teach.  In OpenAI ChatGPT mention the difference between Chat and Work.  Note that ChatGPT now has Sites.  As an example of a slash command, try "/visualize the Law of Large Numbers" as a prompt.
+
+Reread the ai_talks_titles.txt file for the date of the first talk.  Include the zoom line on the title page.  Also, for the author: "Eric A. Suess"
+
+This all looks good.  Build the presentation and store it in the /talk01 folder.
