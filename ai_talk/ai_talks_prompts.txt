@@ -1,4 +1,6 @@
-Talk02 Codex
+Talk02 Agy
+
+Read the file 
 
 Make the same kind of presentation for the second title in the /ai_talk/talk02 folder.
 

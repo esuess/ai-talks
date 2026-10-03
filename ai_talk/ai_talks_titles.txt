@@ -2,12 +2,15 @@
 2. Using the ChatGPT Desktop App, Chat and Codex, with local files, and using Google Gemini App vs Google Antigravity Desktop App
 3. Install and using your university OpenAI ChatGPT account with Codex CLI and using it in RStudio, or using Posit Assistant 
 4. What is Positron, VSCode and other Coding IDEs?  MLJAR and AutoML
-5. Google Gemini Notebook (formally NotebookLM), Google Colab, Jupyter Notebooks, JupyterLab, R Quarto Notebooks with Python or Julia
+5. Google Gemini Notebook (formally NotebookLM), Google Colab, Jupyter Notebooks, JupyterLab, Quarto Notebooks with R, Python or Julia
 6. What is an agent?  Muse, Hermes, Spynel.  How to have an agent collect, analyze data, and send a report on a schedule.
 7. What is a Coding Harnesses: OpenCode, pi, Cline, Kilo, FreeBuff, ollama launch Claude, Prime agent
 8. What is OpenRouter?  Pay $10.50 and use their free models
 9. Who to learn practical AI skills from online, Youtube and Facebook
 10. AI developed Linux os Omarchy demo
+11. Using AI with version control: Github, gh, codeberg, forgejo, Aider
+12. Using AI in JASP for Psychology with OpenRouter
+13. RTutor.ai 2.0 has evolved.  Try Datably.ai the new AI-native data science platform.  
 
 Dates
 
