@@ -1,0 +1,548 @@
+---
+title: "Using Your University OpenAI ChatGPT Account and Microsoft Copilot with Office 365"
+author: "Eric A. Suess"
+date: "October 8, 2026"
+date-format: "MMMM D, YYYY"
+subtitle: "12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk01.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+```{r}
+#| label: setup-reticulate
+#| include: false
+matplotlib_cache <- file.path(tempdir(), "matplotlib")
+dir.create(matplotlib_cache, showWarnings = FALSE, recursive = TRUE)
+Sys.setenv(MPLCONFIGDIR = matplotlib_cache)
+reticulate::use_python(Sys.which("python3"), required = TRUE)
+reticulate::py_run_string("import numpy as np\nimport matplotlib.pyplot as plt")
+```
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Sign in to the correct university AI workspace.
+- Explain what **context** means for a large language model.
+- Choose between Microsoft Copilot and OpenAI ChatGPT for a task.
+- Find Copilot Library and Teach.
+- Distinguish ChatGPT **Chat**, **Work**, and **Sites**.
+- Use an interactive visualization to explore a statistical idea.
+
+## Two institutional accounts
+
+You may have access to two separate AI ecosystems:
+
+| University account | Main environment | Typical strengths |
+|---|---|---|
+| [OpenAI ChatGPT](https://chatgpt.com/) | ChatGPT web and desktop app | Conversation, analysis, content creation, Projects, Work, Codex, Sites |
+| [Microsoft Copilot](https://m365.cloud.microsoft/chat) | Microsoft 365 with direct access to Word, Excel, and PowerPoint | Word, Excel, PowerPoint, Outlook, Teams, and OneDrive |
+
+Access depends on university licensing, your role, and administrator settings.
+
+## Start with the correct identity
+
+1. Use your university email to sign in to [ChatGPT](https://chatgpt.com/) or [Microsoft Copilot](https://m365.cloud.microsoft/chat).
+2. Complete institutional SSO and multifactor authentication.
+3. Check the account name and active workspace after signing in.
+4. Keep personal and university workspaces separate.
+
+::: {.callout-tip}
+Signing in successfully does not guarantee that every advertised feature is enabled for your university account.
+:::
+
+## University account ≠ API account
+
+- A university ChatGPT account can provide access to ChatGPT and Codex.
+- An OpenAI **API key** belongs to an API project with separate billing and limits.
+- ChatGPT subscription access does not automatically fund an API project.
+- Most students and instructors should begin with browser or desktop sign-in.
+
+The same general distinction applies between a licensed Microsoft 365 account and separately billed developer services.
+
+## What is an LLM?
+
+A large language model predicts and generates language from:
+
+- Your instructions
+- The information currently available to it
+- Patterns learned during training
+- Results returned by tools it is allowed to use
+
+It does not automatically know your course, files, definitions, or intended audience.
+
+## What is context?
+
+**Context is the working information available to the model for the current task.**
+
+Context can include:
+
+- Your current prompt and earlier messages
+- Uploaded files, images, tables, and data
+- Project or workspace instructions
+- Connected documents and authorized services
+- Search results, calculations, and other tool output
+
+Context changes what the model can reasonably produce.
+
+## Context as conditioning information
+
+Conditional probability asks how probabilities change when information is known.
+
+$$
+P(\text{next token} \mid \text{current context})
+$$
+
+- The context supplies the information after the conditioning bar.
+- Different context changes the probabilities of possible continuations.
+- Each generated token becomes context for predicting the next token.
+
+For example, “A right angle contains 90 ...” makes **degrees** more probable, while “The lecture hall contains 90 ...” makes **students** more probable.
+
+::: {.notes}
+Instructor note: Conditional probability is the correct mathematical framing for next-token prediction, but do not imply that the model consciously applies Bayes' theorem. Bayes' theorem is a rule for reversing or updating conditional probabilities; here, the main point is simply that the model's prediction is conditioned on the context supplied to it.
+:::
+
+## Context changes the answer
+
+Changing the context changes the conditional distribution of possible responses.
+
+**Weak context**
+
+> Explain the mean.
+
+**Useful context**
+
+> Explain the sample mean to students in an introductory statistics course. Use five quiz scores, show the calculation, distinguish a sample statistic from a population parameter, and end with one check-for-understanding question.
+
+The second prompt identifies the audience, topic boundary, example, terminology, and desired output.
+
+## Context is not the same as memory
+
+| Concept | Purpose |
+|---|---|
+| Context | Working information available for this task or conversation |
+| Memory | Information retained for possible use in later conversations |
+| Project | Related chats, files, and instructions organized around ongoing work |
+| Connected source | Authorized information retrieved from another service |
+
+Context has limits. Start a new conversation for a new outcome, and restate critical requirements when necessary.
+
+## A practical context checklist
+
+Before sending a substantial prompt, provide:
+
+- **Goal:** What should be accomplished?
+- **Audience:** Who will use the result?
+- **Sources:** Which files or information should be used?
+- **Constraints:** What must be included or avoided?
+- **Format:** What should the finished result look like?
+- **Verification:** What should be checked before completion?
+
+Only include information that your university permits you to share.
+
+## Microsoft Copilot with Office 365
+
+Signing in to [Microsoft Copilot](https://m365.cloud.microsoft/chat) with your university email gives you direct access to:
+
+- **Word** for documents
+- **Excel** for workbooks
+- **PowerPoint** for presentations
+- **Apps** for additional tools, including **Forms** and **Learning**
+
+Copilot can also support work involving:
+
+- Outlook messages and calendars
+- Teams meetings and conversations
+- OneDrive and SharePoint files
+
+The exact Copilot features you see depend on your university license, account permissions, and administrator settings.
+
+<small>Sources: [Copilot Chat in Microsoft 365 apps](https://support.microsoft.com/en-us/microsoft-365-copilot/how-copilot-chat-works-in-microsoft-365-apps) and [Microsoft Copilot setup](https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-setup)</small>
+
+## Microsoft Copilot Library
+
+**Library** is a visual hub for finding supported content created with Copilot.
+
+- Return to Copilot-generated images and Pages.
+- Find supported items shared with you.
+- Filter content by type.
+- Reopen work for review, reuse, or collaboration.
+
+Library helps answer: **“Where did the thing Copilot created go?”**
+
+<small>Source: [Get started with Microsoft Copilot Library](https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-microsoft-365-copilot-library)</small>
+
+## Teach in Microsoft Copilot
+
+**Teach** gives eligible educators guided tools for creating and revising instructional materials:
+
+- Lesson plans
+- Quizzes and rubrics
+- Flashcards
+- Reading-level and difficulty adjustments
+- Standards-aligned materials
+
+Teach is intended for eligible faculty and staff with Microsoft 365 Education licensing. It may not appear for student accounts.
+
+<small>Source: [Teach in the Microsoft 365 Copilot App](https://support.microsoft.com/en-US/education/teach-in-the-microsoft-365-copilot-app)</small>
+
+## Copilot demonstration prompt
+
+> Create a 50-minute introductory statistics lesson on the Law of Large Numbers. Include learning objectives, a coin-flip activity, three check-for-understanding questions, and an exit ticket. Write for students who know the sample mean but have not studied probability limits.
+
+After reviewing the result:
+
+- Ask Copilot to revise the reading level or difficulty.
+- Move suitable content into Word or PowerPoint.
+- Find generated Pages or images in Library.
+
+## OpenAI ChatGPT: Chat or Work?
+
+| Choose | When you want | Examples |
+|---|---|---|
+| **Chat** | A question or back-and-forth conversation | Explain, brainstorm, compare, summarize, revise |
+| **Work** | A larger task carried through to a reviewable result | Analyze files, create a deck, draft a report, build a project plan |
+
+Chat helps you think through something. Work is designed around a defined outcome and may plan steps, gather context, and use approved tools.
+
+<small>Source: [Use ChatGPT](https://learn.chatgpt.com/docs/use-chatgpt)</small>
+
+## ChatGPT projects preserve shared context
+
+A project can keep related materials together:
+
+- Chats
+- Uploaded files
+- Project instructions
+- Connected sources
+
+Use one project for an ongoing body of work, but start a separate chat for each distinct outcome. Chat and Work conversations can live in the same project.
+
+<small>Source: [Projects and chats](https://learn.chatgpt.com/docs/projects)</small>
+
+## ChatGPT Sites
+
+**Sites** lets ChatGPT create, refine, host, and share:
+
+- Websites
+- Interactive explanations
+- Small web applications
+- Games and teaching tools
+
+Sites is in public beta and is available on eligible plans, including Edu. Availability, publishing, and sharing can be controlled by university administrators.
+
+<small>Source: [ChatGPT Sites](https://learn.chatgpt.com/docs/sites)</small>
+
+## From explanation to interactive experience
+
+A useful progression is:
+
+1. Ask in **Chat** for an explanation.
+2. Use **Work** when you want a complete teaching artifact.
+3. Use **`/visualize`** in Chat or Work when interaction improves understanding.
+4. Turn the result into a **Site** when it should have a durable, shareable web address.
+
+Always review the content, calculations, controls, links, and sharing settings before publishing.
+
+## Visualization demonstration
+
+In a **Chat or Work** conversation, type:
+
+```text
+/visualize the Law of Large Numbers
+```
+
+Ask for controls that change the population distribution, sample size, and random seed.
+
+<small>Source: [OpenAI Visualizations](https://learn.chatgpt.com/docs/visualizations)</small>
+
+## What should the visualization show?
+
+For independent observations $X_1, X_2, \ldots$, the running sample mean is
+
+$$
+\bar{X}_n = \frac{1}{n}\sum_{i=1}^{n} X_i.
+$$
+
+Under appropriate conditions, $\bar{X}_n$ approaches the population mean $\mu$ as $n$ grows.
+
+The visualization should make the early variability and later stabilization visible—without suggesting that the running mean moves smoothly or monotonically.
+
+## A reproducible R example
+
+```{r}
+#| label: fig-lln
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show the R code"
+#| fig-width: 10
+#| fig-height: 5
+#| fig-align: center
+#| out-width: "88%"
+#| fig-alt: "Line plot of a running sample mean fluctuating and then approaching the population mean of 50 as sample size increases."
+library(tidyverse)
+
+set.seed(310)
+
+lln_data <- tibble(
+  n = 1:500,
+  observation = rnorm(500, mean = 50, sd = 10),
+  running_mean = cummean(observation)
+)
+
+lln_data |>
+  ggplot(aes(x = n, y = running_mean)) +
+  geom_line(color = "#1f77b4", linewidth = 0.8) +
+  geom_hline(
+    yintercept = 50,
+    color = "#c23b22",
+    linetype = "dashed",
+    linewidth = 0.8
+  ) +
+  labs(
+    x = "Number of observations",
+    y = "Running sample mean",
+    caption = "Dashed line: population mean = 50"
+  ) +
+  theme_minimal(base_size = 16)
+```
+
+## A reproducible Python example
+
+```{python}
+#| label: fig-lln-python
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show the Python code"
+#| fig-width: 10
+#| fig-height: 5
+#| fig-align: center
+#| out-width: "88%"
+#| fig-alt: "Line plot made with Python of a running sample mean fluctuating and then approaching the population mean of 50 as sample size increases."
+import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng(310)
+
+n = np.arange(1, 501)
+observations = rng.normal(loc=50, scale=10, size=500)
+running_mean = np.cumsum(observations) / n
+
+fig, ax = plt.subplots(figsize=(10, 5))
+ax.plot(n, running_mean, color="#1f77b4", linewidth=1.5)
+ax.axhline(
+    y=50,
+    color="#c23b22",
+    linestyle="--",
+    linewidth=1.5
+)
+ax.set_xlabel("Number of observations")
+ax.set_ylabel("Running sample mean")
+ax.grid(color="#dddddd", linewidth=0.8)
+ax.spines[["top", "right"]].set_visible(False)
+fig.text(0.98, 0.01, "Dashed line: population mean = 50", ha="right")
+fig.tight_layout(rect=(0, 0.04, 1, 1))
+plt.show()
+```
+
+## Fortran 95 computation + ggplot2
+
+Fortran 95 computes the running means; R imports the results and ggplot2 draws the plot.
+
+<details class="code-fold">
+<summary>Show the Fortran 95 code</summary>
+
+```fortran
+subroutine lln_running_mean_f95(n, running_mean)
+  implicit none
+
+  integer, intent(in) :: n
+  double precision, intent(out) :: running_mean(n)
+  integer, parameter :: int64 = selected_int_kind(18)
+  integer(kind=int64), parameter :: multiplier = 16807_int64
+  integer(kind=int64), parameter :: modulus = 2147483647_int64
+  integer(kind=int64) :: state
+  double precision :: observation, total, uniform_value
+  integer :: i
+
+  state = 310_int64
+  total = 0.0d0
+
+  do i = 1, n
+    state = mod(multiplier * state, modulus)
+    uniform_value = dble(state) / dble(modulus)
+    observation = 50.0d0 + sqrt(12.0d0) * 10.0d0 * &
+                  (uniform_value - 0.5d0)
+    total = total + observation
+    running_mean(i) = total / dble(i)
+  end do
+end subroutine lln_running_mean_f95
+```
+
+</details>
+
+```{r}
+#| label: fig-lln-f95
+#| echo: true
+#| code-fold: true
+#| code-summary: "Show the R compile, import, and plot code"
+#| fig-width: 10
+#| fig-height: 5
+#| fig-align: center
+#| out-width: "88%"
+#| fig-alt: "ggplot2 line plot of running means computed by Fortran 95 and approaching the population mean of 50."
+library(tidyverse)
+
+build_dir <- file.path(tempdir(), "talk01-f95")
+dir.create(build_dir, showWarnings = FALSE, recursive = TRUE)
+copied <- file.copy(
+  c("lln_running_mean.f95", "Makevars.f95"),
+  build_dir,
+  overwrite = TRUE
+)
+stopifnot(all(copied))
+
+shared_library <- local({
+  previous_dir <- setwd(build_dir)
+  on.exit(setwd(previous_dir), add = TRUE)
+
+  compile_log <- system2(
+    file.path(R.home("bin"), "R"),
+    c("CMD", "SHLIB", "lln_running_mean.f95"),
+    env = paste0(
+      "R_MAKEVARS_USER=",
+      file.path(build_dir, "Makevars.f95")
+    ),
+    stdout = TRUE,
+    stderr = TRUE
+  )
+
+  library_path <- file.path(
+    build_dir,
+    paste0("lln_running_mean", .Platform$dynlib.ext)
+  )
+  stopifnot(file.exists(library_path))
+  normalizePath(library_path)
+})
+
+dyn.load(shared_library)
+
+n <- 500L
+f95_result <- .Fortran(
+  "lln_running_mean_f95",
+  n = n,
+  running_mean = double(n)
+)
+
+f95_plot_data <- tibble(
+  n = seq_len(n),
+  running_mean = f95_result$running_mean
+)
+
+f95_plot_data |>
+  ggplot(aes(x = n, y = running_mean)) +
+  geom_line(color = "#1f77b4", linewidth = 0.8) +
+  geom_hline(
+    yintercept = 50,
+    color = "#c23b22",
+    linetype = "dashed",
+    linewidth = 0.8
+  ) +
+  labs(
+    x = "Number of observations",
+    y = "Running sample mean",
+    caption = "Dashed line: population mean = 50"
+  ) +
+  theme_minimal(base_size = 16)
+```
+
+## Compare the two assistants
+
+Use the same prompt in ChatGPT and Microsoft Copilot:
+
+> Explain the Law of Large Numbers to an introductory statistics student. Include a concrete example, one common misconception, and two questions students can use to check their understanding.
+
+Compare:
+
+- Accuracy and clarity
+- Use of sources or citations
+- Ease of revision
+- Integration with your files and applications
+- Where the generated result is stored
+
+## Context activity
+
+Revise this underspecified prompt:
+
+> Make a presentation about averages.
+
+Add the following forms of context:
+
+1. Audience and prior knowledge
+2. Learning goal
+3. Source material
+4. Number and style of slides
+5. Required example or activity
+6. Verification criteria
+
+Then compare the original and revised outputs.
+
+## Protect university information
+
+- Do not paste passwords, API keys, session tokens, or recovery codes into a prompt.
+- Do not upload grades, student identifiers, or restricted research data unless specifically approved.
+- Connected tools use the permissions of the signed-in account.
+- Review sharing settings before distributing generated Pages, documents, or Sites.
+- Follow university policy even when a feature is technically available.
+
+Institutional protections help, but they do not replace judgment about what should be shared.
+
+## Verify AI-generated work
+
+Before using or sharing a result:
+
+- Check factual claims against reliable sources.
+- Recalculate important numerical results.
+- Open and test generated files, links, and controls.
+- Inspect citations to confirm that they exist and support the claim.
+- Revise language for the actual audience.
+- Record where AI materially contributed when required.
+
+## Key takeaways
+
+- Context is the working information available to the model.
+- The correct university account determines available features and protections.
+- Copilot Library helps you return to generated content.
+- Teach provides guided instructional-material tools for eligible educators.
+- Chat supports conversation; Work carries larger tasks toward a deliverable.
+- Sites turns suitable work into a hosted experience.
+- Verification and responsible data handling remain human responsibilities.
+
+## References {.smaller}
+
+All links were accessed October 2, 2026.
+
+- OpenAI: [Use ChatGPT](https://learn.chatgpt.com/docs/use-chatgpt), [Projects and chats](https://learn.chatgpt.com/docs/projects), [Visualizations](https://learn.chatgpt.com/docs/visualizations), [Sites](https://learn.chatgpt.com/docs/sites), and [ChatGPT Work cloud security](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-cloud-security)
+- Microsoft: [Copilot in Microsoft 365 apps](https://support.microsoft.com/en-us/microsoft-365-copilot/how-copilot-chat-works-in-microsoft-365-apps), [Copilot setup](https://learn.microsoft.com/copilot/microsoft-365/microsoft-365-copilot-setup), [Copilot Library](https://support.microsoft.com/en-us/microsoft-365-copilot/get-started-with-microsoft-365-copilot-library), [Teach](https://support.microsoft.com/en-US/education/teach-in-the-microsoft-365-copilot-app), [Copilot Chat FAQ](https://learn.microsoft.com/copilot/edpfaq), and [Copilot security for education](https://learn.microsoft.com/en-us/microsoft-365/education/guide/1-reference/configure-microsoft-copilot-security-education)
+
+Product availability varies by account, license, platform, region, rollout stage, and university administrator settings.
+
+## Questions and discussion
+
+What would you like to try with your university AI accounts?
+
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
