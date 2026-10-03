@@ -1,0 +1,634 @@
+---
+title: "Positron, VS Code, Other Coding IDEs, MLJAR, and AutoML"
+author: "Eric A. Suess"
+date: "November 19, 2026"
+date-format: "MMMM D, YYYY"
+subtitle: "12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk04.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+```{r}
+#| label: setup-reticulate
+#| include: false
+matplotlib_cache <- file.path(tempdir(), "matplotlib")
+dir.create(matplotlib_cache, showWarnings = FALSE, recursive = TRUE)
+Sys.setenv(
+  MPLCONFIGDIR = matplotlib_cache,
+  MPLBACKEND = "Agg"
+)
+reticulate::use_python(Sys.which("python3"), required = TRUE)
+```
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Explain what an **integrated development environment (IDE)** does.
+- Compare **Positron**, **Visual Studio Code**, and several other coding environments.
+- Choose an environment for R, Python, notebooks, Quarto, or general programming.
+- Distinguish **MLJAR Studio** from the **MLJAR AutoML** Python package.
+- Describe what automated machine learning (**AutoML**) can—and cannot—do.
+- Evaluate an AutoML result without treating the highest score as the whole answer.
+
+## Four related—but different—tools
+
+| Tool type | Main purpose | Examples |
+|---|---|---|
+| Code editor | Write and navigate source code | Zed, basic text editors |
+| IDE | Edit, run, debug, inspect, and manage projects | Positron, VS Code, RStudio |
+| Notebook environment | Mix narrative, code, and output | JupyterLab, Positron notebooks |
+| AutoML system | Train and compare predictive models | MLJAR AutoML |
+
+**MLJAR Studio** crosses categories: it is a local, notebook-based AI workspace that can run AutoML experiments.
+
+## What makes an editor an IDE? {.compact}
+
+An IDE brings common development tasks into one workspace:
+
+- Source-code editing and completion
+- R or Python consoles and terminals
+- Running and debugging code
+- Files, projects, and environments
+- Data, plots, variables, and help
+- Git source control
+- Extensions and AI assistance
+- Notebook, Quarto, app, or report previews
+
+The goal is not more buttons. The goal is a shorter path from an idea to a verified result.
+
+## Why the environment matters
+
+A good environment helps you:
+
+1. Use the correct R or Python installation.
+2. See which files and packages belong to the project.
+3. Run small pieces of code while exploring.
+4. Reproduce the complete analysis later.
+5. Inspect errors, data, and model output.
+6. Review AI-generated changes before accepting them.
+
+::: {.callout-tip}
+Choose the environment that reduces friction in **your actual workflow**, not the one with the longest feature list.
+:::
+
+## Positron: a data science IDE
+
+[Positron](https://positron.posit.co/) is Posit’s free, next-generation IDE purpose-built for **R and Python**.
+
+- Built on **Code OSS**, the open-source foundation of VS Code
+- Persistent R and Python consoles, including multiple sessions
+- Data Explorer, Variables, Plots, and Help panes
+- Jupyter notebook and Quarto support
+- Tools for Shiny, Streamlit, FastAPI, and other data applications
+- Integrated, data-science-aware AI assistance
+
+Positron combines a general code editor with interactive features familiar to data scientists.
+
+## Positron’s data science workflow {.compact}
+
+A typical workflow stays inside one project:
+
+**Write code** → **run in a console** → **inspect data and plots** → **revise** → **publish**
+
+Positron is especially attractive when you:
+
+- Regularly move between R and Python.
+- Want notebook exploration and script-based development together.
+- Need data viewers, plots, and variables without assembling many extensions.
+- Build Quarto documents or data applications.
+- Want an IDE that can also handle languages beyond R and Python.
+
+<small>Source: [Positron Features](https://positron.posit.co/features.html)</small>
+
+## Positron and RStudio {.compact}
+
+| Choose | A strong fit when... |
+|---|---|
+| **RStudio** | Your work is primarily R and you value its mature, familiar R workflow. |
+| **Positron** | You want first-class R **and** Python support in a modern, extensible IDE. |
+
+Both can support:
+
+- R scripts, packages, and projects
+- Quarto documents and presentations
+- Data inspection and visualization
+- Terminals, Git, and AI assistance
+
+Positron is an additional choice—not a requirement to abandon a productive RStudio workflow.
+
+## Visual Studio Code
+
+[Visual Studio Code](https://code.visualstudio.com/) is a general-purpose editor with IDE capabilities supplied by built-in tools and extensions.
+
+- Runs on Windows, macOS, and Linux
+- Editing, IntelliSense, debugging, terminal, tasks, and Git
+- Large extension ecosystem for many languages and workflows
+- Local, remote, container, and cloud development options
+- Jupyter notebooks through the Jupyter extension
+- AI chat, completion, and agent workflows
+
+::: {.callout-note}
+**Visual Studio Code** is not the same product as the larger **Visual Studio** IDE.
+:::
+
+## Using R in VS Code
+
+A practical R setup usually requires:
+
+1. Install R.
+2. Install the **R extension** for VS Code.
+3. Install the R package `languageserver`.
+4. Optionally add tools such as `radian` and `httpgd`.
+5. Install the Quarto extension when authoring `.qmd` files.
+6. Select and test the intended R executable.
+
+VS Code can then send code to an R terminal and display data, plots, workspace variables, and help.
+
+<small>Source: [R in Visual Studio Code](https://code.visualstudio.com/docs/languages/r)</small>
+
+## Positron or VS Code?
+
+| Dimension | Positron | VS Code |
+|---|---|---|
+| Starting point | Data science environment | General-purpose code editor |
+| R and Python | First-class, built in | Added and configured with extensions |
+| Data exploration | Integrated panes and consoles | Depends more on extensions |
+| Other languages | Extensible | Very broad extension ecosystem |
+| Customization | Strong | Extensive |
+| Best fit | Data analysis, notebooks, apps, Quarto | Polyglot software and highly customized workflows |
+
+Because Positron is built on Code OSS, the interfaces feel related—but their defaults and intended audiences differ.
+
+## Other environments worth knowing
+
+| Environment | Best known for |
+|---|---|
+| **RStudio** | A mature, integrated R data science workflow |
+| **JupyterLab** | Browser-based computational notebooks, kernels, and interactive exploration |
+| **Zed** | A fast, open-source code editor with collaboration and AI tools |
+| **PyCharm** | Full-featured Python development, navigation, testing, and debugging |
+| **Google Colab** | Hosted Jupyter notebooks with easy sharing and cloud compute |
+
+“Best” depends on language, collaboration, institutional support, compute location, and the artifact you need to produce.
+
+## A simple choice guide
+
+- **Mostly R?** Begin with RStudio; also try Positron.
+- **R + Python data science?** Try Positron.
+- **Many programming languages or specialized extensions?** Try VS Code.
+- **Notebook-first teaching or exploration?** Try JupyterLab or Colab.
+- **Python application development?** Compare VS Code and PyCharm.
+- **Fast editing and collaboration?** Consider Zed.
+
+You can use more than one tool, but avoid changing environments merely because a new one appears.
+
+## Live IDE demonstration {.compact}
+
+Open the same Quarto project in Positron and VS Code, then compare:
+
+1. File and project navigation
+2. Selecting the R interpreter
+3. Sending R code to the console
+4. Viewing a data frame and a plot
+5. Opening a terminal
+6. Previewing a Quarto presentation
+7. Reviewing Git changes
+8. Asking an AI assistant to explain—not silently replace—the code
+
+**Question:** Which steps work immediately, and which require configuration?
+
+## What is MLJAR Studio? {.compact}
+
+[MLJAR Studio](https://mljar.com/) is a local, Python notebook workspace with AI-assisted data analysis.
+
+- Ask questions in natural language and receive visible Python code.
+- Run the generated analysis on the local computer.
+- Inspect, edit, and rerun notebook code.
+- Use **AutoLab Experiments** for iterative model experiments.
+- Use the MLJAR AutoML package from the same workspace.
+- Convert suitable notebook results into applications with Mercury.
+
+::: {.callout-important}
+Local code execution does not automatically make every AI interaction private. Check the configured model provider and institutional data policy before using sensitive data.
+:::
+
+## MLJAR Studio vs. MLJAR AutoML
+
+| MLJAR Studio | `mljar-supervised` / MLJAR AutoML |
+|---|---|
+| Desktop data science workspace | Open-source Python package |
+| Notebook and AI interface | Classification and regression automation |
+| Helps generate and run Python | Preprocesses, trains, tunes, and compares models |
+| Can launch experiments | Produces model documentation and diagnostics |
+
+You can use the AutoML package inside MLJAR Studio, Positron, VS Code, JupyterLab, or another Python environment.
+
+## What is automated machine learning?
+
+For **supervised learning**, we have predictors $X$ and an outcome $Y$.
+
+- **Classification:** predict a category, such as “spam” or “not spam.”
+- **Regression:** predict a numeric value, such as sales or travel time.
+
+AutoML automates repeated parts of the predictive-modeling workflow:
+
+**preprocess** → **fit candidates** → **tune** → **validate** → **compare** → **document**
+
+It searches a defined space. It does not remove the need to define a valid problem.
+
+## What AutoML can automate {.compact}
+
+Depending on the tool and configuration, AutoML may:
+
+- Impute missing values and encode categorical predictors.
+- Establish a simple baseline.
+- Train linear, tree-based, boosting, neural-network, or neighbor models.
+- Tune hyperparameters.
+- Use resampling or cross-validation.
+- Build ensembles or stacked models.
+- Rank models using a selected metric.
+- Produce learning curves, importance measures, or SHAP explanations.
+- Save models and generate reports.
+
+Automation saves repetition; it does not guarantee a trustworthy model.
+
+## What AutoML cannot decide for you
+
+AutoML does not determine whether:
+
+- The target variable represents the real question.
+- The sample represents the population where the model will be used.
+- A predictor leaks future or outcome information.
+- The metric reflects the cost of mistakes.
+- Group performance is equitable.
+- Prediction should be interpreted as causation.
+- Deployment is ethical, legal, secure, or useful.
+
+These are human and institutional responsibilities.
+
+## Protect the final test set
+
+A defensible predictive workflow separates three roles:
+
+| Data portion | Purpose |
+|---|---|
+| Training data | Estimate model parameters |
+| Validation or resamples | Compare models and tune settings |
+| Test data | Estimate final performance on untouched observations |
+
+Repeatedly checking the test set turns it into another validation set.
+
+::: {.callout-warning}
+Split by **time, person, school, patient, or site** when random row splitting would leak related information across sets.
+:::
+
+## MLJAR AutoML modes
+
+MLJAR provides modes with different defaults:
+
+- **Explain:** faster exploration, interpretable models, and detailed explanations
+- **Perform:** balance predictive quality, training time, and prediction speed
+- **Compete:** broader search, feature engineering, ensembles, and stacking
+- **Optuna:** more intensive hyperparameter optimization
+
+Begin with **Explain** to understand the dataset and baseline. More computation is not automatically more scientific.
+
+<small>Source: [MLJAR AutoML](https://mljar.com/automl/) and [AutoML Modes](https://supervised.mljar.com/features/modes/)</small>
+
+## MLJAR AutoML: a small Python example
+
+Install the package in the intended Python environment:
+
+```bash
+python -m pip install mljar-supervised
+```
+
+```{python}
+#| eval: false
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from supervised import AutoML
+
+data = load_iris(as_frame=True)
+X_train, X_test, y_train, y_test = train_test_split(
+    data.data, data.target,
+    test_size=0.20, stratify=data.target, random_state=310
+)
+
+automl = AutoML(
+    mode="Explain",
+    total_time_limit=300,
+    results_path="iris_automl"
+)
+automl.fit(X_train, y_train)
+predictions = automl.predict(X_test)
+accuracy_score(y_test, predictions)
+```
+
+## Do not stop at the leaderboard {.compact}
+
+After training, inspect:
+
+- The **baseline** and whether complex models improve on it
+- The validation method and evaluation metric
+- Variation across folds—not only the mean score
+- Confusion matrices or residual plots
+- Learning curves and signs of overfitting
+- Feature importance and explanation limitations
+- Errors on meaningful subgroups
+- Training time, prediction time, and model complexity
+- Performance on the untouched test set
+
+The winning model may not be the model you should deploy.
+
+## The same comparison logic in R
+
+This teaching example manually compares four model families with five-fold cross-validation. AutoML systems automate and expand this pattern.
+
+```{r}
+#| label: fig-model-comparison
+#| code-fold: true
+#| code-summary: "Show the tidymodels code"
+#| fig-width: 9
+#| fig-height: 4.6
+#| fig-align: center
+#| out-width: "84%"
+#| fig-alt: "Bar chart comparing mean five-fold cross-validation accuracy for four classification models fitted to the iris training data."
+library(tidymodels)
+
+set.seed(310)
+
+iris_data <- as_tibble(iris)
+iris_split <- initial_split(iris_data, prop = 0.80, strata = Species)
+iris_train <- training(iris_split)
+iris_folds <- vfold_cv(iris_train, v = 5, strata = Species)
+
+model_specs <- list(
+  "Multinomial regression" = multinom_reg() |>
+    set_engine("nnet"),
+  "Decision tree" = decision_tree() |>
+    set_mode("classification") |>
+    set_engine("rpart"),
+  "Random forest" = rand_forest(trees = 500) |>
+    set_mode("classification") |>
+    set_engine("ranger"),
+  "Nearest neighbors" = nearest_neighbor(neighbors = 5) |>
+    set_mode("classification") |>
+    set_engine("kknn")
+)
+
+model_results <- purrr::imap_dfr(
+  model_specs,
+  \(spec, model_name) {
+    workflow() |>
+      add_formula(Species ~ .) |>
+      add_model(spec) |>
+      fit_resamples(
+        resamples = iris_folds,
+        metrics = metric_set(accuracy)
+      ) |>
+      collect_metrics() |>
+      transmute(
+        model = model_name,
+        mean_accuracy = mean,
+        std_error = std_err
+      )
+  }
+)
+
+model_results |>
+  mutate(model = forcats::fct_reorder(model, mean_accuracy)) |>
+  ggplot(aes(x = mean_accuracy, y = model)) +
+  geom_col(fill = "#1f77b4", width = 0.7) +
+  geom_errorbar(
+    aes(
+      xmin = pmax(0, mean_accuracy - std_error),
+      xmax = pmin(1, mean_accuracy + std_error)
+    ),
+    width = 0.18,
+    color = "#163a5f"
+  ) +
+  scale_x_continuous(limits = c(0, 1), labels = scales::percent) +
+  labs(
+    title = "Candidate Models on the Iris Training Data",
+    subtitle = "Mean five-fold cross-validation accuracy ± one standard error",
+    x = "Cross-validation accuracy",
+    y = NULL,
+    caption = "Teaching example: model specifications were chosen manually"
+  ) +
+  theme_minimal(base_size = 15)
+```
+
+## tidymodels and scikit-learn: same workflow
+
+| Modeling task | R with tidymodels | Python with scikit-learn |
+|---|---|---|
+| Train/test split | `initial_split()` | `train_test_split()` |
+| Stratified folds | `vfold_cv()` | `StratifiedKFold()` |
+| Preprocessing + model | `workflow()` | `Pipeline` / `make_pipeline()` |
+| Resampling | `fit_resamples()` | `cross_val_score()` |
+| Accuracy | `yardstick::accuracy()` | `scoring="accuracy"` |
+| Final model | `last_fit()` | `fit()` and test-set scoring |
+
+The syntax differs, but the statistical logic is the same. Keep preprocessing inside the workflow or pipeline so it is learned separately within each training fold.
+
+## The same comparison logic in Python
+
+This scikit-learn example compares the same four model families using stratified five-fold cross-validation on the Iris training data.
+
+```{python}
+#| label: fig-model-comparison-python
+#| code-fold: true
+#| code-summary: "Show the scikit-learn code"
+#| fig-width: 9
+#| fig-height: 4.6
+#| fig-align: center
+#| out-width: "84%"
+#| fig-alt: "Bar chart comparing mean stratified five-fold cross-validation accuracy for four scikit-learn classification models fitted to the Iris training data."
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import (
+    StratifiedKFold,
+    cross_val_score,
+    train_test_split,
+)
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.tree import DecisionTreeClassifier
+
+iris_data = load_iris(as_frame=True)
+X_train, X_test, y_train, y_test = train_test_split(
+    iris_data.data,
+    iris_data.target,
+    test_size=0.20,
+    stratify=iris_data.target,
+    random_state=310,
+)
+
+iris_folds = StratifiedKFold(
+    n_splits=5,
+    shuffle=True,
+    random_state=310,
+)
+
+model_specs = {
+    "Multinomial logistic regression": make_pipeline(
+        StandardScaler(),
+        LogisticRegression(max_iter=1000),
+    ),
+    "Decision tree": DecisionTreeClassifier(random_state=310),
+    "Random forest": RandomForestClassifier(
+        n_estimators=500,
+        random_state=310,
+    ),
+    "Nearest neighbors": make_pipeline(
+        StandardScaler(),
+        KNeighborsClassifier(n_neighbors=5),
+    ),
+}
+
+model_results = []
+for model_name, model in model_specs.items():
+    fold_accuracy = cross_val_score(
+        model,
+        X_train,
+        y_train,
+        cv=iris_folds,
+        scoring="accuracy",
+    )
+    model_results.append(
+        {
+            "model": model_name,
+            "mean_accuracy": fold_accuracy.mean(),
+            "std_error": (
+                fold_accuracy.std(ddof=1) /
+                np.sqrt(len(fold_accuracy))
+            ),
+        }
+    )
+
+model_results = (
+    pd.DataFrame(model_results)
+    .sort_values("mean_accuracy")
+)
+
+fig, ax = plt.subplots(figsize=(9, 4.6))
+ax.barh(
+    model_results["model"],
+    model_results["mean_accuracy"],
+    xerr=model_results["std_error"],
+    color="#f28e2b",
+    ecolor="#7a3e00",
+    capsize=4,
+)
+_ = ax.set_xlim(0, 1)
+_ = ax.set_xlabel("Cross-validation accuracy")
+_ = ax.set_title(
+    "Candidate Models on the Iris Training Data\n"
+    "Mean stratified five-fold accuracy ± one standard error",
+    fontweight="bold",
+    fontsize=12,
+    pad=10,
+)
+_ = ax.grid(axis="x", alpha=0.25)
+_ = ax.spines[["top", "right"]].set_visible(False)
+_ = fig.tight_layout()
+plt.show()
+```
+
+## What the teaching examples leave out
+
+The comparisons are reproducible, but they are deliberately small:
+
+- Only four manually selected specifications
+- Almost no hyperparameter tuning
+- One split and five folds
+- Accuracy as the only metric
+- A tiny, clean teaching dataset
+- No subgroup, fairness, calibration, or deployment analysis
+
+AutoML can search more broadly. Sound statistical reasoning determines whether that search answers the right question.
+
+## A responsible AutoML checklist {.compact}
+
+Before trusting a result, document:
+
+1. **Question:** What decision will the prediction support?
+2. **Outcome:** How was the target defined and measured?
+3. **Data:** Who or what is represented—and missing?
+4. **Split:** Could information leak across training and evaluation?
+5. **Metric:** What errors matter most?
+6. **Baseline:** Does the model beat a simple rule?
+7. **Uncertainty:** How stable is performance?
+8. **Equity:** How does performance vary across relevant groups?
+9. **Reproducibility:** Can the environment and experiment be rerun?
+10. **Oversight:** Who reviews, approves, monitors, and retires the model?
+
+## Mini-activity: choose a workspace
+
+For each scenario, choose an environment and explain why:
+
+1. An instructor writes only R and publishes Quarto course notes.
+2. A data scientist alternates between R, Python, Shiny, and FastAPI.
+3. A software team works across Python, JavaScript, containers, and remote servers.
+4. A class shares browser-based notebooks with no local installation.
+5. A researcher wants to compare tabular prediction models and inspect reports.
+
+There may be more than one defensible answer. State the tradeoff.
+
+## Key takeaways {.compact}
+
+- An IDE integrates editing, execution, debugging, projects, and supporting tools.
+- Positron emphasizes first-class R and Python data science workflows.
+- VS Code emphasizes broad language support and extension-driven customization.
+- RStudio, JupyterLab, Zed, PyCharm, and Colab remain useful choices.
+- MLJAR Studio is a local notebook and AI workspace; MLJAR AutoML is a Python package.
+- AutoML automates model search—not problem formulation, data quality, or accountability.
+- Protect the test set, inspect the baseline, and evaluate more than the top score.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- Posit: [Positron](https://positron.posit.co/), [Welcome to Positron](https://positron.posit.co/welcome.html), [Positron Features](https://positron.posit.co/features.html), and [RStudio IDE](https://posit.co/products/open-source/rstudio/)
+- Microsoft: [Visual Studio Code Documentation](https://code.visualstudio.com/docs), [Why Visual Studio Code?](https://code.visualstudio.com/docs/editor/whyvscode), [R in Visual Studio Code](https://code.visualstudio.com/docs/languages/r), and [Jupyter Notebooks in VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks)
+- MLJAR: [MLJAR Studio](https://mljar.com/), [Studio Documentation](https://mljar.com/docs/), [MLJAR AutoML](https://mljar.com/automl/), and [`mljar-supervised` Documentation](https://supervised.mljar.com/)
+- Other environments: [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/), [Zed](https://zed.dev/docs/), and [PyCharm](https://www.jetbrains.com/pycharm/)
+- R modeling: [tidymodels](https://www.tidymodels.org/), [workflows](https://tidymodels.github.io/workflows/), [rsample](https://rsample.tidymodels.org/), and [yardstick](https://yardstick.tidymodels.org/)
+- Python modeling: [scikit-learn User Guide](https://scikit-learn.org/stable/user_guide.html), [Cross-validation](https://scikit-learn.org/stable/modules/cross_validation.html), and [Pipelines](https://scikit-learn.org/stable/modules/compose.html#pipeline)
+
+Product features, licensing, AI providers, and institutional availability can change. Verify current documentation before installation or adoption.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Date:** November 19, 2026  
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which environment best fits your current work?
+- What would you need to verify before trusting an AutoML result?
