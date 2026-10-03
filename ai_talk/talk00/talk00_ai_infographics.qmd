@@ -1,0 +1,304 @@
+---
+format:
+  pdf:
+    papersize: letter
+    fontsize: 10pt
+    geometry: "margin=0.5in"
+    keep-tex: false
+    pdf-engine: pdflatex
+    include-in-header: talk00_ai_infographics_header.tex
+engine: knitr
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+tag_col <- c("Fluency" = "cnavy",
+             "Human-Centric" = "cpurple",
+             "Agility" = "camber")
+
+emit_cards <- function(icons, colors, titles, bodies, width, bigs = NULL) {
+  n <- length(titles)
+  gap <- if (n > 1) (1 - n * width) / (n - 1) else 0
+  parts <- vapply(seq_len(n), function(i) {
+    paste0(
+      "\\begin{minipage}[t]{", sprintf("%.4f", width), "\\linewidth}\\raggedright\n",
+      "\\begin{cardbox}{", colors[i], "}\n",
+      if (!is.null(bigs)) paste0("\\bignum{", colors[i], "}{", bigs[i], "}\n") else "",
+      "\\cardhead{", colors[i], "}{", icons[i], "}{", titles[i], "}\n",
+      bodies[i],
+      "\n\\end{cardbox}\n\\end{minipage}"
+    )
+  }, character(1))
+  cat(paste(parts,
+            collapse = paste0("\\hspace{", sprintf("%.4f", gap), "\\linewidth}")),
+      "\n", sep = "")
+}
+
+item_box <- function(tag, title, body) {
+  col <- unname(tag_col[[tag]])
+  paste0(
+    "\\begin{citem}{", col, "}\n",
+    "\\ckbox\\chip{", col, "}{", tag, "}\\ ",
+    "\\textcolor{", col, "}{\\textbf{", title, ".}}\\ ",
+    body,
+    "\n\\end{citem}\n"
+  )
+}
+
+emit_checklist <- function(df) {
+  items <- paste(
+    vapply(seq_len(nrow(df)),
+           function(i) item_box(df$tag[i], df$title[i], df$body[i]),
+           character(1)),
+    collapse = "")
+  cat(items, "\n", sep = "")
+}
+```
+
+<!-- ============ PAGE 1: PROVOST INFOGRAPHIC ============ -->
+
+```{r}
+#| label: provost-banner
+#| results: asis
+cat("\\begin{solidbox}{cgreen}\n")
+cat("{\\fontsize{21}{24}\\selectfont\\bfseries \\faIcon{robot}\\quad AI + Workforce Development}\n")
+cat("\\par\\vspace{2pt}\n")
+cat("{\\small Provost Muscat\\textperiodcentered Back to the Bay 2025 Keynote\\textperiodcentered One-page summary for faculty}\n")
+cat("\\end{solidbox}\n")
+cat("\\vspace{6pt}\n")
+```
+
+```{r}
+#| label: why-now
+#| results: asis
+cat("\\sechead{cnavy}{Why this matters now}\n")
+emit_cards(
+  icons  = c("chart-line", "graduation-cap", "briefcase"),
+  colors = c("cnavy", "cred", "cgreen"),
+  titles = c("Demographic cliff", "Debt \\& value", "Entry-level, redefined"),
+  bodies = c(
+    "Fewer high school graduates nationally by 2041 \\textbf{13\\%} --- about 1\\% every year --- with no good replacement revenue as enrollment falls.",
+    "CSUEB graduates leave with about \\textbf{\\$16,000} in debt, repaid over roughly 8 years, while public confidence in college's value keeps eroding.",
+    "AI is redefining entry-level work \\textbf{right now}: graduates will be expected to handle complex, judgment-based tasks from day one."
+  ),
+  width = 0.318,
+  bigs  = c("13\\%", "\\$16K", "\\faIcon{briefcase}")
+)
+```
+
+```{r}
+#| label: two-gaps
+#| results: asis
+cat("\\vspace{12pt}\\sechead{cnavy}{Two gaps to close}\n")
+emit_cards(
+  icons  = c("puzzle-piece", "theater-masks"),
+  colors = c("cnavy", "cred"),
+  titles = c("The skills gap", "The experience gap"),
+  bodies = c(
+    "What students know at graduation vs. what employers need. \\textbf{AI is closing it} --- advanced simulations, market analysis in minutes, instant first drafts.",
+    "Doing the work amid people, deadlines, and shifting priorities. AI can draft the care plan; \\textbf{only a human} sits with the family in crisis."
+  ),
+  width = 0.485
+)
+```
+
+```{r}
+#| label: pillars
+#| results: asis
+cat("\\vspace{12pt}\\sechead{cnavy}{A three-part upskilling framework}\n")
+emit_cards(
+  icons  = c("brain", "hands-helping", "bolt"),
+  colors = c("cnavy", "cpurple", "camber"),
+  titles = c("AI Fluency", "Human-Centric Skills", "Agility"),
+  bodies = c(
+    "Understand how AI works, what it can and \\textbf{cannot} do, and how to apply it responsibly --- always with human verification.",
+    "Critical thinking, communication, collaboration, ethical judgment, curiosity, and relational intelligence --- the advantages AI cannot replace.",
+    "Adapt quickly when conditions change: reframe the project, pivot with confidence, and treat change as an opening for innovation."
+  ),
+  width = 0.318
+)
+```
+
+```{r}
+#| label: bridge-agentic
+#| results: asis
+cat("\\vspace{12pt}\\sechead{cnavy}{Bridging to the workforce}\n")
+emit_cards(
+  icons  = c("seedling", "robot"),
+  colors = c("cgreen", "cnavy"),
+  titles = c("Experiential learning is the bridge", "Agentic AI is arriving"),
+  bodies = c(
+    "Internships, community projects, and the campus as a living lab --- built into every program and every year. Graduates leave with a \\textbf{portfolio}, not just a transcript.",
+    "AI that plans and executes multi-step work with minimal supervision. Teach students to \\textbf{lead} agents: set goals, monitor, quality-check, and override."
+  ),
+  width = 0.485
+)
+```
+
+```{r}
+#| label: ai-plus
+#| results: asis
+cat("\\vspace{5pt}\n")
+cat("\\begin{solidbox}{cnavy}\n")
+cat("{\\fontsize{13}{15}\\selectfont\\bfseries \\faIcon{balance-scale}\\quad AI PLUS: it is AI plus humans}\n")
+cat("\\par\\vspace{2pt}\n")
+cat("{\\small AI brings speed, scale, and pattern recognition.\\ \\ Humans bring interpretation, relationships, ethical judgment, and creative synthesis.}\n")
+cat("\\end{solidbox}\n")
+cat("\\vspace{4pt}\n")
+cat("\\begin{cardbox}{camber}\n")
+cat("\\cardhead{camber}{lightbulb}{The Provost's two asks}\n")
+cat("\\textbf{Where could AI serve as an accelerant for deeper human interpretation in the work that you do?}\\ \\ And:\\ \\textbf{Where could \\emph{not} using AI be an intentional choice that itself teaches discipline, focus, and originality?}\n")
+cat("\\end{cardbox}\n")
+cat("\\vspace{7pt}\n")
+cat("\\begin{center}\n")
+cat("{\\footnotesize\\color{cgrey} Source: \\url{https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf}\\\\ Made with R and Quarto\\textperiodcentered Department of Statistics and Data Science\\textperiodcentered Cal State East Bay}\n")
+cat("\\end{center}\n")
+```
+
+\newpage
+
+<!-- ============ PAGE 2: FACULTY CHECKLIST PART A ============ -->
+
+```{r}
+#| label: part-a-banner
+#| results: asis
+cat("\\begin{solidbox}{cgreen}\n")
+cat("{\\fontsize{17}{20}\\selectfont\\bfseries \\faIcon{clipboard-check}\\quad Faculty Checklist}\n")
+cat("\\par\\vspace{2pt}\n")
+cat("{\\small Part A\\textperiodcentered Getting familiar with AI yourself\\textperiodcentered 10 items}\n")
+cat("\\end{solidbox}\n")
+cat("\\vspace{4pt}\n")
+cat("\\begin{leadin}{\\small\\itshape Before asking students to work with AI, build your own comfort --- work down this list at your own pace.}\\end{leadin}\n")
+cat("\\par\\vspace{3pt}\n")
+cat("\\begin{leadin}{\\footnotesize \\chip{cnavy}{Fluency}\\ \\chip{cpurple}{Human-Centric}\\ \\chip{camber}{Agility}\\ \\ --- each item is tagged to the Provost's three pillars.}\\end{leadin}\n")
+cat("\\vspace{4pt}\n")
+```
+
+```{r}
+#| label: part-a-list
+#| results: asis
+part_a <- data.frame(
+  tag = c(
+    "Fluency", "Fluency", "Fluency", "Fluency", "Fluency",
+    "Fluency", "Fluency", "Fluency", "Fluency", "Agility"
+  ),
+  title = c(
+    "Try two tools hands-on",
+    "Grade your own assignment",
+    "Practice iterative prompting",
+    "Learn the failure modes",
+    "Know the privacy rules",
+    "Read the campus AI policy",
+    "Attend one AI teaching workshop",
+    "Read one substantial piece",
+    "Explore discipline tools",
+    "Keep an experiment log"
+  ),
+  body = c(
+    "Use two AI tools for a real task this term --- the university ChatGPT account, Microsoft Copilot, or Google Gemini --- not a demo.",
+    "Run one of your own assignments through AI. Note what it gets right, what it fabricates, and where students would stumble.",
+    "Give context, specify the format, request revisions. Keep a short log of prompts that worked and why.",
+    "Hallucinated citations, confident wrong math, hidden assumptions --- build a personal verification habit you can teach.",
+    "Never paste student data, unpublished research, or personnel information into public tools. Know what campus licenses.",
+    "Read it end to end --- plus your department's expectations for disclosure and attribution.",
+    "A Faculty Development session, the Back to the Bay series, or a workshop in your discipline.",
+    "An EDUCAUSE or discipline-journal article on teaching with AI --- steal two ideas you can use.",
+    "For statistics and data science: AI analysis assistants, code copilots for R and Python, AI features in Quarto and Posit.",
+    "One page a month: what worked, what you would teach, and what you would warn students about."
+  ),
+  stringsAsFactors = FALSE
+)
+emit_checklist(part_a)
+```
+
+```{r}
+#| label: part-a-footer
+#| results: asis
+cat("\\vspace{5pt}\n")
+cat("\\begin{cardbox}{cgreen}\n")
+cat("\\cardhead{cgreen}{book-open}{Keep going}\n")
+cat("\\textbf{Track your progress:} tick each item as you complete it, then bring this page to your next department meeting. \\textbf{Keynote:} \\url{https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf}\n")
+cat("\\end{cardbox}\n")
+```
+
+\newpage
+
+<!-- ============ PAGE 3: FACULTY CHECKLIST PART B ============ -->
+
+```{r}
+#| label: part-b-banner
+#| results: asis
+cat("\\begin{solidbox}{cgreen}\n")
+cat("{\\fontsize{17}{20}\\selectfont\\bfseries \\faIcon{chalkboard-teacher}\\quad Faculty Checklist}\n")
+cat("\\par\\vspace{2pt}\n")
+cat("{\\small Part B\\textperiodcentered Bringing AI into your classes\\textperiodcentered 13 items}\n")
+cat("\\end{solidbox}\n")
+cat("\\vspace{4pt}\n")
+cat("\\begin{leadin}{\\small\\itshape Small, deliberate changes that put AI to work in your courses --- without handing the learning process to algorithms.}\\end{leadin}\n")
+cat("\\vspace{4pt}\n")
+```
+
+```{r}
+#| label: part-b-list
+#| results: asis
+part_b <- data.frame(
+  tag = c(
+    "Fluency", "Fluency", "Fluency", "Fluency", "Fluency",
+    "Human-Centric", "Human-Centric", "Human-Centric", "Human-Centric",
+    "Agility", "Agility", "Agility", "Human-Centric"
+  ),
+  title = c(
+    "Write your syllabus AI policy",
+    "Design a paired assignment",
+    "Require citation and verification",
+    "Teach prompting and critique",
+    "Start low-stakes",
+    "Add an oral check",
+    "Include an ethics case",
+    "Two-audience deliverable",
+    "Assign rotating team roles",
+    "Build in a mid-course change",
+    "Run an agentic oversight simulation",
+    "Add a real-client deliverable",
+    "End with the Provost's two asks"
+  ),
+  body = c(
+    "Name the permitted tools, disclosure and attribution rules, verification expectations, and privacy requirements.",
+    "One AI-allowed version and one AI-free version --- students experience both and reflect on the difference.",
+    "Students attach the prompt, the tool used, and a note on how they checked the result.",
+    "A 15--25 minute in-class lab: prompt, compare outputs, identify the errors together.",
+    "One small AI micro-activity before graded work --- scaffold from low-stakes to high-stakes.",
+    "A short viva: students explain their work and their AI use in their own words.",
+    "Algorithmic bias, data privacy, disparate impact --- students propose mitigations, not just spot problems.",
+    "A technical report plus a one-page brief a non-technical stakeholder can act on.",
+    "Lead, reviewer, communicator --- everyone practices leadership and relational skills.",
+    "New data, a shifted requirement, or a broken assumption students must respond to.",
+    "Students set a goal for an AI agent, monitor its output, quality-check it, and decide where to override.",
+    "A community partner or campus project: AI accelerates, students own the interpretation.",
+    "Where did AI deepen human interpretation --- and where did not using AI teach something?"
+  ),
+  stringsAsFactors = FALSE
+)
+emit_checklist(part_b)
+```
+
+```{r}
+#| label: part-b-footer
+#| results: asis
+cat("\\vspace{6pt}\n")
+cat("\\begin{solidbox}{cnavy}\n")
+cat("{\\fontsize{12}{14}\\selectfont\\bfseries ``If we embed these experiences into our teaching now, we will not just keep pace with the future --- we will shape it.''}\n")
+cat("\\par\\vspace{2pt}\n")
+cat("{\\small --- Provost Muscat, Back to the Bay 2025}\n")
+cat("\\end{solidbox}\n")
+cat("\\vspace{5pt}\n")
+cat("\\begin{center}\n")
+cat("{\\footnotesize\\color{cgrey} Made with R and Quarto\\textperiodcentered Department of Statistics and Data Science\\textperiodcentered Cal State East Bay}\n")
+cat("\\end{center}\n")
+```

@@ -1,0 +1,267 @@
+---
+title: "Provost Muscat's Back to the Bay Keynote: Summary & Faculty AI Checklist"
+author: "Eric A. Suess"
+date: today
+format:
+  html:
+    toc: true
+    number-sections: true
+    embed-resources: true
+engine: knitr
+---
+
+## About This Document
+
+This document summarizes the keynote delivered by Provost Muscat at **Back to the Bay 2025**
+on August 13, 2025 ("Back to the Bay Keynote Script – AI + Workforce Development," Office of
+Academic Affairs, Cal State East Bay), and turns it into a practical **checklist for faculty**
+in two parts: things to do to become more comfortable with AI yourself, and things to do to
+bring more AI into your courses. The checklist items are tagged to the three pillars of the
+Provost's upskilling framework — **[Fluency]** (AI Fluency), **[Human-Centric]** (Human-Centric
+Skills), and **[Agility]** (Agility) — so you can see where each action fits.
+
+## Summary of the Keynote
+
+### Why This Matters Now
+
+Higher education is standing at a crossroads. Several forces are converging at once:
+
+- The **demographic cliff** begins in earnest next year: nationally, a 13% drop in high
+  school graduates by 2041, roughly 1% per year.
+- Over the past twenty years, **public confidence in the value of higher education** has
+  steadily eroded (a large Gallup poll), across political lines, genders, and regions.
+- Students and families are **debt-averse**: CSU East Bay graduates leave with about
+  \$16,000 in student debt on average and take roughly 8 years to pay it off — a moral
+  obligation to reduce.
+- There is **no good replacement revenue** for declining enrollment, so resources tighten.
+
+In concert with these forces, AI is **redefining what it means to be "entry-level."** This is
+happening now, not later. Businesses will adopt AI for speed, efficiency, and cost savings,
+and consumers will care less about whether a service is human- or AI-delivered than whether
+it is fast, affordable, and meets their needs. Graduates will need to mature professionally
+at a faster pace, handling more complex, judgment-based work earlier — so these capabilities
+must be part of the college experience **from the very beginning**, not waiting until a
+student's last year.
+
+### Employer Expectations: Beyond Technical Skills
+
+Employers want more than technical competence. They want graduates who can:
+
+- **Think critically** — "Does this make sense in this situation? What assumptions am I
+  making, and are they valid here?"
+- **Communicate clearly** — explain complex ideas outside their field and tailor messages
+  to different audiences.
+- **Collaborate with agility** — work productively with both people and digital tools.
+- **Adapt quickly** — shift direction when new information or challenges arise.
+- **Exercise ethical judgment** — decide what *should* be done, not just what *can* be done,
+  and anticipate and prevent harm (the Challenger disaster was a failure of decision-making
+  and of listening to engineers who sounded the alarm).
+- **Demonstrate professional skills** — manage time, meet deadlines, follow through.
+- **Show curiosity** — ask questions beyond the assignment, seek new perspectives. One
+  business person calls this **"peripheral vision"**: seeing what comes before and after
+  your work and understanding it as a system.
+- **Show relational intelligence** — build trust, navigate differences, sustain productive
+  relationships.
+
+These are not "soft" skills; they are competitive advantages, and they must be
+**intentionally built** through group projects, community engagement, interdisciplinary
+collaboration, and solving real-world problems.
+
+### Skills Gap vs. Experience Gap
+
+The **skills gap** is the difference between what students know at graduation and what
+employers need — and AI is closing some of it (engineering simulations without expensive lab
+time; market analysis in minutes instead of weeks).
+
+But there is a second challenge: the **experience gap** — the difference between being able
+to perform a task and being able to do it in the messy, real-world context of people,
+deadlines, and shifting priorities.
+
+- **Social work:** AI can generate a case plan from intake notes — but can the new worker
+  sit with a family in crisis, build trust over time, and navigate community resources?
+- **Arts:** AI can write a grant proposal — but can the manager listen to local leaders and
+  shape a program that becomes part of the community's cultural fabric?
+- **Nursing:** AI can suggest a care plan — but can the nurse comfort a worried family,
+  navigate language differences, and coordinate an interdisciplinary team?
+- **Engineering:** AI can design a bridge — but can the engineer present it to a city
+  council, respond to public concerns, and adapt it to regulations?
+
+If we close the skills gap but ignore the experience gap, we graduate students who can do
+the work in theory but struggle the first time they are tested in the real world.
+
+### The Three-Part Upskilling Framework
+
+The Provost proposes a three-part framework for students:
+
+1. **AI Fluency** — understanding how AI works, what it can and cannot do, and how to apply
+   it responsibly. Examples: a biochemistry student using AI-driven drug-discovery platforms
+   and validating leads in the wet lab; nursing students integrating AI diagnostic
+   suggestions into a holistic care plan that considers history, culture, and emotion; a
+   history student using AI-assisted archival research while still critically evaluating
+   sources; a music student analyzing audience-engagement data with human creativity driving
+   final decisions; an engineering student using predictive maintenance at a water treatment
+   plant while recognizing false positives and knowing when to seek human verification.
+2. **Human-Centric Skills** — the interpersonal and cognitive abilities AI cannot replace:
+   leading a contentious meeting toward a productive outcome, writing a grant proposal that
+   inspires action, mentoring a colleague through an unprecedented challenge, guiding a
+   cross-disciplinary team where success depends on trust. These are forged in moments
+   requiring empathy, judgment, and adaptability — we must design opportunities for students
+   to practice them in real-world, high-stakes settings.
+3. **Agility** — the ability to adapt quickly when conditions change, with confidence rather
+   than hesitation: reframing a semester economics project after a major policy shift,
+   reimagining a design when a material becomes unavailable, adapting a production when a
+   venue closes. Agility sees change not as a setback but as an opening for innovation.
+
+### Experiential Learning as the Bridge
+
+Experiential learning is the most powerful tool for closing the **experience gap**:
+
+- **Internships:** a CS student using AI to detect fraud — the deeper learning comes from
+  presenting findings to senior leadership and translating technical insight into business
+  recommendations.
+- **Community projects:** a literature class partnering with a museum on an AI-assisted oral
+  history exhibit, using transcription tools then applying human interpretation.
+- **Research collaborations:** undergraduates joining an AI-enabled housing study,
+  integrating statistics with on-the-ground qualitative research.
+- **The university as a living lab:** environmental studies students using AI-powered energy
+  modeling to recommend campus sustainability upgrades and presenting cost-benefit analyses
+  to facilities staff.
+
+The progression should be intentional and built into **every program and every year**: first
+year, a small team designs a low-fidelity prototype for a real community need (a volunteer
+scheduling app, a household water filter); senior year, the same students lead a project
+start to finish with an external client. Students graduate with a **portfolio**, a record of
+real-world collaboration, and the confidence that they have done this before.
+
+### Agentic AI: What's Next
+
+Today's AI is mostly **assistive** — you prompt, it responds. **Agentic AI** is different:
+you set a goal, and it plans, executes, and even negotiates with other systems or people.
+Examples: a marketing agent that designs, launches, and evaluates a full campaign; a legal
+research agent that reviews thousands of case files and drafts a brief; a biomedical agent
+that identifies clinical-trial candidates, schedules outreach, and prepares ethics-review
+reports.
+
+**Implications for jobs:** agentic AI reshapes the entry point into many professions. The
+low-stakes tasks that once gave new graduates time to learn the ropes — cleaning data,
+initial outreach, preliminary drafts — will increasingly be automated. From day one,
+graduates will be expected to operate at a higher level: engaging clients, interpreting
+AI-generated outputs in context, and making ethical calls when the answer isn't obvious.
+Because agents interact with other systems and people, **mistakes can cascade faster and
+farther** than ever before.
+
+**Our response:** give students hands-on experience **managing** AI agents before they
+graduate — not just using them as tools, but leading them as part of a team. Build
+simulations where students set a goal for an agent, monitor work in progress, step in when
+adjustments are needed, check for quality, spot ethical red flags, and know when to override.
+(A personal example in the talk: an AI agent comparison-shopped a hot water heater —
+gathering specs, rebate data, and reviews, identifying licensed installers, obtaining
+quotes, and ranking options against the Provost's priorities.)
+
+### Addressing Skeptics, and AI Plus
+
+To those who worry AI could diminish authentic learning or devalue their craft, the Provost
+is clear: this is not about replacing the humanities, arts, or engineering — AI's growing
+influence makes the **human lens more essential**. Graduates will enter workplaces where AI
+is already part of the workflow; if they have never learned to use it critically and
+ethically, they will be at a disadvantage. Avoiding AI entirely doesn't protect students —
+it is the riskier choice, leaving them underprepared and risking the very fear that a degree
+may no longer be relevant. But that does not mean handing learning to algorithms: AI can
+process data, but it cannot care about meaning, context, and deep human relationships.
+
+That is **AI Plus**: not AI *versus* humans, but AI *plus* humans. AI does what it does
+best — speed, scale, and pattern recognition — and humans do what we do best —
+interpretation, relationship-building, ethical decision-making, and creative synthesis.
+
+### The Provost's Two Asks
+
+1. **Where could AI serve as an accelerant for deeper human interpretation in the work that
+   you do?**
+2. **Where could *not* using AI be an intentional choice that itself teaches discipline,
+   focus, and originality?**
+
+These are adaptive questions about purpose and what we value most in teaching and learning —
+designing experiences where disciplines don't compete with AI but stand alongside it.
+
+## What "Upskilling" Means
+
+The Provost uses "upskilling" in a specific sense: **deliberately adding new capabilities
+and mindsets that prepare students to thrive in unfamiliar situations** — a structure that
+ensures they are not just learning content, but building the **adaptability, judgment, and
+creativity** to apply that knowledge in unfamiliar situations. It is more than adding skills
+to a résumé: it is helping students grow into confident problem-solvers who can learn
+quickly, communicate effectively, and work across disciplines.
+
+## Faculty Checklist
+
+### Part A: Getting Familiar with AI Yourself
+
+Before asking students to work with AI, build your own comfort. Work down this list at your
+own pace:
+
+- [ ] **[Fluency]** Try at least two AI tools hands-on this term (e.g., the university's
+  ChatGPT/Edu account, Microsoft Copilot with Office 365, Google Gemini) — use each for a
+  real task, not a demo.
+- [ ] **[Fluency]** Run **one of your own assignments** through an AI tool and grade the
+  output yourself. Note what it gets right, what it fabricates, and where students would
+  likely stumble.
+- [ ] **[Fluency]** Practice **iterative prompting**: give context, specify format, ask for
+  revisions. Keep a short log of prompts that worked and why.
+- [ ] **[Fluency]** Learn the **failure modes** — hallucinated citations, confident wrong
+  math, leaked assumptions — and build a personal verification habit (re-run code, check
+  sources, recompute results).
+- [ ] **[Fluency]** Learn the **privacy rules**: never paste student data, unpublished
+  research, or personnel information into public AI tools; know what your institution
+  licenses and what is FERPA-relevant.
+- [ ] **[Fluency]** Read your **campus AI policy** (and your department's expectations for
+  attribution and disclosure) end to end.
+- [ ] **[Fluency]** Attend one **Faculty Development** workshop or talk on teaching with AI
+  (the Back to the Bay series is a natural starting point).
+- [ ] **[Fluency]** Read one substantial piece on AI in higher education or your discipline
+  (e.g., an EDUCAUSE or discipline-journal article) and note two ideas you could use.
+- [ ] **[Fluency]** Explore **discipline-relevant tools**: for statistics and data science,
+  AI assistants for data analysis, code copilots for R/Python, and AI features in
+  Quarto/Posit tooling.
+- [ ] **[Agility]** Keep an **experiment log**: one page per month capturing what you tried,
+  what worked, what you'd teach, and what you'd warn students about.
+
+### Part B: Bringing AI into Your Classes
+
+- [ ] **[Fluency]** Add an **AI-use policy to your syllabus**: permitted tools,
+  **disclosure/attribution** requirements, verification expectations, and privacy rules.
+- [ ] **[Fluency]** Design one assignment as a **paired task**: an AI-allowed version and an
+  AI-free version, so students experience both and reflect on the difference.
+- [ ] **[Fluency]** Require students to **cite and verify AI output** (attach the prompt
+  used, the tool, and a note on how they checked the result).
+- [ ] **[Fluency]** Teach **prompting and critique** explicitly: a short in-class lab where
+  students prompt, compare outputs, and identify errors.
+- [ ] **[Fluency]** Add a **low-stakes AI micro-activity** in one unit (15–25 minutes) before
+  scaling up to graded work — scaffold from low-stakes to high-stakes.
+- [ ] **[Human-Centric]** Add an **oral or viva-style check** where students explain their
+  work and their AI use in their own words.
+- [ ] **[Human-Centric]** Include an **ethics case** tied to your content: algorithmic bias,
+  data privacy, disparate impact — students propose mitigations, not just detect problems.
+- [ ] **[Human-Centric]** Require a **two-audience deliverable**: a technical report plus a
+  one-page brief a non-technical stakeholder can act on.
+- [ ] **[Human-Centric]** Build in **collaboration with roles**: lead, reviewer,
+  communicator — rotating so every student practices leadership and relational skills.
+- [ ] **[Agility]** Design an assignment with a **mid-course change**: new data, a shifted
+  requirement, or a broken assumption that students must respond to.
+- [ ] **[Agility]** Add an **agentic-AI oversight simulation**: students set a goal for an AI
+  agent, monitor its output, quality-check it, and decide where to override it — then
+  present their oversight decisions.
+- [ ] **[Agility]** Include one **experiential, real-client deliverable** (community partner,
+  campus as living lab, or industry problem) where AI is an accelerant but students own the
+  interpretation.
+- [ ] **[Human-Centric]** End the term by reflecting on the **Provost's two asks**: where AI
+  deepened human interpretation in your course, and where choosing *not* to use AI was
+  itself a teaching decision.
+
+## References
+
+- Provost Muscat, *Back to the Bay Keynote Script – AI + Workforce Development*, Cal State
+  East Bay, August 13, 2025.
+  <https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf>
+- Cal State East Bay — [Statistics B.S.](https://catalog.csueastbay.edu/preview_program.php?catoid=39&poid=18177&hl=%22Statistics%22&returnto=search)
+- Cal State East Bay — [Statistics M.S.](https://catalog.csueastbay.edu/preview_program.php?catoid=39&poid=18257&hl=%22Statistics%22&returnto=search)
+- Cal State East Bay — [Data Science B.S.](https://catalog.csueastbay.edu/preview_program.php?catoid=39&poid=18358&hl=%22Data+Science%22&returnto=search)

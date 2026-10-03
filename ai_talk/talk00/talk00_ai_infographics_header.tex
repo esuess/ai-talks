@@ -1,0 +1,45 @@
+\usepackage[T1]{fontenc}
+\usepackage[default]{sourcesanspro}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{fontawesome5}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\definecolor{cgreen}{HTML}{006747}
+\definecolor{cnavy}{HTML}{1F4E79}
+\definecolor{cpurple}{HTML}{6F42C1}
+\definecolor{camber}{HTML}{B26B00}
+\definecolor{cred}{HTML}{C0392B}
+\definecolor{cgrey}{HTML}{555555}
+
+\newtcolorbox{solidbox}[1]{enhanced, colback=#1, colframe=#1, arc=6pt,
+  boxrule=0pt, left=9pt, right=9pt, top=8pt, bottom=8pt, colupper=white}
+
+\newtcolorbox{cardbox}[1]{enhanced, colback=#1!7!white, colframe=#1,
+  boxrule=0.7pt, arc=4pt, left=5pt, right=5pt, top=6pt, bottom=6pt,
+  fontupper=\small}
+
+\newtcolorbox{citem}[1]{enhanced, colback=white, colframe=#1,
+  boxrule=0.6pt, arc=3pt, left=6pt, right=5pt, top=5pt, bottom=5pt,
+  fontupper=\footnotesize, before skip=3pt, after skip=4pt}
+
+\newenvironment{leadin}{}{}
+
+\newcommand{\sechead}[2]{%
+  {\large\bfseries\textcolor{#1}{#2}}\par\vspace{2pt}%
+  {\color{#1}\rule{\linewidth}{1.2pt}}\par\vspace{4pt}}
+
+\newcommand{\cardhead}[3]{%
+  \textcolor{#1}{\faIcon{#2}\,\textbf{#3}}\par\vspace{2pt}}
+
+\newcommand{\bignum}[2]{%
+  {{\fontsize{30}{32}\selectfont\bfseries\textcolor{#1}{#2}}\par\vspace{1pt}}}
+
+\newcommand{\chip}[2]{%
+  \colorbox{#1}{\textcolor{white}{\scriptsize\bfseries #2}}}
+
+\newcommand{\ckbox}{$\square$\,\,}
