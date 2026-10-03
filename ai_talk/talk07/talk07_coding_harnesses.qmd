@@ -1,0 +1,313 @@
+---
+title: "What Is a Coding Harness? OpenCode, Pi, Cline, Kilo, Freebuff, Ollama, and Prime Agent"
+author: "Eric A. Suess"
+subtitle: "Date to be announced<br>12:15–1:15 PM · Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk07.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Explain what a **coding harness** adds around a language model.
+- Compare the named tools by interface, model access, customization, and safety boundary.
+- Distinguish **Ollama launching Claude Code** from Ollama being a coding harness itself.
+- Select a tool for a specific workflow instead of chasing a feature checklist.
+- Begin with a reversible task and verify the resulting changes.
+
+## What is a coding harness? {.compact}
+
+A coding harness is the runtime around a model that connects conversation to software work.
+
+It commonly supplies:
+
+- Project files and instructions
+- Read, search, edit, and write tools
+- Shell-command execution
+- Git diff and checkpoint workflows
+- Session state
+- Provider and model selection
+- Extensions, skills, MCP servers, or plug-ins
+- Permission or approval controls
+
+The harness shapes what the model can observe and do.
+
+## Model ≠ harness ≠ editor
+
+| Component | Example role |
+|---|---|
+| Model | Generates reasoning and proposed actions |
+| Harness | Supplies context, tools, state, and execution loop |
+| Editor or terminal | Presents the interaction to the user |
+| Provider | Hosts inference and applies pricing or limits |
+| Sandbox | Restricts filesystem, process, or network authority |
+
+A single product may bundle several layers, but the distinctions still matter.
+
+## Compare the workflow—not just the logo
+
+Ask these questions:
+
+1. Where does it run: terminal, editor, desktop, or cloud?
+2. Which models and authentication methods can it use?
+3. What files, commands, browser tools, and credentials can it access?
+4. How are edits reviewed and reversed?
+5. Does it include permissions, or require an external sandbox?
+6. Can it run non-interactively or in the background?
+7. Where are prompts, code, and telemetry sent?
+
+## OpenCode {.compact}
+
+[OpenCode](https://opencode.ai/docs) is an open-source coding agent available through terminal, desktop, and server-oriented workflows.
+
+- Supports multiple providers and models
+- Includes build, plan, and general-agent patterns
+- Provides TUI, non-interactive `run`, server, and web surfaces
+- Supports agents, MCP servers, plug-ins, and project configuration
+- Uses configurable permission rules
+
+Its permission documentation warns that allowed shell commands still run with the host user’s authority.
+
+## Pi {.compact}
+
+[Pi](https://pi.dev/docs/latest) is a minimal, extensible agent harness designed to be customized.
+
+- Interactive, print, JSON, and RPC modes
+- Multiple model providers
+- Extensions, skills, prompt templates, themes, and packages
+- Built-in read, shell, edit, and write tools
+- TypeScript SDK for embedding the agent
+
+Pi intentionally omits some opinionated features. It also does not provide a built-in security sandbox; use an OS, container, or policy boundary when stronger isolation is needed.
+
+## Cline {.compact}
+
+[Cline](https://docs.cline.bot/) is an open-source coding agent with IDE, terminal, and desktop surfaces.
+
+- VS Code and JetBrains integrations
+- CLI and headless workflows
+- Desktop sessions and scheduled routines
+- File edits, terminal commands, browser use, MCP, and plug-ins
+- Diff review and checkpoints in editor workflows
+
+Its human-in-the-loop interface is useful only if users actually inspect the requested actions and diffs.
+
+## Kilo Code {.compact}
+
+[Kilo Code](https://kilo.ai/docs) is an open-source coding agent for VS Code, JetBrains, CLI, and cloud workflows.
+
+- Supports many models and provider choices
+- Includes Code, Plan, Ask, and Debug agents
+- Offers skills, MCP servers, plug-ins, and custom agents
+- Provides interactive and autonomous CLI modes
+- Includes cloud-agent and pull-request workflows
+
+`kilo run --auto` approves actions automatically unless a rule denies them; reserve it for trusted, isolated environments.
+
+## Freebuff {.compact}
+
+[Freebuff](https://freebuff.com/) provides terminal, desktop, web, cloud, and chat products supported partly by text advertising.
+
+Its documentation describes:
+
+- Included model access without requiring a separate API key
+- Specialized agents for context gathering, implementation, and review
+- Free daily allowances that vary by region, access tier, and capacity
+- Model-specific data-use notices
+- Optional paid plans and connected external agents
+
+“Free” does not mean unlimited, private, locally executed, or appropriate for restricted data.
+
+## Ollama launching Claude Code
+
+Ollama is primarily a local-and-cloud **model runner and API**, not a replacement coding harness.
+
+```bash
+ollama launch claude
+ollama launch claude --model qwen3.5
+```
+
+The `launch` command configures **Claude Code** to use a compatible Ollama model and endpoint.
+
+- Claude Code supplies the coding-agent tools and permission flow.
+- Ollama supplies model access.
+- Model compatibility, context length, and tool use still matter.
+
+<small>Source: [Ollama CLI](https://docs.ollama.com/cli) and [Claude Code integration](https://docs.ollama.com/integrations/claude-code)</small>
+
+## Prime Agent {.compact}
+
+[Prime Agent](https://github.com/PrimeIntellect-ai/prime-agent) is an open-source coding and research harness built around a persistent Python control environment.
+
+- Programmatic tools and subagent calls
+- Durable supplemental prompts, memory, skills, and agent specifications
+- Background sessions and reattachment
+- Goals, heartbeats, schedules, and bounded autonomous mode
+- Evidence-backed harness refinement with snapshots
+
+Its documentation explicitly states that worker processes are **not** a security sandbox.
+
+## High-level comparison {.smaller}
+
+| Tool | Main surfaces | Distinguishing emphasis |
+|---|---|---|
+| OpenCode | Terminal, desktop, server/web | Multi-provider configuration and permission rules |
+| Pi | Terminal, print/JSON/RPC, SDK | Minimal core and deep extension surface |
+| Cline | IDE, terminal, desktop | Human-reviewed editor workflow and broad surfaces |
+| Kilo | IDE, terminal, cloud | Many models, specialized modes, autonomous workflows |
+| Freebuff | Terminal, desktop, web, cloud | Included model access and specialized agents |
+| Ollama + Claude | Terminal | Claude Code harness using Ollama model access |
+| Prime Agent | Terminal/background daemon | Persistent Python control, subagents, continual harness |
+
+Features and pricing change quickly; verify them at selection time.
+
+## A safe first task
+
+Begin in a disposable clone or clean Git worktree.
+
+> Read this repository’s instructions. Explain its structure, identify the command that runs its tests, and propose one small documentation correction. Do not edit files or run installation commands yet.
+
+Then:
+
+1. Check whether the explanation matches the repository.
+2. Approve one bounded change.
+3. Inspect the diff.
+4. Run the relevant check.
+5. Revert and repeat if necessary.
+
+## Permissions are not sandboxing
+
+| Control | What it does |
+|---|---|
+| Approval prompt | Asks before an action |
+| Allow/deny rule | Applies a configured policy |
+| Git checkpoint | Helps inspect or reverse file changes |
+| Container or VM | Restricts the process environment |
+| Separate account | Limits credentials and accessible services |
+
+A permission prompt can reduce accidents. It does not make malicious code safe to execute.
+
+## Treat repository text as untrusted input
+
+An agent may read:
+
+- `README.md`, `AGENTS.md`, or other instructions
+- Source comments and issue text
+- Webpages and package documentation
+- Generated logs and test output
+
+Any of these can contain instructions that conflict with your task.
+
+::: {.callout-warning}
+Do not allow retrieved text to authorize credential disclosure, destructive commands, publishing, or bypassing review.
+:::
+
+## Authentication, cost, and data
+
+Before connecting a provider, determine:
+
+- Subscription login or API key?
+- Separate billing account?
+- Per-token, per-request, or session limits?
+- Where prompts and repository content are processed?
+- Whether data may be logged or used for training?
+- Whether the harness stores sessions locally or remotely?
+- Which credentials a shell command can read?
+
+Model choice changes cost and privacy; harness choice changes authority and workflow.
+
+## Choosing a harness
+
+- **Want a small platform to customize?** Consider Pi.
+- **Want a multi-provider terminal/desktop agent?** Compare OpenCode and Kilo.
+- **Want an IDE-centered review workflow?** Compare Cline and Kilo.
+- **Want included free access for experimentation?** Evaluate Freebuff’s current limits and data notice.
+- **Want Claude Code with an Ollama-compatible model?** Use the Ollama integration.
+- **Want persistent programmatic subagents and long-running work?** Evaluate Prime Agent.
+
+There is no universally best harness.
+
+## Live demonstration: setup
+
+Use the same small, version-controlled project with two tools.
+
+Compare:
+
+1. Startup and authentication
+2. Project-instruction discovery
+3. Read-only explanation
+4. Plan quality
+5. Approval behavior
+
+Record which steps work immediately and which require configuration.
+
+## Live demonstration: change and verify
+
+Continue the comparison with one bounded task:
+
+1. Make a one-file edit.
+2. Run the relevant test.
+3. Review the diff and roll it back.
+4. Resume the saved session.
+5. Inspect reported usage or cost.
+
+Judge the complete workflow, not just response eloquence.
+
+## Mini-activity: choose the boundary
+
+For each scenario, choose a harness **and** an execution boundary:
+
+1. Explore an unfamiliar public repository without editing it.
+2. Edit a private research package containing no restricted data.
+3. Run generated code from an untrusted repository.
+4. Automate a nightly test and issue-summary workflow.
+5. Teach beginners how to inspect diffs before accepting changes.
+
+State what the agent may read, execute, modify, and publish.
+
+## Key takeaways {.compact}
+
+- A coding harness connects a model to project context, tools, state, and execution.
+- Products differ in surfaces, provider access, customization, review, and persistence.
+- Ollama model access and Claude Code’s harness are separate layers.
+- Permission prompts and Git history help, but stronger risks require a sandbox and narrow credentials.
+- Start with a reversible task and verify the actual diff and test result.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- OpenCode: [documentation](https://opencode.ai/docs), [agents](https://opencode.ai/docs/agents), and [permissions](https://opencode.ai/docs/permissions)
+- Pi: [documentation](https://pi.dev/docs/latest), [repository](https://github.com/earendil-works/pi), and [security](https://pi.dev/docs/latest/security)
+- Cline: [documentation](https://docs.cline.bot/) and [repository](https://github.com/cline/cline)
+- Kilo Code: [documentation](https://kilo.ai/docs) and [repository](https://github.com/Kilo-Org/kilocode)
+- Freebuff: [website](https://freebuff.com/), [repository](https://github.com/CodebuffAI/freebuff), and [privacy policy](https://freebuff.com/privacy-policy)
+- Ollama: [CLI](https://docs.ollama.com/cli) and [Claude Code integration](https://docs.ollama.com/integrations/claude-code)
+- Prime Agent: [repository and documentation](https://github.com/PrimeIntellect-ai/prime-agent)
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which comparison dimension matters most in your work?
+- What boundary would you require before allowing autonomous execution?

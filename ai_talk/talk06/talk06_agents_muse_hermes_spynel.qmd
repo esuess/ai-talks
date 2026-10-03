@@ -1,0 +1,271 @@
+---
+title: "What Is an AI Agent? Muse Code, Hermes Agent, Spynel, and Scheduled Reports"
+author: "Eric A. Suess"
+subtitle: "Date to be announced<br>12:15–1:15 PM · Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk06.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Distinguish a **model**, **chat application**, **agent**, **coding harness**, and **orchestrator**.
+- Explain the basic agent loop and its permission boundary.
+- Compare **Muse Code**, **Hermes Agent**, and **Spynel** without treating them as the same kind of tool.
+- Design a scheduled collect–analyze–report workflow.
+- Identify the evidence needed before trusting an unattended result.
+
+## Model, application, agent, or orchestrator?
+
+| Layer | Primary role |
+|---|---|
+| Model | Produces a response from supplied context |
+| Chat application | Organizes conversations, files, and user interaction |
+| Agent | Uses a model to select and call tools in pursuit of a goal |
+| Coding harness | Gives an agent project context and software-development tools |
+| Orchestrator | Routes durable work among agents and tracks its state |
+
+Product names often blur these layers. Ask what actually reasons, what executes, and what records state.
+
+## What makes a system agentic?
+
+A useful working definition:
+
+> An AI agent repeatedly observes its current state, chooses an action, uses an allowed tool, inspects the result, and continues until it stops or returns control.
+
+A common loop is:
+
+**goal** → **inspect** → **plan** → **act** → **observe** → **verify** → **stop or continue**
+
+The loop is not evidence that the agent understands the world perfectly.
+
+## Capability is not authority {.compact}
+
+An agent may know how to:
+
+- Read and edit files
+- Run R, Python, or shell commands
+- Search or fetch web pages
+- Use a browser
+- Call APIs
+- Send a message
+
+Whether it **may** do those things depends on credentials, permissions, sandboxing, institutional policy, and human approval.
+
+::: {.callout-warning}
+A powerful model inside a weakly controlled tool environment can make powerful mistakes.
+:::
+
+## Context, memory, and persistence
+
+| Concept | Meaning |
+|---|---|
+| Context | Information available during the current turn or task |
+| Memory | Information retained for possible future use |
+| Session | A continuing interaction with saved state |
+| Durable task | A recorded objective whose status survives a process restart |
+| Schedule | A rule that starts or resumes work at a specified time |
+
+Persistence improves continuity; it does not guarantee correctness.
+
+## Muse Code {.compact}
+
+Here, **Muse** means **Muse Code**, Meta’s terminal-oriented coding agent.
+
+- It operates on software projects through agent sessions.
+- Its developer-preview SDK controls sessions through the **Muse Session Protocol (MSP)**.
+- SDK clients can start turns, receive streamed events, and build integrations around a Muse host.
+- Muse Code is a coding agent—not a general workflow database or scheduler.
+
+<small>Sources: [Muse Code SDK documentation](https://meta-models.github.io/muse-code-sdk/) and [SDK repository](https://github.com/meta-models/muse-code-sdk)</small>
+
+## Hermes Agent {.compact}
+
+[Hermes Agent](https://hermes-agent.nousresearch.com/docs/) by Nous Research is a general agent product with CLI and desktop surfaces.
+
+Its documentation describes:
+
+- Multiple model providers
+- Terminal and tool backends
+- Persistent memory and reusable skills
+- Messaging gateways
+- Scheduled automations
+- Subagent delegation
+
+“Hermes” is an overloaded name; this deck refers specifically to **Hermes Agent**, not merely a Hermes language model.
+
+## Spynel {.compact}
+
+[Spynel](https://github.com/agent0ai/spynel) is a **classic coordination program with no AI in its core**.
+
+- It connects one communication surface to external AI or coding harnesses.
+- Markdown tasks and goals keep work and evidence durable.
+- Lifecycle state records whether work is queued, active, waiting, under review, or complete.
+- Separate agents perform planning, implementation, review, recovery, or notification work.
+
+Spynel coordinates agents; it is not itself the reasoning model or implementation agent.
+
+## Three different roles
+
+| Tool | Best understood as | Strong fit |
+|---|---|---|
+| Muse Code | Coding agent and programmable session host | Working interactively on codebases |
+| Hermes Agent | General agent with tools, memory, gateways, and scheduling | Personal or server-based recurring automation |
+| Spynel | Durable orchestration and communication layer | Routing tracked work among external agents |
+
+The tools can overlap or connect, but none should be selected from its name alone.
+
+## What is a scheduled agent workflow?
+
+A schedule supplies a **trigger**, not a complete outcome.
+
+```text
+At 7:00 AM every weekday
+        ↓
+Collect approved data
+        ↓
+Validate freshness and schema
+        ↓
+Analyze and render report
+        ↓
+Run quality checks
+        ↓
+Deliver—or report a failure
+```
+
+Every arrow needs an explicit tool, credential, output, and failure path.
+
+## Three scheduling patterns
+
+| Pattern | Where work starts | Important limitation |
+|---|---|---|
+| Operating-system scheduler | `cron`, systemd timer, Task Scheduler | The machine and required services must be available |
+| Agent’s built-in scheduler | A running agent gateway or daemon | The agent inherits configured tools and credentials |
+| Hosted automation | CI service, cloud function, managed scheduler | Data and secrets may leave the local environment |
+
+Choose the simplest pattern that meets reliability and data-policy needs.
+
+## Example: a reproducible R report
+
+Keep data work deterministic and separate from message delivery.
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+Rscript collect_and_validate.R
+quarto render weekly_report.qmd
+Rscript verify_report.R weekly_report.html
+```
+
+The scheduler starts the script. An agent can investigate failures or summarize results, but the numerical analysis should still be reproducible from recorded inputs and code.
+
+## Design the data contract
+
+Before scheduling, specify:
+
+- **Source:** Where does each input originate?
+- **Freshness:** How old may the data be?
+- **Schema:** Which columns, types, and units are required?
+- **Population:** What observations are included or excluded?
+- **Output:** Which tables, plots, and files must exist?
+- **Recipient:** Who is authorized to receive the result?
+
+A report built from stale or mis-scoped data can render successfully and still be wrong.
+
+## Make repeated runs safe
+
+A scheduled workflow should be **idempotent** when practical: retrying the same period should not create conflicting effects.
+
+Useful patterns:
+
+- Name outputs by reporting period.
+- Write temporary files before replacing final files.
+- Record source timestamps and checksums.
+- Avoid sending twice for the same successful run.
+- Preserve a run log and exact error.
+- Distinguish “no new data” from “collection failed.”
+
+## Verification before delivery
+
+Check the claim that matters:
+
+1. Did every expected source update?
+2. Did schema and range checks pass?
+3. Did the analysis finish without hidden warnings?
+4. Do totals reconcile with a baseline or prior period?
+5. Was the report rendered from the current run?
+6. Is the recipient and channel authorized?
+7. If any check failed, was failure reported instead of a stale report?
+
+## Security and privacy checklist {.compact}
+
+- Use a service account or narrowly scoped credential where possible.
+- Keep API keys outside prompts, notebooks, and Git.
+- Treat webpages, email, and documents as untrusted input.
+- Do not let retrieved text silently redefine the task.
+- Separate data access from message-sending authority.
+- Use a sandbox for untrusted code or broad autonomous execution.
+- Apply retention rules to logs, prompts, and generated reports.
+- Maintain a tested way to pause the schedule.
+
+## Mini-activity: design a weekly report {.compact}
+
+A department wants a Monday-morning report summarizing enrollment changes.
+
+In small groups, specify:
+
+1. The trigger and runtime environment
+2. Approved data sources
+3. Validation checks
+4. R analysis and rendered output
+5. Human review requirements
+6. Delivery channel
+7. Failure notification and retry policy
+
+**Question:** Which step benefits from an agent, and which should remain deterministic code?
+
+## Key takeaways {.compact}
+
+- An agent is a model-driven tool-use loop; authority comes from its environment.
+- Muse Code is a coding agent, Hermes Agent is a broader agent product, and Spynel is a non-AI orchestration layer.
+- A schedule is only a trigger; reliable reporting also needs data contracts, verification, logging, and failure handling.
+- Keep statistical computation reproducible and review unattended actions according to their consequences.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- Muse Code: [developer documentation](https://meta-models.github.io/muse-code-sdk/) and [SDK repository](https://github.com/meta-models/muse-code-sdk)
+- Hermes Agent: [documentation](https://hermes-agent.nousresearch.com/docs/) and [repository](https://github.com/NousResearch/hermes-agent)
+- Spynel: [repository](https://github.com/agent0ai/spynel), [getting started](https://github.com/agent0ai/spynel/blob/v0.12.12/docs/getting-started.md), and [tasks and goals](https://github.com/agent0ai/spynel/blob/v0.12.12/docs/tasks-and-goals.md)
+- Quarto: [Using R](https://quarto.org/docs/computations/r.html) and [project scripts](https://quarto.org/docs/projects/scripts.html)
+
+Product features, scheduling behavior, providers, and institutional availability can change. Verify current documentation before adoption.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which recurring report would save useful time without creating unacceptable risk?
+- What evidence would you require before allowing automatic delivery?

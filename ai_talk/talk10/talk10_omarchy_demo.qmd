@@ -1,0 +1,314 @@
+---
+title: "Omarchy: Agentic Linux and an AI-Assisted Customization Demo"
+author: "Eric A. Suess"
+subtitle: "Date to be announced<br>12:15–1:15 PM · Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk10.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Describe what Omarchy is—and what it is not.
+- Explain why its creators describe it as **agentic Linux**.
+- Identify the main parts of its keyboard-centered workflow.
+- Demonstrate an AI-assisted customization using plan, diff, test, and rollback.
+- Evaluate installation, security, and recovery risks before trying it.
+
+## What is Omarchy?
+
+[Omarchy](https://omarchy.org/) is an open-source, opinionated Linux distribution created by David Heinemeier Hansson (DHH).
+
+- Built on Arch Linux
+- Keyboard-centered desktop based on Hyprland
+- Curated applications, themes, keybindings, and defaults
+- Configuration intended to be inspected and changed
+- AI coding agents integrated into the expected workflow
+
+It is a complete operating-system environment—not an editor extension or AI model.
+
+## Correct the “AI-developed OS” shorthand
+
+AI agents are central to how Omarchy is customized and used.
+
+Primary sources establish that:
+
+- Agent launchers are prepared as part of the environment.
+- An Omarchy-specific skill can guide supported agents.
+- DHH promotes AI-assisted modification of open-source software and system configuration.
+
+They do **not** establish what fraction of Omarchy’s source code was written by AI. Avoid unsupported authorship percentages or claims that AI independently built the OS.
+
+## What does “opinionated” mean? {.compact}
+
+Omarchy selects a coherent starting workflow instead of asking users to assemble every component.
+
+That includes choices about:
+
+- Window management
+- Terminal and shell
+- Application launcher
+- Browser and development tools
+- Themes and fonts
+- Keyboard shortcuts
+- System menus and update workflows
+
+The benefit is a fast start; the tradeoff is learning and evaluating someone else’s defaults.
+
+## The desktop model
+
+Omarchy’s Hyprland-based environment emphasizes:
+
+- Tiling windows
+- Workspaces
+- Keyboard shortcuts
+- Quick application launching
+- Terminal-centered development
+- Plain-text configuration
+- Consistent visual themes
+
+This differs from a conventional desktop organized primarily around overlapping windows and nested settings dialogs.
+
+## Why call it agentic Linux?
+
+The operating system itself becomes a surface an agent can help modify.
+
+```text
+User describes desired change
+            ↓
+Agent inspects Omarchy configuration
+            ↓
+Agent proposes a plan and file changes
+            ↓
+User reviews diff and command scope
+            ↓
+Change is tested and retained—or rolled back
+```
+
+The human still owns authorization and recovery.
+
+## Prepared agent integrations
+
+Omarchy’s AI manual describes launchers for supported coding agents that can be downloaded when first invoked.
+
+The user can:
+
+- Choose a preferred agent
+- Launch an agent from the environment
+- Work within a project or configuration repository
+- Provide the Omarchy skill for system-specific guidance
+
+Prepared integration does not supply every provider subscription, credential, or security boundary.
+
+## The Omarchy skill
+
+The project’s experimental skill helps compatible agents understand supported customization patterns.
+
+The manual advises users to:
+
+- Ask the agent to plan before changing the system.
+- Review the proposed work.
+- Expect that mistakes remain possible.
+- Be prepared to revert changes.
+
+A skill provides instructions and context; it is not a guarantee or sandbox.
+
+## Demonstration roadmap
+
+Use a virtual machine or nonessential test installation.
+
+1. Open the launcher and terminal.
+2. Show workspaces and keyboard navigation.
+3. Locate the Omarchy menu and configuration.
+4. Inspect the current theme or keybinding.
+5. Ask an agent for a read-only explanation.
+6. Request one small reversible customization.
+7. Review the plan and diff.
+8. Apply and test the change.
+9. Roll it back.
+
+## Demo 1: inspect before changing
+
+Example prompt:
+
+> Inspect the current Omarchy configuration and explain which files control the active theme. Do not edit files or install packages. Cite the exact file paths and identify the safest rollback method.
+
+Verify manually:
+
+- Do the files exist?
+- Does the explanation match official documentation?
+- Is the proposed rollback available?
+- Did the agent remain read-only?
+
+## Demo 2: request a bounded change
+
+Example prompt:
+
+> Plan a change that increases terminal font size by one step. Show the exact file and proposed diff first. Do not apply it until I approve. Do not modify unrelated settings.
+
+A good plan states:
+
+- Current value
+- Intended value
+- Exact file
+- Validation step
+- Rollback command or checkpoint
+
+## Demo 3: inspect the diff
+
+Before accepting a change:
+
+```bash
+git diff -- path/to/config
+```
+
+Ask:
+
+- Is only the intended file changed?
+- Did formatting or unrelated settings change?
+- Is any downloaded code introduced?
+- Does the change require restarting a component?
+- Can the original state be restored?
+
+Version control is useful only when the relevant configuration is actually tracked.
+
+## Demo 4: test and roll back
+
+After applying the small change:
+
+1. Reload only the necessary component.
+2. Confirm the intended visible effect.
+3. Check for errors.
+4. Restore the original file.
+5. Reload again.
+6. Confirm the original behavior returns.
+
+The rollback demonstration is part of the lesson—not an admission that the change failed.
+
+## Installation changes the whole machine {.compact}
+
+Installing Omarchy is fundamentally different from installing an application.
+
+The getting-started guide includes options involving:
+
+- Full-disk installation
+- Free-space or dual-boot installation
+- Disk encryption
+- Secure Boot or TPM configuration
+- Hardware and driver compatibility
+
+::: {.callout-danger}
+A full-disk installation erases the selected drive. Back up first and verify that the backup can actually be restored.
+:::
+
+## Begin with a virtual machine
+
+A virtual machine is appropriate for:
+
+- Exploring the interface
+- Practicing keyboard navigation
+- Reviewing included applications
+- Testing agent prompts
+- Learning configuration locations
+- Taking snapshots before changes
+
+A VM does not perfectly reproduce graphics, battery, peripheral, or performance behavior on physical hardware—but it greatly reduces installation risk.
+
+## Security boundaries {.compact}
+
+Omarchy’s security documentation describes encryption, firewall behavior, signing keys, and administrative options.
+
+Pay special attention to:
+
+- Passwordless `sudo`
+- Agent access to shell commands
+- Browser and provider credentials
+- Downloaded scripts and packages
+- Third-party skills and repository instructions
+- Remote access or messaging integrations
+
+While passwordless administration is enabled, a process running as the user can gain root authority without another password prompt.
+
+## A safe AI customization workflow
+
+1. Take a snapshot or verified backup.
+2. State one narrow outcome.
+3. Start with read-only inspection.
+4. Ask for a plan and exact diff.
+5. Check commands against official documentation.
+6. Apply one change.
+7. Test the actual user-visible behavior.
+8. Review all changed files.
+9. Roll back to prove recovery.
+10. Keep the change only after verification.
+
+## Omarchy may fit when...
+
+- You want a keyboard-first Linux development environment.
+- You enjoy inspecting and editing configuration.
+- You accept Arch Linux’s rolling-release model.
+- You want AI agents available as system-customization tools.
+- You have backups and are willing to troubleshoot.
+
+It may not fit when a centrally managed, highly standardized, or low-maintenance desktop is required.
+
+## Mini-activity: review an agent plan {.compact}
+
+An agent proposes to “improve the terminal experience” by editing six files, installing three packages, enabling passwordless `sudo`, and replacing the shell configuration.
+
+Identify:
+
+1. Scope that is too broad
+2. Security consequences
+3. Missing baseline evidence
+4. A smaller first change
+5. Required backup or snapshot
+6. Verification and rollback steps
+
+Rewrite the request as one bounded, reversible task.
+
+## Key takeaways {.compact}
+
+- Omarchy is an opinionated Arch-based Linux distribution with an agent-oriented workflow.
+- AI assists customization, but available evidence does not justify claiming that AI independently authored the entire OS.
+- Plain-text configuration makes changes inspectable; it does not make every generated change safe.
+- Demonstrate plan, diff, test, and rollback in a VM before considering physical installation.
+- Operating-system agents require especially careful credential and administrative boundaries.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- Omarchy: [official site](https://omarchy.org/) and [GitHub repository](https://github.com/omacom/omarchy)
+- Manuals: [AI](https://omarchy.org/manual/ai/), [Getting Started](https://omarchy.org/manual/getting-started/), and [Security](https://omarchy.org/manual/security/)
+- Background: DHH, [“The malleable computer”](https://world.hey.com/dhh/the-malleable-computer-7c187a9b)
+- Foundations: [Arch Linux](https://archlinux.org/) and [Hyprland](https://hypr.land/)
+
+Installation details, hardware support, included agents, and security defaults can change. Use the current manual for the installed release.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which operating-system customization would be useful enough to justify agent assistance?
+- What recovery evidence would you require before applying it?

@@ -1,0 +1,323 @@
+---
+title: "OpenRouter: One API, Many Models, and Free-Model Access"
+author: "Eric A. Suess"
+subtitle: "Date to be announced<br>12:15–1:15 PM · Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk08.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Explain what OpenRouter adds between an application and model providers.
+- Distinguish the chat interface, API, model catalog, and routing layer.
+- Use a specific `:free` model or the `openrouter/free` router.
+- Interpret current free-model limits and credit-purchase fees.
+- Protect an API key and evaluate provider data policies.
+- Make a small OpenRouter request from R.
+
+## What is OpenRouter?
+
+[OpenRouter](https://openrouter.ai/) is a gateway that provides one account and API interface for many AI models and providers.
+
+It can provide:
+
+- A common model catalog
+- One API key and credit balance
+- OpenAI-compatible request formats
+- Provider routing and fallback
+- Usage and cost records
+- Chat and developer interfaces
+
+OpenRouter is not itself the underlying model.
+
+## The request path
+
+```text
+Your application or coding harness
+              ↓
+       OpenRouter API
+              ↓
+ Model and provider routing
+              ↓
+   Selected model endpoint
+              ↓
+          Response
+```
+
+The selected model, provider, privacy settings, and routing rules all affect the result.
+
+## Why use a model gateway?
+
+A gateway can make it easier to:
+
+- Try several model families through one interface.
+- Change models without rewriting the full application.
+- Compare price, latency, context length, and capabilities.
+- Use fallbacks when one provider is unavailable.
+- Centralize usage records and spending controls.
+- Connect tools that support an OpenAI-compatible endpoint.
+
+The tradeoff is another service in the data and reliability path.
+
+## Chat, API, and integrations
+
+| Surface | Best for |
+|---|---|
+| Chatroom | Manual exploration and comparison |
+| API | Reproducible scripts and applications |
+| Client SDK | Typed access with less request boilerplate |
+| Coding-harness integration | Using selected models inside an agent workflow |
+| Agent SDK | Building tool-using loops with application state |
+
+Begin in the chatroom or request builder before writing a large integration.
+
+## Pricing: correct the “$10.50” shortcut {.compact}
+
+The title list says “Pay $10.50.” That amount should **not** be treated as a permanent price.
+
+As of October 3, 2026, OpenRouter’s documentation states:
+
+- Credit purchases through Stripe carry a **5.5% fee with a $0.80 minimum**.
+- OpenRouter passes through underlying inference prices without an inference markup.
+- Purchasing **$10 in credits therefore costs $10.80** because the minimum fee applies.
+- Model prices, payment fees, and policies can change.
+
+Always inspect the checkout total before paying.
+
+## Credits and model charges
+
+- Credits are prepaid US-dollar balances.
+- Paid models can charge for input, output, images, reasoning tokens, or requests.
+- Prices vary by model and provider.
+- API-key limits can cap spending for a project or user.
+- Activity records show usage and deducted cost.
+- A “free” endpoint can still have rate, availability, or data-policy constraints.
+
+::: {.callout-tip}
+Create a separate key with a small credit limit for each class demonstration or project.
+:::
+
+## Two ways to use free models
+
+### Specific free variant
+
+Append `:free` to a model that publishes a free catalog entry.
+
+```text
+meta-llama/llama-3.2-3b-instruct:free
+```
+
+### Free Models Router
+
+Use:
+
+```text
+openrouter/free
+```
+
+The router selects an available free model compatible with requested capabilities.
+
+## Specific model or free router?
+
+| Choose | When you need... |
+|---|---|
+| Specific `:free` variant | A named model and more reproducible comparison |
+| `openrouter/free` | Zero-cost experimentation without selecting a model |
+
+The free router may select different models across requests. The response identifies which model was used.
+
+::: {.callout-warning}
+Do not attribute a result to “OpenRouter’s model.” Record the actual model returned by the API.
+:::
+
+## Current free-model rate limits {.compact}
+
+OpenRouter’s October 3, 2026 documentation lists:
+
+| All-time credits purchased | Requests per minute | Requests per day |
+|---|---:|---:|
+| Less than $10 | 20 | 50 |
+| At least $10 | 20 | 1,000 |
+
+Additional DDoS and upstream-provider limits can still apply. A `429` response may come from OpenRouter or the serving provider.
+
+These are current service rules—not guarantees for a future class meeting.
+
+## Free does not mean identical
+
+Free variants may differ from paid endpoints in:
+
+- Availability during busy periods
+- Rate limits
+- Latency and throughput
+- Context length
+- Supported modalities or tools
+- Provider and region
+- Logging, retention, or training policy
+
+Use free access for learning and low-stakes prototypes, not as an assumed service-level agreement.
+
+## Create and protect an API key
+
+1. Sign in to OpenRouter.
+2. Review privacy and model settings.
+3. Create a key for one project.
+4. Set a small credit limit.
+5. Store it in an environment variable.
+6. Never paste it into a `.qmd`, screenshot, chat, or Git repository.
+7. Revoke or rotate it when the project ends.
+
+```bash
+export OPENROUTER_API_KEY="..."
+```
+
+Do not put the real value in shell history on a shared machine.
+
+## A small request from R {.compact}
+
+```{r}
+#| eval: false
+library(httr2)
+
+response <- request(
+  "https://openrouter.ai/api/v1/chat/completions"
+) |>
+  req_headers(
+    Authorization = paste(
+      "Bearer",
+      Sys.getenv("OPENROUTER_API_KEY")
+    )
+  ) |>
+  req_body_json(list(
+    model = "openrouter/free",
+    messages = list(list(
+      role = "user",
+      content = "Explain sampling variability in 80 words."
+    ))
+  )) |>
+  req_perform() |>
+  resp_body_json(simplifyVector = TRUE)
+
+response$model
+response$choices[[1]]$message$content
+```
+
+## Make the example reproducible
+
+Record:
+
+- Request date and time
+- Requested model ID
+- Actual returned model ID
+- System and user prompts
+- Temperature and other sampling settings
+- Relevant provider-routing options
+- Token usage and cost
+- Package version and script
+
+Even with identical settings, hosted model behavior may change.
+
+## Privacy has two layers
+
+### OpenRouter
+
+Its FAQ states that basic request metadata is logged, while prompts and completions are not logged by default unless the user opts in.
+
+### Model provider
+
+Each serving provider has its own logging, retention, and training policy. OpenRouter privacy settings can restrict routing based on some provider policies.
+
+The gateway’s policy does not erase the provider’s role.
+
+## Institutional data rule
+
+Before sending data, ask:
+
+- Is the service approved by the university?
+- Does the request contain student records, identifiers, unpublished research, or contractual data?
+- Which provider will receive it?
+- Could free routing select a provider with an unacceptable policy?
+- Is de-identification sufficient—or is the dataset still re-identifiable?
+
+For course demonstrations, use public or synthetic data.
+
+## Errors to expect
+
+| Code | Typical meaning | Response |
+|---|---|---|
+| `401` | Missing or invalid key | Check key and header |
+| `402` | Credit or spending limit | Inspect balance and key limit |
+| `429` | Rate limit or provider capacity | Honor retry guidance and back off |
+| `5xx` | Service or provider failure | Retry cautiously or use fallback |
+
+Log errors without logging secrets or restricted prompt content.
+
+## A responsible classroom workflow
+
+1. Use a public, low-stakes prompt.
+2. Start with the chat playground.
+3. Compare a named free model with `openrouter/free`.
+4. Record the actual selected model.
+5. Create a limited API key.
+6. Run one short R request.
+7. Inspect usage and remaining limits.
+8. Revoke the demonstration key when finished.
+
+## Mini-activity: choose the route
+
+For each scenario, choose a paid model, a specific free variant, the free router, or no external service:
+
+1. Demonstrate API syntax with synthetic data.
+2. Reproduce a benchmark next semester.
+3. Summarize documents containing student identifiers.
+4. Compare several models under a $2 budget.
+5. Build a production service requiring predictable availability.
+
+Defend the choice using cost, reproducibility, privacy, and reliability.
+
+## Key takeaways {.compact}
+
+- OpenRouter is a gateway to many models and providers through a common interface.
+- `:free` chooses a named free variant; `openrouter/free` allows the router to select.
+- The “$10.50” figure is stale: current fees make a $10 credit purchase cost $10.80.
+- Free endpoints have limits and may vary in availability and provider policy.
+- Protect keys, cap spending, record the actual model, and use approved data only.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- OpenRouter: [Quickstart](https://openrouter.ai/docs/quickstart), [FAQ](https://openrouter.ai/docs/faq), and [Models](https://openrouter.ai/models)
+- Free access: [Free variant](https://openrouter.ai/docs/guides/routing/model-variants/free), [Free Models Router](https://openrouter.ai/docs/guides/routing/routers/free-router), and [Limits](https://openrouter.ai/docs/api-reference/limits)
+- Privacy: [Provider logging](https://openrouter.ai/docs/guides/privacy/provider-logging) and [Privacy Policy](https://openrouter.ai/privacy)
+- R package: [`httr2`](https://httr2.r-lib.org/)
+
+Pricing, fees, rate limits, available models, and provider policies can change. Verify the live documentation and checkout screen.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- When is a model gateway more useful than a direct provider account?
+- Which information must be recorded to make a comparison meaningful?

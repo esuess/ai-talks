@@ -1,0 +1,288 @@
+---
+title: "Who to Learn Practical AI Skills From Online"
+author: "Eric A. Suess"
+subtitle: "YouTube, newsletters, courses, documentation, and Facebook communities<br>Date to be announced · 12:15–1:15 PM · Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk09.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Build a small, trustworthy practical-AI learning network.
+- Match instructors and sources to different learning goals.
+- Evaluate tutorials for evidence, currency, incentives, and safety.
+- Use YouTube and Facebook without confusing popularity with authority.
+- Turn passive viewing into a reproducible practice routine.
+
+## Practical AI is several subjects
+
+| Goal | What to learn |
+|---|---|
+| Use AI well | Prompting, context, verification, privacy |
+| Build with models | APIs, structured output, tool use, evaluation |
+| Work with data | Statistics, R/Python, visualization, reproducibility |
+| Use coding agents | Git, tests, permissions, sandboxes, review |
+| Understand models | Neural networks, training, inference, limitations |
+| Teach responsibly | Learning design, accessibility, policy, assessment |
+
+No single creator is best for every layer.
+
+## Use a source ladder
+
+Prefer evidence in this order when checking a factual claim:
+
+1. Official documentation and release notes
+2. Original research or technical report
+3. Maintainer explanation or reproducible example
+4. Independent expert analysis
+5. Tutorial or course
+6. Social-media summary
+7. Unsourced screenshot or viral claim
+
+A useful teacher can simplify a topic. The original source still decides product syntax and current policy.
+
+## Andrew Ng and DeepLearning.AI
+
+[DeepLearning.AI](https://www.deeplearning.ai/) is a strong starting point for structured introductions to machine learning, generative AI, and practical model use.
+
+Why follow:
+
+- Short courses and longer learning sequences
+- Clear conceptual framing
+- Material from Andrew Ng and invited practitioners
+- Coverage from foundations to current tools
+
+Use the courses to establish vocabulary, then reproduce examples outside the course environment.
+
+## Jeremy Howard and fast.ai
+
+[fast.ai](https://www.fast.ai/) emphasizes learning by building useful models early and studying theory alongside practice.
+
+Why follow:
+
+- Free course materials
+- Notebook-based experimentation
+- Strong attention to practical model training
+- Open-source library and community
+
+Best fit: learners ready to write Python and inspect working code rather than only watch demonstrations.
+
+## Ethan Mollick
+
+Ethan Mollick’s [One Useful Thing](https://www.oneusefulthing.org/) examines how generative AI changes work, teaching, and organizations.
+
+Why follow:
+
+- Frequent hands-on experiments
+- Attention to education and workplace implications
+- Clear separation between observed behavior and broader interpretation
+- Practical prompts and workflow ideas
+
+Treat any rapidly changing product observation as time-stamped evidence, not a permanent capability statement.
+
+## Simon Willison
+
+[Simon Willison](https://simonwillison.net/) documents language models, tools, security issues, and experiments in unusually reproducible detail.
+
+Why follow:
+
+- Links to primary sources
+- Small executable examples
+- Careful attention to prompt injection and data boundaries
+- Ongoing notes about model and tool releases
+
+Best fit: technically curious readers who want to understand how claims were tested.
+
+## Josh Starmer and StatQuest
+
+[StatQuest](https://statquest.org/) by Josh Starmer provides approachable explanations of statistics and machine-learning concepts.
+
+Why follow:
+
+- Visual, step-by-step explanations
+- Strong coverage of statistical foundations
+- Clear distinctions among related methods
+- Useful preparation before implementing an algorithm
+
+Use conceptual videos together with an R or Python example and an interpretation exercise.
+
+## Grant Sanderson and 3Blue1Brown
+
+[3Blue1Brown](https://www.3blue1brown.com/) uses mathematical visualization to build intuition for topics such as linear algebra, calculus, probability, and neural networks.
+
+Why follow:
+
+- Excellent geometric intuition
+- Carefully designed visual explanations
+- Useful foundation for understanding model mechanics
+
+Visual intuition should complement—not replace—definitions, calculations, and empirical checks.
+
+## Posit and the R community
+
+For AI work involving R and reproducible data science, use:
+
+- [Posit videos](https://posit.co/resources/videos/) and official product documentation
+- [R for Data Science](https://r4ds.hadley.nz/)
+- [tidymodels](https://www.tidymodels.org/) documentation
+- Package websites and release notes
+- Conference talks whose code and data are available
+
+This keeps model use connected to data quality, statistical reasoning, and reproducible reporting.
+
+## Official channels still matter
+
+Follow the documentation and release channels for tools you actually use:
+
+- OpenAI, Anthropic, Google, Microsoft, Meta, and model providers
+- Quarto, R, Python, Jupyter, and Posit
+- Coding-agent and harness repositories
+- University IT and privacy guidance
+
+Official sources may be promotional, but they remain authoritative for supported syntax, pricing, limits, and policy.
+
+## How to evaluate a YouTube tutorial
+
+Before following it, check:
+
+- Publication date and software version
+- Links to code, data, and primary documentation
+- Whether installation commands are explained
+- Whether the presenter shows failures and verification
+- Whether costs, affiliate links, or sponsorships are disclosed
+- Whether private information appears on screen
+- Whether the final artifact can be reproduced
+
+A polished demo can hide setup, retries, editing, or paid access.
+
+## How to use Facebook communities
+
+Facebook groups can help with discovery, peer support, and local teaching ideas.
+
+Use them carefully:
+
+- Prefer moderated groups with clear rules and searchable archives.
+- Check the author’s identity and original source.
+- Do not download unknown executables or browser extensions.
+- Never paste API keys, student data, or unpublished research.
+- Be skeptical of urgent offers, guaranteed income, and secret prompts.
+- Move technical claims to official documentation before acting.
+
+Facebook is a conversation layer—not the final source of truth.
+
+## Red flags in AI-learning content {.compact}
+
+- “This tool is completely private” without a data-flow explanation
+- “Free forever” without limits or a business model
+- “One prompt replaces expertise”
+- Benchmark claims without data, settings, or baselines
+- Installation commands piped directly into a shell without inspection
+- Advice to disable all permissions or antivirus protections
+- Screenshots presented without links or dates
+- Confident claims that prediction proves causation
+- A course built mostly around referral links
+
+## Build a balanced learning network
+
+Choose a small portfolio:
+
+| Role | Example source type |
+|---|---|
+| Foundations | StatQuest, 3Blue1Brown, a textbook |
+| Structured course | DeepLearning.AI or fast.ai |
+| Current analysis | One Useful Thing or Simon Willison |
+| Software truth | Official documentation and release notes |
+| Data workflow | Posit, R4DS, tidymodels, Quarto |
+| Peer community | A well-moderated local or online group |
+
+Following fewer sources deeply is often better than following dozens passively.
+
+## Turn a video into practice
+
+For each useful tutorial:
+
+1. Write the learning claim in one sentence.
+2. Locate the primary documentation.
+3. Reproduce the smallest example.
+4. Change one input or assumption.
+5. Record what failed and why.
+6. Explain the result in your own words.
+7. Save code, versions, and links.
+8. Create one question for another learner.
+
+Watching feels fluent; reproduction reveals understanding.
+
+## A weekly learning routine
+
+### 30 minutes: foundations
+
+Study one statistical, mathematical, or programming concept.
+
+### 30 minutes: current tool
+
+Read official documentation and test one feature.
+
+### 30 minutes: build
+
+Create a tiny artifact using public or synthetic data.
+
+### 15 minutes: verify and reflect
+
+Check claims, document versions, and note what remains uncertain.
+
+## Mini-activity: audit a tutorial
+
+Select one AI tutorial or social-media post and score it from 0–2 on:
+
+1. Currency
+2. Primary-source links
+3. Reproducibility
+4. Cost disclosure
+5. Privacy and security guidance
+6. Evidence for claims
+7. Clear audience and prerequisites
+
+**Decision:** follow, adapt cautiously, or skip?
+
+## Key takeaways {.compact}
+
+- Build a learning network with foundations, practical instruction, current analysis, official documentation, and peer support.
+- Andrew Ng, Jeremy Howard, Ethan Mollick, Simon Willison, Josh Starmer, and Grant Sanderson serve different learning needs.
+- YouTube is excellent for explanation; Facebook is useful for community; neither replaces primary sources.
+- Reproduce examples, change assumptions, and preserve evidence instead of collecting tips passively.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- Structured learning: [DeepLearning.AI](https://www.deeplearning.ai/) and [fast.ai](https://www.fast.ai/)
+- Current analysis: [One Useful Thing](https://www.oneusefulthing.org/) and [Simon Willison’s Weblog](https://simonwillison.net/)
+- Foundations: [StatQuest](https://statquest.org/), [StatQuest YouTube](https://www.youtube.com/@statquest), [3Blue1Brown](https://www.3blue1brown.com/), and [3Blue1Brown YouTube](https://www.youtube.com/@3blue1brown)
+- R and data science: [Posit videos](https://posit.co/resources/videos/), [R for Data Science](https://r4ds.hadley.nz/), [tidymodels](https://www.tidymodels.org/), and [Quarto](https://quarto.org/docs/guide/)
+- Consumer safety: [FTC guidance on scams](https://consumer.ftc.gov/scams)
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which source has most improved your practical work—and why?
+- What evidence makes you trust a tutorial enough to follow its commands?
