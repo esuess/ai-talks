@@ -1,0 +1,257 @@
+---
+title: "Using AI in JASP for Psychology"
+author: "Eric A. Suess"
+subtitle: "Connecting JASP’s AI Agent through OpenRouter<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk12.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Describe JASP’s built-in AI Agent.
+- Connect it to an OpenAI-compatible provider such as OpenRouter.
+- Ask for an analysis without giving up statistical judgment.
+- Verify assumptions, settings, and reported results.
+- Protect participant data and API credentials.
+- Design a bounded classroom or research demonstration.
+
+## JASP first, AI second
+
+[JASP](https://jasp-stats.org/) is a graphical statistics application supporting frequentist and Bayesian analyses.
+
+Its AI Agent can work inside the application to:
+
+- Inspect the loaded data
+- Run analyses through JASP tools
+- Read results
+- Annotate analyses
+- Answer statistical questions
+
+The AI layer assists with the interface; it does not change what makes an analysis valid.
+
+## What OpenRouter contributes
+
+[OpenRouter](https://openrouter.ai/) provides one API endpoint for models from multiple providers.
+
+JASP can send OpenAI-compatible chat-completions requests to an endpoint such as:
+
+```text
+https://openrouter.ai/api/v1/chat/completions
+```
+
+You still need:
+
+- An OpenRouter account and API key
+- A currently available model
+- Sufficient credit or an eligible free route
+- Permission to send the intended data and context
+
+## The connection path
+
+```text
+You in JASP
+    ↓
+JASP AI Agent + enabled tools
+    ↓
+OpenRouter API endpoint
+    ↓
+Selected model/provider
+    ↓
+Tool request returned to JASP
+    ↓
+JASP runs the approved statistical action
+```
+
+The model does not become the statistical engine; JASP still performs the analysis.
+
+## Setup checklist {.compact}
+
+In JASP’s AI preferences:
+
+1. Enable the AI feature and read its confirmation notice.
+2. Select OpenRouter or configure its compatible endpoint.
+3. Enter the API key in the designated credential field.
+4. Choose a model listed for the account.
+5. Test the connection.
+6. Review persona and tool capabilities.
+7. Start with nonsensitive demonstration data.
+
+Menu labels and available models can change by JASP release.
+
+## Capabilities are permissions
+
+JASP groups agent tools into capabilities. Depending on what is enabled, the agent may be able to list modules, inspect data, run analyses, read results, or add annotations.
+
+Use least privilege:
+
+- Enable only capabilities needed for the activity.
+- Begin with inspection and explanation.
+- Review an analysis request before accepting its interpretation.
+- Disable AI when the task is complete.
+
+A persona changes instructions and tone—not the model’s reliability.
+
+## A psychology example
+
+Suppose a dataset contains:
+
+- `condition`: control or intervention
+- `pre_score`: baseline anxiety score
+- `post_score`: follow-up anxiety score
+- `participant_id`: an identifier
+
+A useful first request is not “Find something significant.” Ask instead:
+
+> Inspect variable types, summarize missingness, and propose an analysis for the prespecified question. Do not run it yet. State assumptions and identify the participant identifier.
+
+## Plan before analysis
+
+A responsible plan should identify:
+
+- Research design and unit of analysis
+- Outcome and predictor variables
+- Independent or paired observations
+- Missing-data handling
+- Model assumptions
+- Effect-size and uncertainty reporting
+- Any multiplicity or exploratory choices
+
+If the research question is unclear, the agent should ask—not choose a favorable test.
+
+## Verify JASP’s setup {.compact}
+
+Before interpreting output, check manually:
+
+- Variable measurement levels
+- Factor labels and reference groups
+- Exclusions and filters
+- Test direction and alternative hypothesis
+- Covariates and interactions
+- Confidence or credible interval settings
+- Assumption checks
+- Sample size used in the result
+
+A polished explanation cannot repair a wrongly configured analysis.
+
+## Interpretation prompt
+
+After verifying the setup, try:
+
+> Explain the effect estimate, interval, and test result in plain language. Separate the numerical result from interpretation. Do not claim causality beyond the design, diagnose individuals, or describe a nonsignificant result as proof of no effect.
+
+Then compare the response directly with the JASP table and plot.
+
+## Psychology-specific boundaries
+
+Be especially careful with:
+
+- Identifiable or re-identifiable participant records
+- Clinical, counseling, disability, or trauma information
+- Small groups and rare attributes
+- Diagnostic language beyond the instrument’s purpose
+- Automated decisions about individuals
+- Measures whose licenses restrict sharing
+
+Use de-identified or synthetic data for demonstrations whenever possible.
+
+## API privacy is not local processing
+
+Connecting through OpenRouter means requests leave JASP and traverse external services.
+
+Before use, establish:
+
+- What JASP includes in each request
+- Which provider receives the routed request
+- Current logging and data-retention settings
+- Institutional approval for the data category
+- Whether the model route can change providers
+- How the API key is stored and revoked
+
+Do not infer privacy from the desktop interface alone.
+
+## Cost and model availability
+
+OpenRouter prices, free-model eligibility, context limits, and provider availability change.
+
+Control exposure by:
+
+- Setting account limits
+- Selecting a model intentionally
+- Avoiding unnecessary full-data requests
+- Monitoring usage
+- Keeping a backup model for demonstrations
+- Never placing an API key in slides, chat, or a shared `.jasp` file
+
+## Live demonstration roadmap
+
+1. Open a public or synthetic psychology dataset.
+2. Check measurement levels manually.
+3. Show the AI provider and model settings without exposing the key.
+4. Request a read-only analysis plan.
+5. Enable only the needed analysis capability.
+6. Run one analysis.
+7. Compare every AI claim with the JASP output.
+8. Ask for a cautious summary.
+9. Save the analysis and disable AI.
+
+## Mini-activity: audit an AI conclusion
+
+The agent says:
+
+> “The intervention worked because *p* = .03, proving that it reduces anxiety for all students.”
+
+Identify at least four problems. Rewrite it to include:
+
+- The observed sample and design
+- Effect size and uncertainty
+- The limited meaning of the *p*-value
+- Appropriate causal language
+- No universal or diagnostic claim
+
+## Key takeaways
+
+- JASP’s AI Agent can inspect data, invoke JASP tools, annotate output, and answer questions.
+- OpenRouter supplies model access through an external API—not local inference.
+- Capability settings, provider choice, and API credentials are security decisions.
+- Verify measurement levels, analysis options, assumptions, and numerical output yourself.
+- Psychology data require explicit privacy, consent, and interpretation boundaries.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- [JASP](https://jasp-stats.org/) and [JASP desktop source](https://github.com/jasp-stats/jasp-desktop)
+- JASP source documentation: [AI Settings](https://github.com/jasp-stats/jasp-desktop/blob/development/Desktop/resources/help/PrefsAI.md)
+- JASP source configuration: [default AI providers](https://github.com/jasp-stats/jasp-desktop/blob/development/Resources/defaultProviders.json)
+- [OpenRouter documentation](https://openrouter.ai/docs)
+- American Psychological Association: [Ethical Principles and Code of Conduct](https://www.apa.org/ethics/code)
+
+Use the documentation matching the installed JASP version; AI settings are under active development.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which parts of a statistical analysis should the agent be allowed to execute?
+- What must a student verify before submitting an AI-assisted interpretation?

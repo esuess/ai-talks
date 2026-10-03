@@ -1,0 +1,242 @@
+---
+title: "Using AI with Version Control"
+author: "Eric A. Suess"
+subtitle: "GitHub, gh, Codeberg, Forgejo, and Aider<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk11.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Separate Git from Git hosting services.
+- Use GitHub or Codeberg to share a repository.
+- Use `gh` for common GitHub tasks.
+- Explain how Forgejo supports self-hosted collaboration.
+- Place Aider inside a reviewable Git workflow.
+- Protect credentials, unpublished data, and the main branch.
+
+## Five tools, three layers
+
+| Layer | Tools | Main job |
+|---|---|---|
+| Local history | Git | Record and compare file versions |
+| Collaboration server | GitHub, Codeberg, Forgejo | Host repositories, issues, and reviews |
+| Interfaces and agents | `gh`, Aider | Operate a host or edit a working tree |
+
+GitHub is not Git. Aider does not replace either one.
+
+## Why version control matters more with AI
+
+An AI coding tool can change many files quickly. Git makes that speed inspectable.
+
+- Establish a known baseline.
+- See exactly what changed.
+- Separate intended work from unrelated edits.
+- Test before accepting a change.
+- Restore a previous state.
+- Attribute and review contributions.
+
+A commit is a checkpoint—not proof that the contents are correct.
+
+## The minimum local workflow
+
+```bash
+git status
+git switch -c ai/small-task
+# ask the agent for one bounded change
+git diff --stat
+git diff
+git add path/to/intended-file
+git commit -m "Describe the verified change"
+```
+
+Use `git status` again before and after every agent session. Stage explicit paths rather than blindly staging everything.
+
+## GitHub and the `gh` CLI
+
+GitHub provides hosted repositories, pull requests, issues, Actions, and access controls. [`gh`](https://cli.github.com/) brings many GitHub operations to the terminal.
+
+```bash
+gh auth status
+gh repo view --web
+gh issue list
+gh pr create --fill
+gh pr checks
+gh pr view --web
+```
+
+`gh` is specific to GitHub’s service and API; ordinary `git` commands still manage local commits and remotes.
+
+## Codeberg
+
+[Codeberg](https://codeberg.org/) is a nonprofit, community-oriented Git hosting service powered by Forgejo.
+
+It offers familiar collaboration features:
+
+- Git repository hosting
+- Issues and pull requests
+- Organizations and projects
+- Releases and packages
+- CI through Woodpecker or Forgejo Actions where configured
+
+Check the service’s current terms, quotas, and acceptable-use policies before moving a project.
+
+## Forgejo
+
+[Forgejo](https://forgejo.org/) is open-source Git forge software that can be self-hosted or provided by a service such as Codeberg.
+
+Self-hosting provides control, but also creates obligations:
+
+- Updates and security patches
+- Backups and restore testing
+- Identity and access management
+- Email and runner configuration
+- Monitoring and abuse prevention
+
+“On our server” does not automatically mean secure or well maintained.
+
+## What is Aider?
+
+[Aider](https://aider.chat/) is an open-source terminal AI pair-programming tool designed to work in a Git repository.
+
+It can:
+
+- Read selected repository context
+- Edit files in the working tree
+- Show diffs
+- Use commits as checkpoints
+- Connect to multiple model providers
+
+The model, repository, and Aider configuration determine what data leaves the machine.
+
+## A bounded Aider session
+
+```bash
+git switch -c ai/update-readme
+aider README.md
+```
+
+Example request:
+
+> Add one installation example to README.md. Do not change source code. Keep the existing style, then run the documented Markdown check.
+
+Afterward, exit the tool and independently inspect `git status`, `git diff`, and the rendered result.
+
+## Branch → diff → test → review
+
+```text
+Create a branch
+      ↓
+Ask for one observable outcome
+      ↓
+Inspect status and diff
+      ↓
+Run focused checks
+      ↓
+Review locally or in a pull request
+      ↓
+Merge only verified work
+```
+
+Do not let “the agent committed it” become the review standard.
+
+## Prompt for a safer change
+
+Include four boundaries:
+
+1. **Outcome:** what users should observe
+2. **Scope:** files or areas allowed to change
+3. **Proof:** command or behavior that must pass
+4. **Stop condition:** when the agent must ask instead of guessing
+
+Example: “Fix issue 42 in `parser.R`; add a regression test; do not change public APIs; stop if the expected format is ambiguous.”
+
+## Secrets and sensitive data {.compact}
+
+Before connecting an AI tool or pushing a repository:
+
+- Keep keys in a credential manager or environment variables.
+- Add local secret files to `.gitignore` before the first commit.
+- Inspect commit history—not only the current file tree.
+- Do not send protected student, personnel, patient, or research data to an unapproved provider.
+- Review agent logs and generated artifacts for copied secrets.
+- Revoke a secret if it was committed; deleting the visible line is not enough.
+
+## Demo roadmap
+
+1. Create a tiny repository and baseline commit.
+2. Create an `ai/demo` branch.
+3. Ask Aider for one documentation change.
+4. Inspect the working tree and diff.
+5. Run a focused check.
+6. Push the branch.
+7. Open a pull request with `gh`.
+8. Review and merge—or reject and restore.
+9. Show the same Git remote pattern with Codeberg.
+
+## Mini-activity: review the command plan
+
+An agent proposes:
+
+```bash
+git add .
+git commit -m "updates"
+git push --force origin main
+```
+
+Identify the risks. Rewrite the plan so it:
+
+- Works on a branch
+- Stages only intended files
+- Uses a meaningful commit message
+- Runs a verification step
+- Opens a reviewable pull request
+- Avoids force-pushing the main branch
+
+## Key takeaways
+
+- Git records local history; GitHub and Codeberg host collaboration.
+- Forgejo is software you can self-host; Codeberg is a service built on it.
+- `gh` operates GitHub workflows from the terminal.
+- Aider edits a Git working tree, but human review and testing remain necessary.
+- Small branches, explicit diffs, focused checks, and protected secrets make AI-assisted work recoverable.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- [Git documentation](https://git-scm.com/doc)
+- [GitHub documentation](https://docs.github.com/) and [`gh` manual](https://cli.github.com/manual/)
+- [Codeberg documentation](https://docs.codeberg.org/)
+- [Forgejo documentation](https://forgejo.org/docs/latest/)
+- [Aider documentation](https://aider.chat/docs/)
+
+Features, pricing, limits, and model support change. Check current documentation before a live demonstration.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which repository step should always require human approval?
+- What evidence would make an AI-authored pull request ready to merge?

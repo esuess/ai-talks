@@ -1,0 +1,255 @@
+---
+title: "AI Code Editors and IDEs"
+author: "Eric A. Suess"
+subtitle: "VS Code Extensions, VS Code Insiders, Zed, Qoder, and Positron<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk15.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Distinguish an editor, an extension, and an AI agent.
+- Explain the role of VS Code Insiders.
+- Compare VS Code, Zed, Qoder, and Positron.
+- Choose a tool for a data-science or software workflow.
+- Evaluate model access, privacy, and review controls.
+- Run the same bounded task across multiple editors.
+
+## Start with the layers
+
+```text
+Editor or IDE
+  ├─ language support and debugger
+  ├─ terminal and version control
+  ├─ extensions
+  └─ AI interface
+       ├─ model/provider
+       ├─ repository context
+       └─ tools, permissions, and agent loop
+```
+
+Changing editors does not automatically change the model. Installing an extension can change what code and data a provider receives.
+
+## VS Code {.compact}
+
+[Visual Studio Code](https://code.visualstudio.com/) is a general-purpose, open-source-based editor with a large extension ecosystem.
+
+Its current AI surfaces include:
+
+- Chat and inline assistance
+- Agent and planning workflows
+- Workspace instructions and skills
+- Tool and MCP integrations
+- Diff review and change reversal
+- Multiple agent harnesses and models where configured
+
+Capabilities depend on installed extensions, account entitlements, and organizational policy.
+
+## Extensions are code you trust
+
+An extension may be able to:
+
+- Read workspace files
+- Run commands
+- Connect to external services
+- Access tokens granted to the editor
+- Modify settings or source files
+- Install additional components
+
+Before installing, inspect the publisher, permissions, repository, update history, privacy terms, and workspace-trust behavior. More extensions are not automatically better.
+
+## VS Code Insiders
+
+[VS Code Insiders](https://code.visualstudio.com/insiders/) is the daily pre-release build of VS Code.
+
+Use it to:
+
+- Try features before the stable release
+- Test extension compatibility
+- Follow rapidly changing AI interfaces
+- Maintain a separate experimental setup
+
+Expect more change and occasional regressions. Keep stable VS Code for important work unless pre-release testing is the purpose.
+
+## Zed {.compact}
+
+[Zed](https://zed.dev/) is a high-performance collaborative code editor with integrated AI workflows.
+
+Its AI interface emphasizes:
+
+- Agentic editing
+- Real-time visibility into agent navigation
+- Editable unified diffs
+- Accept/reject review
+- External agents through the Agent Client Protocol
+- MCP integrations
+
+Confirm platform availability, provider support, and current plan details for your environment.
+
+## Qoder
+
+[Qoder](https://qoder.com/) presents itself as an agentic coding platform with editor, CLI, plugin, and task-oriented experiences.
+
+Evaluation questions:
+
+- Can it use the required language tooling?
+- Which models and accounts are supported?
+- What repository context is uploaded?
+- How are commands approved and isolated?
+- Can all changes be reviewed as a diff?
+- Can the task be reproduced outside Qoder?
+
+Product claims should be tested on your own representative task.
+
+## Positron {.compact}
+
+[Positron](https://posit.co/products/ide/positron/) is a data-science IDE from Posit, built from the Code OSS ecosystem and designed around Python and R.
+
+Its differentiators include:
+
+- R and Python interpreters
+- Data Explorer and variable views
+- Integrated plots, help, and console workflows
+- Notebook and source-file support
+- Data-science-oriented language tooling
+- AI assistance through supported features and extensions
+
+For statistical teaching, the language and data workflow may matter more than raw agent autonomy.
+
+## Comparison by primary emphasis {.compact}
+
+| Tool | Primary emphasis | Useful starting audience |
+|---|---|---|
+| VS Code | Extensible general development | Broad language and extension needs |
+| VS Code Insiders | Early feature testing | Evaluators and extension developers |
+| Zed | Fast collaborative editor + agents | Developers wanting native-speed review |
+| Qoder | Agentic project/task workflow | Users testing higher-level delegation |
+| Positron | R/Python data science | Analysts, instructors, and researchers |
+
+These are starting points, not a benchmark result.
+
+## Compare workflows, not screenshots {.compact}
+
+Run the same small task in each candidate:
+
+> In a copy of this project, add a test for one known edge case, make the minimum fix, run the focused test, and show the final diff. Do not install packages or edit unrelated files.
+
+Record:
+
+- Time to correct result
+- Number and scope of edits
+- Approval prompts
+- Test evidence
+- Ease of reviewing and reverting
+- Provider and account cost
+
+## Data-science evaluation task
+
+For R or Python, try:
+
+1. Open a versioned project.
+2. Select the correct interpreter or environment.
+3. Load a public dataset.
+4. Ask the assistant to explain—then minimally modify—one plot.
+5. Run the file from a clean session.
+6. Inspect variables, plots, and generated artifacts.
+7. Revert the change.
+
+An IDE succeeds only if the environment and result are reproducible.
+
+## Privacy and institutional policy
+
+Ask before enabling AI:
+
+- Is code retained or used for training?
+- Which provider receives context?
+- Can the extension index the entire repository?
+- Are excluded files truly excluded from requests?
+- Where are credentials stored?
+- Can telemetry be controlled?
+- Is the product approved for student or research data?
+
+Do not infer policy compliance from an education discount or “enterprise” label.
+
+## Avoid the extension pile-up
+
+Multiple overlapping assistants can create:
+
+- Competing completions and keybindings
+- Duplicate repository indexing
+- Unclear model billing
+- Conflicting edits
+- Larger attack surface
+- Difficulty identifying which service sent data
+
+Enable one assistant at a time during evaluation and document the configuration.
+
+## Demo roadmap
+
+1. Show the same repository in stable VS Code and Positron.
+2. Compare R/Python environment selection.
+3. Show VS Code Insiders as a separate test installation.
+4. Run one read-only explanation in Zed or Qoder.
+5. Request one tiny change.
+6. Inspect the diff and command log.
+7. Run the same test externally.
+8. Revert the change.
+
+## Mini-activity: choose the environment
+
+Choose a starting tool for each scenario and defend the choice:
+
+1. An introductory R course with tables and plots
+2. A polyglot web project with many extensions
+3. Testing next month’s VS Code API
+4. Pairing with an external ACP agent
+5. Evaluating autonomous implementation tasks
+
+Name one reason your choice might still be wrong.
+
+## Key takeaways
+
+- The editor, AI extension, model, and tool permissions are separate choices.
+- VS Code prioritizes breadth; Insiders previews change; Positron centers R/Python data science.
+- Zed and Qoder offer different agent-oriented workflows that require hands-on evaluation.
+- Compare candidates with the same bounded task, clean environment, and review criteria.
+- Minimize overlapping extensions and verify privacy, cost, diffs, tests, and rollback.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- VS Code: [AI documentation](https://code.visualstudio.com/docs/editor/artificial-intelligence), [extension security](https://code.visualstudio.com/docs/editor/extension-runtime-security), and [Insiders](https://code.visualstudio.com/insiders/)
+- [Zed AI](https://zed.dev/ai) and [Zed documentation](https://zed.dev/docs/)
+- [Qoder](https://qoder.com/) and [Qoder documentation](https://docs.qoder.com/)
+- [Positron](https://posit.co/products/ide/positron/) and [Positron documentation](https://positron.posit.co/)
+
+AI features, supported models, operating systems, and plans change frequently.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which review surface makes AI edits easiest to understand?
+- For data science, which IDE feature matters more than the AI model?

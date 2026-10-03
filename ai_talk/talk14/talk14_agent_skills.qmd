@@ -1,0 +1,269 @@
+---
+title: "What Is an Agent Skill?"
+author: "Eric A. Suess"
+subtitle: "Procedural knowledge in Hermes Agent and pi<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk14.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Explain what an agent skill is.
+- Distinguish skills from prompts, tools, and memory.
+- Describe progressive disclosure.
+- Compare skill loading in Hermes Agent and pi.
+- Create a small portable `SKILL.md` bundle.
+- Review third-party skills as executable supply-chain inputs.
+
+## A skill is procedural context
+
+An agent skill is a named package of instructions and supporting resources for a recurring kind of work.
+
+Typical bundle:
+
+```text
+my-skill/
+├── SKILL.md
+├── references/
+├── scripts/
+├── templates/
+└── assets/
+```
+
+The required `SKILL.md` says when the skill applies and how the agent should proceed.
+
+## Skill, prompt, tool, or memory?
+
+| Component | Primary purpose |
+|---|---|
+| Prompt | One reusable request or framing |
+| Skill | On-demand procedure plus supporting files |
+| Tool | Executable integration the agent can call |
+| Memory | Persistent facts or preferences from prior work |
+
+A skill may instruct the agent to use tools or scripts, but the skill is not itself a new tool implementation.
+
+## Why progressive disclosure?
+
+Loading every manual into every request wastes context and distracts the model.
+
+```text
+Startup: name + description + location
+                  ↓ task matches
+Load: full SKILL.md instructions
+                  ↓ detail needed
+Load: one referenced file or script
+```
+
+Good descriptions act as routing rules: what the skill does and when it should be used.
+
+## Portable `SKILL.md`
+
+```markdown
+---
+name: survey-audit
+description: Audit survey data and codebooks. Use before analyzing questionnaire exports.
+---
+
+# Survey audit
+
+1. Read `references/checklist.md`.
+2. Preserve the raw export.
+3. Report identifiers, missing-value codes, and scale direction.
+4. Stop if the unit of observation is unclear.
+5. Verify row counts before and after cleaning.
+```
+
+Keep names portable: lowercase letters, numbers, and hyphens.
+
+## Hermes Agent skills
+
+Hermes treats skills as procedural memory and follows the Agent Skills open standard.
+
+Its skill system supports:
+
+- On-demand loading and slash commands
+- Local, bundled, hub-installed, and agent-created skills
+- References, templates, scripts, examples, and assets
+- A `/learn` workflow that authors a skill from sources or experience
+- External skill directories
+- Platform and tool availability conditions
+
+Hermes can update skills during use, so review what changed.
+
+## pi skills
+
+pi scans configured skill locations and advertises each skill’s name, description, and path to the model.
+
+A matching skill is loaded only when needed. Skills can be invoked explicitly:
+
+```text
+/skill:survey-audit inspect exports/week1.csv
+```
+
+Common locations include:
+
+```text
+~/.agents/skills/
+.agents/skills/
+```
+
+pi also supports configured paths and distribution through pi packages.
+
+## Similar idea, different lifecycle
+
+| Topic | Hermes Agent | pi |
+|---|---|---|
+| Core format | Agent Skills-compatible bundle | Agent Skills specification |
+| Discovery | Hermes skill directories and external paths | User/project/configured paths |
+| Explicit use | `/<skill-name>` | `/skill:<name>` |
+| Authoring workflow | Manual plus `/learn` and skill management | Create/edit bundle manually or install package |
+| Distribution | Bundled catalog and Skills Hub | Local paths, npm/git pi packages |
+
+Use each product’s current documentation for exact commands.
+
+## What belongs in a good skill?
+
+Include only durable procedure:
+
+- Trigger conditions
+- Required inputs
+- Ordered steps and decision points
+- Safety and stop conditions
+- Verification criteria
+- Focused reference material
+- Small deterministic scripts when useful
+
+Do not bury volatile credentials, project secrets, or an entire unsorted knowledge base in `SKILL.md`.
+
+## Description quality controls routing
+
+Weak:
+
+```yaml
+description: Helps with data.
+```
+
+Stronger:
+
+```yaml
+description: >-
+  Validate rectangular survey exports, codebooks,
+  missing-value codes, and scale direction. Use before
+  cleaning or analyzing questionnaire data.
+```
+
+A vague description may never load—or may load for the wrong tasks.
+
+## Skills can change behavior
+
+A skill may tell an agent to:
+
+- Run shell commands
+- Install software
+- Send data to a service
+- Modify files
+- Load more instructions
+- Use credentials available in the environment
+
+Therefore, a skill is part of the trusted instruction and software supply chain, even when it contains “only Markdown.”
+
+## Review before installing {.compact}
+
+Check:
+
+- Source and maintainer
+- License and version or commit
+- `SKILL.md` in full
+- Every referenced script and template
+- Network calls and package installation
+- Paths it may read or write
+- Secret and environment-variable handling
+- Whether verification matches your environment
+
+Pin or copy a reviewed version when reproducibility matters.
+
+## Build a skill: demonstration
+
+1. Choose one repeated, narrow workflow.
+2. Write a precise name and trigger description.
+3. Define assumptions and required inputs.
+4. Add the minimum procedure.
+5. Add one observable verification step.
+6. Test a task that should trigger it.
+7. Test a nearby task that should not.
+8. Inspect the agent’s actions, not only its prose.
+9. Revise the instructions based on failure evidence.
+
+## Example verification section
+
+```markdown
+## Verification
+
+- Confirm the raw file hash is unchanged.
+- Report input and output row counts.
+- List every renamed or recoded variable.
+- Run the project validation command.
+- If any check fails, stop and report the failing artifact.
+```
+
+“Looks good” is not a verification strategy.
+
+## Mini-activity: classify the component
+
+For each item, decide: prompt, skill, tool, or memory.
+
+1. “Always write concise answers for Eric.”
+2. A function that queries a database
+3. A repeatable PDF accessibility checklist with a validation script
+4. “Summarize this article for beginners.”
+5. A remembered project deadline
+
+Then identify which items require code review or privacy review.
+
+## Key takeaways
+
+- Skills provide on-demand procedural knowledge and may bundle references, scripts, and assets.
+- Progressive disclosure preserves context by loading detail only when needed.
+- Hermes Agent and pi both support Agent Skills-style bundles but differ in discovery and lifecycle.
+- Precise descriptions improve routing; explicit verification improves reliability.
+- Review skills like supply-chain inputs because their instructions can trigger powerful tools.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- [Agent Skills specification](https://agentskills.io/specification)
+- Hermes Agent: [Skills System](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) and [source repository](https://github.com/NousResearch/hermes-agent)
+- pi: [Skills documentation](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/skills.md) and [package documentation](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/packages.md)
+- [Anthropic skills collection](https://github.com/anthropics/skills)
+
+Exact directories, commands, and installation policies can change by release.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which repeated academic workflow would benefit from a skill?
+- What should a skill never be allowed to do without approval?

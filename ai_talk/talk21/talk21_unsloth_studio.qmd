@@ -1,0 +1,274 @@
+---
+title: "Retraining Models with Unsloth Studio"
+author: "Eric A. Suess"
+subtitle: "A cautious introduction to local fine-tuning, evaluation, and export<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk21.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Explain what Unsloth Studio is.
+- Distinguish prompting, retrieval, fine-tuning, and continued pretraining.
+- Prepare a small supervised fine-tuning dataset.
+- Use LoRA or QLoRA conceptually.
+- Evaluate a model before and after training.
+- Export and document an artifact responsibly.
+
+## What is Unsloth Studio?
+
+[Unsloth Studio](https://unsloth.ai/docs/new/studio) is an open-source local interface for running, training, and exporting supported open models.
+
+The broader Unsloth project focuses on efficient model training and inference. Current Studio documentation describes support for multiple model and hardware families.
+
+Exact compatibility changes quickly; use the requirements page for the installed release.
+
+## “Retraining” can mean different things
+
+| Method | What changes? | Good first use |
+|---|---|---|
+| Prompting | Instructions only | Behavior can be specified directly |
+| Retrieval | Context supplied at request time | Facts change or need citations |
+| Supervised fine-tuning | Model weights/adapters | Repeated format or behavior examples |
+| Continued pretraining | Weights from raw domain text | Domain language adaptation at scale |
+| Preference/RL training | Behavior from comparisons or rewards | Advanced alignment objective |
+
+Do not fine-tune merely to insert facts that retrieval can update more safely.
+
+## LoRA and QLoRA
+
+**LoRA** trains small low-rank adapter matrices while keeping most base-model weights frozen.
+
+**QLoRA** also quantizes the base model during training to reduce memory use.
+
+Benefits:
+
+- Smaller trainable parameter set
+- Lower hardware requirements
+- Compact adapter artifacts
+- Easier comparison with the unchanged base model
+
+Tradeoffs include configuration complexity, possible quality loss, and base-model dependency.
+
+## The real project is the dataset
+
+A fine-tuning dataset should have:
+
+- A legitimate source and license
+- Consent or authority for included content
+- No unnecessary personal or secret information
+- Consistent input/output structure
+- High-quality target responses
+- Deduplication and contamination checks
+- Separate training, validation, and final test sets
+- A documented intended use
+
+More low-quality examples can make the model worse more efficiently.
+
+## Chat data structure
+
+A supervised example often contains roles:
+
+```json
+{
+  "messages": [
+    {"role": "system", "content": "Answer as a concise course assistant."},
+    {"role": "user", "content": "What does a confidence interval represent?"},
+    {"role": "assistant", "content": "A confidence interval is ..."}
+  ]
+}
+```
+
+Match the template expected by the base model and export target. Validate every transformed record.
+
+## Split by source—not only by row
+
+Random row splits can leak nearly identical examples.
+
+Prefer grouping by the unit that creates similarity:
+
+- Document
+- Conversation
+- Person
+- Assignment
+- Organization
+- Time period
+
+Hold out a final test set before training decisions begin.
+
+## A small Studio workflow
+
+1. Install the supported Studio/Desktop build.
+2. Confirm hardware and free storage.
+3. Choose a compatible base model and review its license.
+4. Import and validate the dataset.
+5. Select supervised fine-tuning and an adapter method.
+6. Start with a short pilot run.
+7. Monitor training and validation behavior.
+8. Evaluate saved checkpoints.
+9. Export only the selected artifact.
+
+Never learn the interface for the first time on irreplaceable data.
+
+## Training settings to understand {.compact}
+
+At minimum, identify:
+
+- Sequence length
+- Batch size and gradient accumulation
+- Learning rate
+- Number of epochs or steps
+- Warmup and scheduler
+- Adapter rank and target modules
+- Quantization choice
+- Checkpoint frequency
+- Random seed
+
+Defaults are hypotheses, not universally correct settings.
+
+## Monitor more than training loss
+
+Warning signs:
+
+- Training loss falls while validation quality worsens.
+- The model memorizes exact examples.
+- Format improves but factuality declines.
+- Safety behavior regresses.
+- Responses become less diverse or overly rigid.
+- A checkpoint performs well only on familiar wording.
+
+Stop early when validation evidence worsens.
+
+## Evaluate before and after
+
+Use one frozen evaluation set and compare:
+
+- Base model
+- Prompt-engineered base model
+- Fine-tuned adapter/model
+
+Keep decoding settings and the evaluation prompt fixed. The fine-tuned model should earn its added maintenance cost.
+
+## Evaluate more than task accuracy
+
+Measure task-specific correctness plus:
+
+- Format adherence
+- Hallucination or unsupported claims
+- Robustness to paraphrase
+- Refusal and safety behavior
+- Latency and memory
+- Relevant subgroup performance
+
+Human review should use a rubric and blinded order when possible.
+
+## Prevent test contamination
+
+Do not:
+
+- Train on evaluation answers.
+- Tune prompts repeatedly on the final test set.
+- Copy public benchmark examples into training unknowingly.
+- Ask an LLM to generate both training and supposedly independent evaluation data without review.
+- Select the best checkpoint from final-test performance.
+
+Keep a provenance record for every example.
+
+## Export is a deployment decision
+
+Possible artifacts include adapters, merged weights, or quantized formats such as GGUF where supported.
+
+Before export:
+
+- Confirm base-model and dataset licenses.
+- Record the exact base revision.
+- Name the chat template.
+- Save training configuration and code.
+- Test the exported artifact in its target runtime.
+- Publish a model card with intended use and limitations.
+
+A successful file conversion does not prove behavioral equivalence.
+
+## Privacy, copyright, and safety {.compact}
+
+Do not train on:
+
+- Student work without authorization
+- Confidential communications
+- Licensed text outside its terms
+- Credentials or internal URLs
+- Sensitive health or personnel data
+- Scraped personal data without a valid basis
+
+Local training keeps computation nearby, but datasets, logs, checkpoints, and backups can still leak sensitive information.
+
+## Demonstration roadmap
+
+1. Select a small, permissively licensed base model.
+2. Show a synthetic formatting dataset.
+3. Validate structure and split by source.
+4. Run a short LoRA pilot.
+5. Plot training and validation loss.
+6. Compare base and adapter on hidden prompts.
+7. Inspect a failure and a regression.
+8. Export the adapter.
+9. Load it in the target runtime and rerun the test set.
+
+## Mini-activity: should we fine-tune?
+
+For each goal, choose prompting, retrieval, fine-tuning, or neither:
+
+1. Answer from policies that change monthly
+2. Always emit a stable JSON schema
+3. Memorize private student records
+4. Adopt a consistent short feedback style
+5. Cite current university deadlines
+
+Justify the choice using update frequency, privacy, evaluation, and maintenance cost.
+
+## Key takeaways
+
+- Unsloth Studio provides a local interface for running, training, and exporting supported open models.
+- Fine-tuning changes model behavior; retrieval is usually better for changing facts.
+- LoRA and QLoRA reduce training cost but do not remove data-quality and evaluation requirements.
+- Split by the source of similarity and protect an untouched final test set.
+- Document licenses, provenance, configuration, limitations, and exported-runtime behavior.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- Unsloth: [Studio introduction](https://unsloth.ai/docs/new/studio), [documentation](https://unsloth.ai/docs), and [source repository](https://github.com/unslothai/unsloth)
+- Hu et al., [LoRA](https://arxiv.org/abs/2106.09685)
+- Dettmers et al., [QLoRA](https://arxiv.org/abs/2305.14314)
+- Hugging Face: [Model Cards](https://huggingface.co/docs/hub/model-cards)
+
+Supported models, hardware, export formats, and performance claims change frequently.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which desired behavior truly requires changing model weights?
+- What regression would cause you to reject a fine-tuned checkpoint?

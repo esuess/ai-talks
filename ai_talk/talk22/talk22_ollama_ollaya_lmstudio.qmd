@@ -1,0 +1,264 @@
+---
+title: "Ollama, Ollaya, and LM Studio"
+author: "Eric A. Suess"
+subtitle: "Three local runtimes for two different kinds of models<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk22.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Distinguish Ollama, Ollaya, and LM Studio.
+- Separate generative models from decision models.
+- Run a local model through a desktop app, CLI, or API.
+- Choose a runtime based on task and hardware.
+- Evaluate privacy, licensing, and network exposure.
+- Test local outputs rather than assuming “local” means correct.
+
+## Similar names, different jobs
+
+| Product | Main role | Typical model output |
+|---|---|---|
+| Ollama | Run and serve local generative models | Text, code, embeddings, tool calls |
+| Ollaya | Run and serve local decision models | Choices, scores, probabilities |
+| LM Studio | Discover, run, chat with, and serve local models | Primarily generative model responses |
+
+Ollaya is not a misspelling of Ollama.
+
+## Ollama
+
+[Ollama](https://ollama.com/) provides a CLI and local service for running supported open models.
+
+Typical workflow:
+
+```bash
+ollama pull <model>
+ollama run <model>
+ollama list
+```
+
+Its API can support local applications and coding tools. Model capability, quantization, context, and license vary by model tag.
+
+## LM Studio {.compact}
+
+[LM Studio](https://lmstudio.ai/) is a desktop-oriented environment for discovering, downloading, chatting with, and serving local models.
+
+It emphasizes:
+
+- Graphical model search and download
+- Hardware and quantization information
+- Chat and prompt experimentation
+- Local server mode
+- Developer SDKs and API compatibility
+- Model and runtime configuration
+
+Check supported operating systems and hardware in the current release notes.
+
+## Ollaya
+
+[Ollaya](https://ollaya.dev/) describes itself as “Ollama for decision models.”
+
+It can pull and serve supported open decision-model families—such as Laya, NLI, classification, and related models—behind a TypeSafe-compatible API.
+
+Use it when an application needs a bounded decision rather than generated prose.
+
+```text
+state + typed questions → probabilities, choices, or scores
+```
+
+## Generative versus decision workloads
+
+**Generative model:**
+
+> Draft a concise explanation of this error.
+
+**Decision model:**
+
+> Given this error state, choose `retry`, `ask-user`, or `stop`, and return probabilities.
+
+Use a generative runtime for open-ended content. Use a decision runtime for validated bounded classification or routing.
+
+## CLI, desktop, or API?
+
+| Interface | Best for |
+|---|---|
+| CLI | Scripts, repeatable demos, remote terminals |
+| Desktop GUI | Model discovery, chat, hardware exploration |
+| Local API | Applications, notebooks, agents, integrations |
+
+The interface does not determine privacy by itself. A desktop app can call external services; a local API can be exposed accidentally.
+
+## OpenAI-compatible does not mean identical {.compact}
+
+Local servers often imitate parts of a familiar API, but implementations can differ in:
+
+- Endpoint paths
+- Streaming format
+- Tool-calling behavior
+- Structured outputs
+- Embeddings support
+- Context and token accounting
+- Authentication
+- Model loading and concurrency
+
+Test the exact client/server pair rather than assuming drop-in equivalence.
+
+## Hardware vocabulary
+
+- **Parameters:** rough model size, not total runtime memory
+- **Quantization:** lower-precision weights that reduce memory
+- **Context window:** maximum input plus output scope under the runtime’s rules
+- **VRAM/RAM:** memory available for model weights and working state
+- **Tokens per second:** generation throughput, workload dependent
+- **Time to first token:** interactive startup latency
+
+A model that loads may still be too slow for the intended workflow.
+
+## Choose a model deliberately {.compact}
+
+Check:
+
+- Intended task and languages
+- License and acceptable use
+- Model-card limitations
+- Quantization quality
+- Context requirement
+- Tool or structured-output support
+- Hardware fit
+- Evaluation on your examples
+- Provenance of community-converted files
+
+“Most downloaded” is not an evaluation metric.
+
+## Local privacy: stronger control, not magic {.compact}
+
+Local inference can keep prompts and outputs on your machine, but inspect:
+
+- Model downloads and update checks
+- Telemetry
+- Web search or remote tools
+- Cloud fallback settings
+- Logs and chat history
+- Other processes that can call the API
+- Bind address and firewall
+- Unencrypted backups and exported conversations
+
+Bind a server to loopback unless remote access is intentionally secured.
+
+## API exposure
+
+A local service listening on every network interface can become a remote service.
+
+Safer defaults:
+
+- Bind to `127.0.0.1` when possible.
+- Do not forward the port publicly.
+- Add authentication where supported.
+- Restrict firewall rules.
+- Avoid running with unnecessary privileges.
+- Test from another machine to confirm it is not reachable.
+- Treat model tool calls as untrusted requests.
+
+## A three-part demonstration
+
+1. **Ollama:** run a small generative model and call its local API.
+2. **LM Studio:** load a comparable quantization, chat, and start its server.
+3. **Ollaya:** load Laya and request one typed routing decision.
+4. Compare task fit, startup time, memory, output structure, and logs.
+5. Stop each server and verify the port is closed.
+
+Do not compare prose quality with classification accuracy as though they are the same task.
+
+## Benchmark a generative workload
+
+For a generative model, record:
+
+- Correctness against a task-specific rubric
+- Time to first token and throughput
+- Context reliability
+- Structured-output success
+- Memory use
+
+Use repeated representative prompts—not one favorite example.
+
+## Benchmark a decision workload
+
+For a decision model, record:
+
+- Accuracy and calibration
+- Latency and throughput
+- Abstention behavior
+- Error cost by class
+- Performance after realistic distribution shifts
+
+Pin model hashes or exact tags and preserve the labeled evaluation set.
+
+## Common failure modes
+
+- Downloading a model larger than available memory
+- Confusing context limit with reliable context use
+- Exposing an unauthenticated local API
+- Assuming every quantization behaves the same
+- Ignoring model or dataset licensing
+- Letting a model invoke shell tools without review
+- Calling an answer private while remote search is enabled
+- Using a text generator where a bounded classifier is safer
+
+## Mini-activity: choose the runtime
+
+Choose a starting runtime and explain why:
+
+1. Offline brainstorming in a desktop GUI
+2. A shell script that summarizes local logs
+3. A fast local triage probability for three queues
+4. An app expecting an OpenAI-style local endpoint
+5. A sensitive workflow requiring no external calls
+
+List one configuration check that could invalidate your choice.
+
+## Key takeaways
+
+- Ollama and LM Studio primarily run generative models; Ollaya serves bounded decision models.
+- The right comparison starts with task type, not product name.
+- Local runtimes can improve control but still require network, logging, and license review.
+- API compatibility is partial until tested with the actual client and model.
+- Measure quality, latency, memory, and exposure on your own representative workload.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- Ollama: [site](https://ollama.com/), [documentation](https://docs.ollama.com/), and [source](https://github.com/ollama/ollama)
+- Ollaya: [site](https://ollaya.dev/), [documentation](https://ollaya.dev/docs/), and [source](https://github.com/ollaya-dev/ollaya)
+- LM Studio: [site](https://lmstudio.ai/), [documentation](https://lmstudio.ai/docs/), [Python SDK](https://github.com/lmstudio-ai/lmstudio-python), and [TypeScript SDK](https://github.com/lmstudio-ai/lmstudio-js)
+- Laya [model card](https://huggingface.co/convaiinnovations/laya)
+
+Runtimes, APIs, model catalogs, and licenses change frequently. Verify the installed versions.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which workload belongs in a generative model versus a decision model?
+- What evidence would convince you that a local server is not exposed?

@@ -1,0 +1,251 @@
+---
+title: "RTutor 2.00 and Datably.ai"
+author: "Eric A. Suess"
+subtitle: "Two AI-assisted paths from data to analysis<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk13.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Describe the current RTutor 2.00 workflow.
+- Explain how Datably.ai broadens the workflow.
+- Choose a tool based on the data and desired artifact.
+- Audit generated R or Python code.
+- Protect sensitive data before upload.
+- Build a reproducible analysis from an AI-assisted start.
+
+## RTutor 2.00 in one sentence {.compact}
+
+[RTutor](https://rtutor.ai/) translates natural-language analysis requests into executable R—or optionally Python—code for an uploaded tabular dataset.
+
+Its interface combines:
+
+- Data upload and demonstration datasets
+- Data-type review
+- Natural-language prompting
+- Generated code and results
+- Exploratory-data-analysis reports
+- Follow-up questions and refinements
+
+The site itself warns that generated code can run and still be logically wrong.
+
+## The RTutor workflow
+
+```text
+Upload a rectangular data file
+            ↓
+Review names and data types
+            ↓
+Inspect exploratory summaries
+            ↓
+Ask one concrete question
+            ↓
+Read generated code
+            ↓
+Check result and revise
+            ↓
+Export a report or reproduce elsewhere
+```
+
+The automatic result is a draft analysis, not a validated finding.
+
+## Ask a statistical question—not a button request
+
+Weak prompt:
+
+> Analyze my data.
+
+Stronger prompt:
+
+> Compare median wait time between the two service groups. Show group sample sizes and distributions first, report uncertainty, and state the assumptions of the proposed comparison. Do not remove missing values without reporting how many are excluded.
+
+A good request makes the estimand and decision rules visible.
+
+## Inspect generated code
+
+For every code chunk, ask:
+
+- Did it use the intended columns?
+- Were categorical codes treated as factors?
+- How were missing values handled?
+- Did a transformation change the estimand?
+- Were groups or time points accidentally pooled?
+- Does the plot match the numerical result?
+- Can the code run in a clean R session?
+
+Readable code is one of RTutor’s most valuable outputs—use it.
+
+## What is Datably.ai?
+
+[Datably.ai](https://datably.ai/) is presented by the same organization as a broader AI-native data-analysis platform.
+
+Its interface supports:
+
+- Conversational project goals
+- Multiple uploaded files and online sources
+- R or Python workflows
+- Generated plots and iterative analysis
+- Saved sessions
+- Autopilot for smaller, focused tasks
+
+Current models, tiers, and feature limits can change.
+
+## RTutor and Datably: different starting points
+
+| Need | RTutor 2.00 | Datably.ai |
+|---|---|---|
+| One traditional rectangular dataset | Strong fit | Supported |
+| Guided EDA tabs | Central workflow | More conversational |
+| Multiple files or sources | Limited | Broader project workflow |
+| R/Python choice | Available | Available |
+| Fast code-learning example | Strong fit | Possible |
+| Longer AI-native project | Less central | Intended use |
+
+Neither tool removes the need for data governance or statistical review.
+
+## A practical decision rule {.compact}
+
+Choose RTutor when:
+
+- The data are already tidy and rectangular.
+- The question can be answered in a short analysis.
+- You want to study generated code and summaries.
+
+Consider Datably when:
+
+- The project has multiple inputs or stages.
+- You need a conversational workspace.
+- R and Python may both be useful.
+
+For regulated or sensitive data, the correct choice may be neither hosted service.
+
+## Data preparation still matters
+
+Before uploading:
+
+- Give columns clear, nonidentifying names.
+- Remove direct identifiers.
+- Check category coding and date formats.
+- Document units and missing-value codes.
+- Define the observational unit.
+- Preserve an untouched source copy.
+- Create a synthetic or public demonstration version.
+
+Prompt engineering cannot repair an unknown data-generating process.
+
+## Privacy questions to answer {.compact}
+
+Do not upload by default. First determine:
+
+- What data and row samples are sent to a model provider?
+- What the service stores during and after a session
+- Whether prompts or metadata are retained
+- Which subprocessors receive the data
+- Whether institutional agreements permit the use
+- How deletion, access, and account recovery work
+
+Read the current privacy policy and terms; screenshots and old reviews can be outdated.
+
+## A two-tool demonstration
+
+Use the same public dataset and question in both tools:
+
+1. Inspect column types.
+2. Ask for a distribution plot and group summary.
+3. Ask for one inferential comparison.
+4. Save the generated R or Python code.
+5. Compare exclusions, defaults, and labels.
+6. Run the code independently.
+7. Record any differences in the result.
+
+The goal is evaluation—not declaring a universal winner.
+
+## Reproducibility ladder
+
+A useful progression is:
+
+1. Screenshot of a result
+2. Downloaded HTML report
+3. Saved generated code
+4. Code plus data dictionary
+5. Code run in a clean environment
+6. Versioned project with environment and provenance
+
+Move upward before treating an exploratory chat result as a research artifact.
+
+## Common failure modes
+
+- Treating numeric category codes as measurements
+- Hallucinating a column or causal explanation
+- Choosing a test after seeing which is significant
+- Silently dropping missing records
+- Confusing correlation with prediction or causation
+- Producing a plot whose labels hide a transformation
+- Trusting a successful run as evidence of correct logic
+
+The strongest safeguard is an explicit analysis plan plus independent reproduction.
+
+## Mini-activity: improve the request {.compact}
+
+Rewrite this prompt:
+
+> Find the best result in this student survey and make it significant.
+
+Your replacement should specify:
+
+- A legitimate research question
+- Outcome and comparison
+- Missing-data rule
+- Effect size and interval
+- Exploratory versus confirmatory status
+- Privacy-safe input data
+- Required code and verification output
+
+## Key takeaways
+
+- RTutor 2.00 turns plain-language questions into inspectable R or Python analyses for tabular data.
+- Datably.ai offers a broader conversational project workflow with multiple inputs.
+- Generated code and reports are starting points, not correctness guarantees.
+- Compare tools on one controlled question and reproduce results independently.
+- Remove sensitive information and verify current data practices before uploading anything.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- [RTutor 2.00](https://rtutor.ai/)
+- [RTutor source repository](https://github.com/gexijin/RTutor)
+- [Datably.ai](https://datably.ai/)
+- [Datably source repository](https://github.com/gexijin/datably)
+- R project: [Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+
+Hosted behavior, provider models, pricing, and privacy terms can change. Recheck them immediately before use.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- When is generated code a better learning artifact than a generated explanation?
+- What would you require before reusing an AI-generated analysis in research?

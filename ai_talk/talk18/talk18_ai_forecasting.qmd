@@ -1,0 +1,261 @@
+---
+title: "Modern Time-Series Forecasting"
+author: "Eric A. Suess"
+subtitle: "StatsForecast, NeuralForecast, Nixtla, and TimesFM<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk18.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Distinguish Nixtla, StatsForecast, and NeuralForecast.
+- Describe the purpose of Google’s TimesFM.
+- Build a time-respecting forecasting evaluation.
+- Compare statistical, neural, and foundation models.
+- Evaluate point forecasts and uncertainty.
+- Avoid leakage and false confidence in future predictions.
+
+## First, correct the names
+
+The source list uses “neuralforecat” and “Nixla.” The established project names are:
+
+- **NeuralForecast**
+- **Nixtla**
+
+Nixtla is the organization and forecasting ecosystem. StatsForecast and NeuralForecast are two of its libraries. TimesFM is a separate pretrained model project from Google Research.
+
+## Forecasting is not ordinary prediction
+
+A forecast is indexed by time and must respect information availability.
+
+Key ingredients:
+
+- Forecast origin
+- Horizon
+- Sampling frequency
+- Seasonal periods
+- Known-future versus observed-past covariates
+- Revision and missingness rules
+- Operational loss function
+
+A random row split usually leaks future structure into the past.
+
+## StatsForecast
+
+[StatsForecast](https://nixtlaverse.nixtla.io/statsforecast/) provides fast statistical and econometric forecasting models for collections of time series.
+
+Model families include approaches such as:
+
+- Naive and seasonal-naive baselines
+- Exponential smoothing
+- ARIMA-family models
+- Intermittent-demand methods
+- Multiple-seasonality models
+
+Its scalable interface makes classical models useful baselines—not obsolete alternatives.
+
+## NeuralForecast
+
+[NeuralForecast](https://nixtlaverse.nixtla.io/neuralforecast/) provides neural forecasting architectures through a common interface.
+
+Depending on the release, the library includes families based on:
+
+- Multilayer perceptrons
+- Recurrent networks
+- Temporal convolution
+- Transformers and patch-based models
+- Probabilistic losses
+- Exogenous variables
+
+Neural models introduce training choices, compute cost, and tuning risk.
+
+## TimesFM
+
+[TimesFM](https://github.com/google-research/timesfm) is a pretrained time-series foundation model developed by Google Research.
+
+The central idea is zero-shot or adapted forecasting across series without fitting a conventional model from scratch for every task.
+
+Before use, verify:
+
+- Supported context and horizon
+- Frequency handling
+- Covariate support
+- Quantile or interval behavior
+- Hardware requirements
+- Model-weight license and version
+
+## Three modeling strategies
+
+| Strategy | Examples | Main strength |
+|---|---|---|
+| Statistical | seasonal naive, ETS, ARIMA | Transparent, fast, strong baseline |
+| Neural | NBEATS, NHITS, TFT | Learns nonlinear patterns across data |
+| Foundation model | TimesFM | Pretrained transfer and zero-shot use |
+
+No row wins across every series, horizon, metric, and compute budget.
+
+## Use a long data format
+
+Nixtla libraries commonly use a panel structure like:
+
+| unique_id | ds | y |
+|---|---|---:|
+| store_01 | 2026-01-01 | 143 |
+| store_01 | 2026-01-02 | 151 |
+| store_02 | 2026-01-01 | 87 |
+
+- `unique_id`: series identifier
+- `ds`: time index
+- `y`: target
+
+Exact schema and covariate columns should follow the current library documentation.
+
+## Baselines first
+
+Every evaluation should include simple forecasts:
+
+```text
+Last value
+Seasonal value from one cycle ago
+Historical mean or drift
+Simple statistical model
+```
+
+A complex model that cannot reliably beat seasonal naive may add cost without useful information.
+
+## Rolling-origin evaluation
+
+```text
+Train ──────────┤ Validate horizon 1
+Train ───────────────┤ Validate horizon 2
+Train ───────────────────┤ Validate horizon 3
+```
+
+At each origin, train only on information available then. Repeat across origins to measure stability over changing regimes.
+
+Keep a final time period untouched for the last comparison.
+
+## Match point metrics to the decision
+
+Common point metrics include:
+
+- **MAE:** typical absolute error in target units
+- **RMSE:** gives more weight to large errors
+- **MASE:** compares error with a naive scale
+- **sMAPE:** percentage-style comparison, with caveats near zero
+- **Bias:** systematic over- or under-forecasting
+
+Select metrics before comparing models and connect them to the operational loss.
+
+## Evaluate uncertainty and variation
+
+Also evaluate:
+
+- Interval or quantile coverage
+- Interval width
+- Error by horizon
+- Error by series and season
+- Operational cost of under- and over-forecasting
+
+A single average can hide catastrophic series-level failures.
+
+## Leakage in forecasting {.compact}
+
+Common pathways:
+
+- Random train/test splits
+- Scaling with future observations
+- Revised values unavailable at the forecast origin
+- Future covariates that are not truly known in advance
+- Selecting models on the test horizon
+- Filling gaps using both past and future
+- Including post-outcome events
+
+Write an “available as of” timestamp for every feature.
+
+## Foundation models still need validation
+
+Pretraining can improve transfer, but cannot guarantee:
+
+- Fit to a new domain
+- Robustness to structural breaks
+- Calibrated intervals
+- Correct holiday or policy effects
+- Fair performance across locations
+- Better decisions than a seasonal baseline
+
+Evaluate TimesFM under the same rolling origins and metrics as every other model.
+
+## Demonstration roadmap
+
+1. Load a public panel dataset.
+2. Plot each series and identify frequency.
+3. Reserve the final horizon.
+4. Fit seasonal naive and StatsForecast models.
+5. Fit one NeuralForecast model with a bounded budget.
+6. Generate a TimesFM forecast.
+7. Compare error by horizon and series.
+8. Examine interval coverage and runtime.
+9. Refit the selected approach only after evaluation.
+
+## Mini-activity: redesign the benchmark
+
+A team shuffles three years of daily observations, uses 80% for training, and reports that a neural model beats ARIMA by 2% RMSE.
+
+Redesign the study to specify:
+
+- Forecast horizon
+- Rolling origins
+- Seasonal-naive baseline
+- Tuning window
+- Final untouched period
+- Interval evaluation
+- Compute budget and stopping rule
+
+## Key takeaways
+
+- Nixtla is the ecosystem; StatsForecast and NeuralForecast are distinct libraries.
+- TimesFM is a separate pretrained time-series foundation model from Google Research.
+- Statistical models remain essential speed and accuracy baselines.
+- Use rolling-origin evaluation and features available at each forecast origin.
+- Compare errors by horizon and series, and evaluate uncertainty—not only one average score.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- Nixtla: [Nixtlaverse](https://nixtlaverse.nixtla.io/)
+- [StatsForecast documentation](https://nixtlaverse.nixtla.io/statsforecast/) and [repository](https://github.com/Nixtla/statsforecast)
+- [NeuralForecast documentation](https://nixtlaverse.nixtla.io/neuralforecast/) and [repository](https://github.com/Nixtla/neuralforecast)
+- Google Research: [TimesFM repository](https://github.com/google-research/timesfm) and [research article](https://research.google/blog/a-decoder-only-foundation-model-for-time-series-forecasting/)
+- Hyndman and Athanasopoulos, [Forecasting: Principles and Practice](https://otexts.com/fpp3/)
+
+Models, APIs, and supported horizons change. Record versions for every comparison.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which baseline best matches the seasonality in your data?
+- What information is genuinely known at your forecast origin?

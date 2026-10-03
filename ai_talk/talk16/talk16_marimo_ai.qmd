@@ -1,0 +1,255 @@
+---
+title: "Marimo with AI"
+author: "Eric A. Suess"
+subtitle: "Reactive Python notebooks, reproducible apps, and AI assistance<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk16.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Explain how marimo differs from a traditional notebook.
+- Describe reactive execution and reproducible state.
+- Create and run a marimo notebook.
+- Use AI assistance without hiding the program.
+- Turn a notebook into a small interactive app.
+- Verify generated code, dependencies, and outputs.
+
+## What is marimo?
+
+[marimo](https://marimo.io/) is an open-source Python notebook environment.
+
+A marimo notebook is:
+
+- Reactive
+- Stored as a `.py` file
+- Executable as a notebook or script
+- Importable as a Python module
+- Deployable as an interactive app
+- Designed to work well with Git
+
+It is a Python tool; it does not replace R-native notebooks.
+
+## The stale-state problem
+
+In a conventional notebook, cells can run out of order:
+
+```text
+Cell 3 uses x = 10
+Cell 1 changes x to 20
+Cell 3 still displays the old result
+```
+
+The visible page can contain a state that cannot be reproduced by running top to bottom. This is dangerous when an AI assistant adds or rearranges code.
+
+## Reactive execution
+
+marimo builds a dependency graph from variable definitions and uses.
+
+```text
+slider value
+     ↓
+filtered data
+     ↓
+summary table ──→ plot
+```
+
+When an upstream value changes, affected cells rerun. marimo also prevents ambiguous multiple definitions in the active graph.
+
+Reactive does not mean statistically correct; it means dependencies are explicit and state updates consistently.
+
+## A notebook is a Python program
+
+A minimal workflow:
+
+```bash
+uvx marimo edit analysis.py
+# or, after installation
+marimo edit analysis.py
+```
+
+Useful commands include:
+
+```bash
+marimo run analysis.py
+python analysis.py
+```
+
+Check the current installation documentation for the supported package manager and Python versions.
+
+## AI surfaces in marimo
+
+marimo’s AI features can help with tasks such as:
+
+- Generating or editing cells from natural language
+- Completing code
+- Explaining errors or notebook context
+- Working with configured model providers
+- Building notebook interactions more quickly
+
+Exact features and providers vary by release. The notebook’s source remains the artifact to inspect.
+
+## AI changes the graph
+
+When an assistant adds code, ask:
+
+- Which variables does this cell define?
+- Which downstream cells rerun?
+- Did it introduce a duplicate definition?
+- Did it mutate an object invisibly?
+- Did it add a new network or file dependency?
+- Can the notebook still run as a script?
+
+Review the dependency consequences, not only the generated cell.
+
+## Prompt for a bounded cell
+
+> Using the existing `penguins` DataFrame, add one cell that summarizes bill length by species with count, mean, and standard deviation. Preserve missing values until the summary step, do not install packages, and do not modify existing cells. Explain which cells should rerun.
+
+Then verify the column names, missing-value rule, output counts, and source diff.
+
+## SQL, tables, and plots
+
+marimo supports data-oriented workflows including:
+
+- Python cells
+- SQL against supported data sources
+- Interactive DataFrame exploration
+- Rich tables and plots
+- UI controls connected to reactive values
+
+AI can draft a query or chart, but you must inspect joins, filters, aggregations, scales, and units.
+
+## From notebook to app
+
+Interactive controls can drive ordinary Python calculations:
+
+```text
+UI control → Python value → transformation → table/plot
+```
+
+App mode can hide editing controls from the viewer while preserving the reactive program.
+
+Before sharing, test:
+
+- Initial state
+- Boundary values
+- Missing and empty selections
+- Runtime and memory
+- Read/write and network behavior
+
+## Git-friendly does not mean diff-perfect
+
+Plain Python source improves version control, but still review:
+
+- Generated code blocks
+- Metadata or formatting changes
+- Dependency files
+- Data paths
+- Embedded secrets
+- Produced artifacts
+
+Commit a clean baseline, ask for one change, and inspect `git diff` before accepting AI edits.
+
+## Reproducible environment
+
+The `.py` notebook alone may not capture:
+
+- Python version
+- Package versions
+- External files
+- Database state
+- Environment variables
+- Model-provider configuration
+
+Use the project’s supported dependency declaration and document data provenance. Re-run from a clean environment.
+
+## Privacy and provider configuration
+
+An AI feature may send prompts, code, errors, or notebook context to an external model provider.
+
+Before use:
+
+- Identify the configured provider and model.
+- Read current retention and training terms.
+- Keep keys outside notebook source.
+- Avoid protected data and identifying cell output.
+- Check what context is attached automatically.
+- Disable AI for notebooks that cannot leave the machine.
+
+A local notebook is not automatically a local AI workflow.
+
+## Demonstration roadmap
+
+1. Create a new `analysis.py` notebook.
+2. Load a public dataset.
+3. Add a summary and plot manually.
+4. Add a slider and observe reactive updates.
+5. Ask AI for one bounded improvement.
+6. Inspect the source diff and dependency graph.
+7. Run the notebook as a script.
+8. Launch it in app mode.
+9. Restart cleanly and reproduce the result.
+
+## Mini-activity: diagnose the request
+
+An assistant is asked:
+
+> Make my notebook interactive and fix all the analysis.
+
+Rewrite the request to define:
+
+- One observable interaction
+- Allowed cells and packages
+- Expected statistical transformation
+- Empty-input behavior
+- A clean-run verification command
+- A stop condition for ambiguous requirements
+
+## Key takeaways
+
+- marimo notebooks are reactive Python programs stored as Git-friendly `.py` files.
+- Dependency-aware execution reduces hidden stale state but does not validate the analysis.
+- AI can draft cells and edits; review the code and its effect on the reactive graph.
+- App mode turns notebook logic into an interactive interface.
+- Reproduce the notebook from a clean environment and review provider privacy before sharing data.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- [marimo](https://marimo.io/)
+- [marimo documentation](https://docs.marimo.io/)
+- [marimo source repository](https://github.com/marimo-team/marimo)
+- [marimo AI documentation](https://docs.marimo.io/guides/editor_features/ai_completion/)
+- [marimo deployment documentation](https://docs.marimo.io/guides/deploying/)
+
+Commands, AI providers, and deployment options can change by release.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which notebook errors become easier to detect with reactive execution?
+- What should be tested before turning a notebook into a shared app?

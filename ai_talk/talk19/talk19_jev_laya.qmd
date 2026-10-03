@@ -1,0 +1,278 @@
+---
+title: "Jev and Laya"
+author: "Eric A. Suess"
+subtitle: "Fast typed decisions for agent and automation workflows<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk19.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Explain the “System 1” decision-model idea.
+- Distinguish typed decisions from generated prose.
+- Compare the Jev and Laya deployment models.
+- Design choice, score, and yes/no questions.
+- Evaluate accuracy, calibration, latency, and abstention.
+- Place decision models safely inside an agent workflow.
+
+## From writer to decision function
+
+A generative language model produces a sequence of tokens. Jev and Laya are designed for a narrower job:
+
+```text
+State + questions + allowed answers
+                 ↓
+       probabilities or scores
+```
+
+They are useful for bounded routing and gating—not essays, explanations, or open-ended planning.
+
+## Why call this “System 1”?
+
+The name borrows a human-cognition metaphor:
+
+- **System 1:** fast, frequent, bounded decisions
+- **System 2:** slower deliberation and generation
+
+In an agent, a small decision model might classify risk or choose a route before a larger generative model handles the hard case.
+
+The metaphor does not mean the model thinks like a person.
+
+## Typed questions
+
+Common decision shapes include:
+
+- **Yes/no probability:** Is this request about billing?
+- **Choice:** Which queue should receive it?
+- **Score:** Where does urgency fall on an ordered rubric?
+
+Good questions provide:
+
+- A specific state
+- Mutually understandable options
+- Criteria for each option or score
+- A plan for low confidence or ambiguity
+
+## Example: support routing
+
+```text
+State:
+“Charged twice this month. Please refund the duplicate.”
+
+Choice:
+billing | technical | sales | other
+
+Yes/no:
+Does the customer explicitly request a refund?
+
+Score:
+not urgent | soon | blocking
+```
+
+The output can drive code directly, but only after validation and threshold design.
+
+## Jev
+
+[Jev](https://typesafe.ai/) is TypeSafe AI’s hosted System One decision model.
+
+Its intended role is to:
+
+- Read supplied state
+- Answer typed questions
+- Return structured probabilities or scores
+- Support routing, scoring, and guardrails
+- Avoid parsing free-form generated prose
+
+Because it is a service, review API terms, pricing, retention, availability, and data residency before use.
+
+## Laya
+
+[Laya](https://huggingface.co/convaiinnovations/laya) is an open, non-autoregressive decision-model family with downloadable weights and an Apache-2.0 model card.
+
+Its published interfaces support:
+
+- Local Python use
+- Typed questions
+- English and multilingual checkpoints
+- Fine-tuning for a domain
+- Optional serving and integration layers
+
+Local execution improves control but makes deployment, updates, and evaluation your responsibility.
+
+## Jev and Laya: practical contrast
+
+| Question | Jev | Laya |
+|---|---|---|
+| Access | Hosted API | Downloadable open model family |
+| Operations | Provider manages serving | You manage hardware and runtime |
+| Data path | Sent to external service | Can remain on local infrastructure |
+| Customization | Follow current service offering | Fine-tuning path is published |
+| Reproducibility | Pin API/model where possible | Pin weights, package, and runtime |
+
+Verify current details; both projects are developing rapidly.
+
+## Where decision models fit
+
+Useful candidates:
+
+- Route a ticket to one known queue
+- Flag a command for human review
+- Score urgency on a fixed rubric
+- Select a tool from a bounded set
+- Filter obvious spam or duplicate requests
+- Decide whether to escalate to a larger model
+
+## Where decision models do not fit
+
+Poor candidates:
+
+- Explain a scientific result
+- Draft nuanced policy
+- Diagnose a person
+- Decide a high-stakes outcome without review
+- Resolve a task whose valid options are not yet known
+
+Use a generative model or a person when the work requires open-ended reasoning or explanation.
+
+## Probabilities need calibration
+
+If 100 decisions receive probability 0.8, a calibrated model should be correct about 80 times under comparable conditions.
+
+Evaluate:
+
+- Accuracy or task loss
+- Brier score or log loss
+- Reliability diagrams
+- Calibration within subgroups
+- Performance under distribution shift
+- Coverage and error when abstaining
+
+Confidence is useful only when measured against outcomes.
+
+## Thresholds express policy
+
+A probability does not supply the action threshold.
+
+```text
+low risk       → automate
+uncertain      → ask a larger model or person
+high risk      → block and review
+```
+
+Choose thresholds from error costs and validation data. A security gate and an email sorter should not share the same policy.
+
+## Compare on identical questions {.compact}
+
+A fair Jev/Laya evaluation uses:
+
+- The same state text
+- The same question wording
+- The same option criteria
+- A hidden labeled test set
+- Prespecified metrics
+- Warm and cold latency measurements
+- Cost and hardware accounting
+- Separate subgroup and shift analyses
+
+Do not copy a vendor benchmark number into a different domain and call it expected performance.
+
+## Agent architecture
+
+```text
+Incoming state
+      ↓
+Decision model: safe routine route?
+   ↙        ↓         ↘
+auto     larger LLM   human review
+      ↓
+Log decision, probability, version, and outcome
+```
+
+The escalation path is a feature, not a failure.
+
+## Risks and limitations {.compact}
+
+- Options can omit the correct action.
+- Poor criteria produce unstable decisions.
+- Truncation can hide decisive evidence.
+- A model can be confident under distribution shift.
+- Local weights can still encode bias.
+- Fast automation multiplies errors quickly.
+- Logged states may contain sensitive data.
+- A non-generative output can still be wrong.
+
+Monitor real outcomes and preserve a kill switch.
+
+## Demonstration roadmap
+
+1. Define one four-way routing task.
+2. Create 20 labeled examples before testing.
+3. Run identical typed questions through Jev and Laya.
+4. Compare predictions and full probabilities.
+5. Inspect disagreements.
+6. Set an abstention threshold from validation data.
+7. Route uncertain examples to human review.
+8. Record latency, cost, model version, and errors.
+
+## Mini-activity: design the question {.compact}
+
+Turn this vague request into a typed decision:
+
+> Decide whether this student email is important.
+
+Define:
+
+- The operational state
+- Allowed choices
+- Criteria for each choice
+- A yes/no or score question if useful
+- An uncertainty action
+- A privacy-safe logging plan
+- A labeled evaluation set
+
+## Key takeaways
+
+- Jev and Laya specialize in fast, structured decisions rather than generated prose.
+- Jev is primarily a hosted service; Laya offers downloadable open weights and local deployment.
+- Typed output removes parsing problems, not modeling error.
+- Evaluate calibration, shift, latency, and abstention on your own task.
+- Use bounded options, explicit thresholds, human escalation, and outcome monitoring.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- [TypeSafe AI and Jev](https://typesafe.ai/)
+- Laya: [model card](https://huggingface.co/convaiinnovations/laya), [documentation](https://nandhakishorm.github.io/laya/), and [source](https://github.com/NandhaKishorM/laya)
+- [Ollaya](https://ollaya.dev/) for local serving of decision models
+- Guo et al., [On Calibration of Modern Neural Networks](https://proceedings.mlr.press/v70/guo17a.html)
+
+APIs, checkpoints, benchmarks, and licenses can change. Pin and record what you evaluate.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which repeated decision in your workflow is bounded enough for this approach?
+- What probability range should force human review?

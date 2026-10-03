@@ -1,0 +1,265 @@
+---
+title: "The Karpathy Guidelines Skill in pi"
+author: "Eric A. Suess"
+subtitle: "Teaching a coding agent to be simpler, more explicit, and verifiable<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk20.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Explain what the Karpathy Guidelines skill changes.
+- Connect its four principles to common coding-agent failures.
+- Install and inspect the skill in pi.
+- Invoke it explicitly or let pi route to it.
+- Evaluate its effect on the same coding task.
+- Recognize what behavioral guidance cannot guarantee.
+
+## The problem it addresses
+
+Coding agents often fail in predictable ways:
+
+- Guessing through ambiguous requirements
+- Building more than the user asked for
+- Refactoring unrelated code
+- Claiming success without running the relevant check
+- Adding abstractions before they are needed
+- Hiding assumptions behind confident prose
+
+The Karpathy Guidelines skill is a compact behavioral counterweight to those tendencies.
+
+## Where it comes from
+
+The pi package [`@micka33/pi-karpathy-skill`](https://github.com/Micka33/pi-karpathy-skill) provides an Agent Skills-compatible bundle for pi.
+
+Its four sections are:
+
+1. Think Before Coding
+2. Simplicity First
+3. Surgical Changes
+4. Goal-Driven Execution
+
+It is community-authored guidance associated with Karpathy-style principles—not a model upgrade or formal verification system.
+
+## 1. Think Before Coding
+
+Core behavior:
+
+- State assumptions.
+- Surface uncertainty.
+- Present competing interpretations.
+- Prefer the simpler route.
+- Stop and ask when a missing decision matters.
+
+Example:
+
+> “I can either change only the displayed label or rename the underlying API field. The request does not specify which; the second is breaking. Which outcome do you want?”
+
+## 2. Simplicity First
+
+The skill tells the agent to write the minimum code that solves the requested problem.
+
+Avoid:
+
+- Speculative features
+- One-use abstraction layers
+- Unrequested configurability
+- Defensive code for impossible states
+- Large rewrites when a small edit suffices
+
+Simple does not mean careless; it means every added mechanism must earn its place.
+
+## 3. Surgical Changes
+
+Every changed line should trace to the request.
+
+The agent should:
+
+- Match the existing style.
+- Avoid unrelated cleanup.
+- Leave pre-existing dead code alone.
+- Remove only unused code created by its own change.
+- Keep the review surface small.
+
+This makes `git diff` a meaningful test of scope.
+
+## 4. Goal-Driven Execution
+
+Vague task:
+
+> Add validation.
+
+Observable version:
+
+> Add tests for empty and malformed IDs, then make those tests pass without changing valid-input behavior.
+
+A short implementation plan should pair each step with verification. Evidence comes before a completion claim.
+
+## How pi loads a skill
+
+pi initially advertises only each skill’s name, description, and location. When a task matches, it reads the full `SKILL.md`.
+
+You can also invoke it explicitly:
+
+```text
+/skill:karpathy-guidelines fix the parsing bug in issue 42
+```
+
+This progressive disclosure keeps detailed instructions out of context until they are useful.
+
+## Install the package
+
+Personal installation:
+
+```bash
+pi install npm:@micka33/pi-karpathy-skill
+```
+
+Project-scoped installation:
+
+```bash
+pi install --local npm:@micka33/pi-karpathy-skill
+```
+
+For reproducible environments, review the package and pin a version. Project packages load only after project trust is granted.
+
+## Inspect before trusting
+
+Check the package contents:
+
+- `package.json`
+- `skills/karpathy-guidelines/SKILL.md`
+- License and repository
+- Published version and integrity metadata
+- Any future scripts or extensions added to the package
+
+Today’s package is small, but trust should follow inspected content—not a familiar name.
+
+## A controlled comparison {.compact}
+
+Use a repository copy and the same request twice.
+
+**Task:** fix one known parsing bug.
+
+Record:
+
+- Clarifying questions
+- Files changed
+- Lines added and removed
+- New abstractions
+- Tests written and run
+- Unrelated cleanup
+- Accuracy of the completion claim
+
+Compare behavior without the skill and with explicit skill invocation.
+
+## What “better” looks like
+
+A successful run should produce:
+
+- An explicit interpretation of the bug
+- A small regression test
+- The minimum implementation change
+- No unrelated formatting or refactor
+- Focused test output
+- A concise summary of evidence and remaining uncertainty
+
+Fewer changed lines are useful only if the bug is actually fixed.
+
+## Combine with project instructions
+
+The skill says to merge its guidance with project-specific instructions.
+
+Priority still matters:
+
+- Repository conventions define commands and architecture.
+- User requirements define the requested outcome.
+- Safety and privacy constraints remain binding.
+- The skill supplies general behavioral defaults.
+
+Do not let generic simplicity override a necessary domain requirement.
+
+## Limitations
+
+The skill cannot guarantee:
+
+- Correct requirements
+- Correct code
+- Complete tests
+- Secure dependencies
+- Accurate model reasoning
+- Awareness of facts it did not inspect
+- Compliance with institutional policy
+
+It improves the process bias. Verification still has to exercise the real behavior.
+
+## Demo roadmap
+
+1. Open a small repository with a reproducible failing test.
+2. Show the installed skill metadata.
+3. Run the task once without explicit invocation.
+4. Restore the baseline.
+5. Run `/skill:karpathy-guidelines` with the same task.
+6. Compare plans, diffs, and test output.
+7. Introduce one ambiguity and observe whether the agent asks.
+8. Review what the skill did—and did not—change.
+
+## Mini-activity: rewrite the plan
+
+An agent proposes:
+
+1. Refactor the parsing module.
+2. Create a new validation framework.
+3. Update all callers.
+4. Add tests later.
+
+The reported bug is one malformed date accepted by one function.
+
+Rewrite the plan using all four principles. Include a regression test, minimum fix, focused verification, and stop condition.
+
+## Key takeaways
+
+- The Karpathy Guidelines skill targets over-assumption, overbuilding, broad diffs, and unverified claims.
+- Its four principles are think first, simplify, change surgically, and verify against observable goals.
+- pi loads skills progressively and supports explicit `/skill:` invocation.
+- Inspect and pin third-party packages before trusting them.
+- Measure the skill by changed behavior, diff scope, and verification—not by the quality of its prose.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- [pi Karpathy Skill repository](https://github.com/Micka33/pi-karpathy-skill)
+- [npm package](https://www.npmjs.com/package/@micka33/pi-karpathy-skill)
+- pi documentation: [Skills](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/skills.md) and [Packages](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/packages.md)
+- [Agent Skills specification](https://agentskills.io/specification)
+
+Review the installed package version; instructions can evolve over time.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- Which guideline would prevent the most failures in your projects?
+- How would you measure whether the skill improves an agent’s work?

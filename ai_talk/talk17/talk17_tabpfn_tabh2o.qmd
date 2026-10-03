@@ -1,0 +1,225 @@
+---
+title: "TabPFN and TabH2O for Tabular Data"
+author: "Eric A. Suess"
+subtitle: "Foundation-model approaches to classification and regression<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk17.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Explain why tabular data differ from text and images.
+- Describe the basic idea behind TabPFN and TabH2O.
+- Build a leakage-safe evaluation.
+- Compare a foundation model with simple baselines.
+- Interpret predictions cautiously.
+- Decide when not to use these models.
+
+## What counts as tabular data?
+
+Tabular supervised learning usually has:
+
+- Rows representing observational units
+- Columns representing measured features
+- A target for classification or regression
+- Numeric, categorical, ordinal, and missing values
+
+Examples include retention, default, diagnosis, demand, and quality prediction. The table’s meaning comes from the data-generating process—not from its rectangular shape.
+
+## What is a tabular foundation model?
+
+Instead of training a new model from random initialization for every table, a pretrained model learns broad patterns across many synthetic or real tasks.
+
+At prediction time it conditions on the observed training examples and features for a new table.
+
+The promise:
+
+- Strong results with less per-dataset tuning
+- Fast experimentation
+- Useful probability estimates or ensembles
+
+The requirement: evaluate honestly on the actual target population.
+
+## TabPFN
+
+[TabPFN](https://github.com/PriorLabs/TabPFN) is a pretrained transformer-based foundation model for tabular prediction.
+
+Its interface is intentionally similar to scikit-learn estimators:
+
+```python
+from tabpfn import TabPFNClassifier
+
+model = TabPFNClassifier()
+model.fit(X_train, y_train)
+prob = model.predict_proba(X_test)
+```
+
+Supported task types, data-size guidance, licensing, and hardware paths depend on the current release.
+
+## TabH2O
+
+[TabH2O](https://github.com/h2oai/tabh2o) is H2O.ai’s tabular foundation-model project.
+
+Treat it as an actively evolving project:
+
+- Read the current model card and repository.
+- Verify supported classification or regression tasks.
+- Confirm preprocessing and missing-value requirements.
+- Check local versus hosted execution.
+- Record the exact model and software version.
+
+Do not assume TabPFN and TabH2O accept identical inputs or have interchangeable licenses.
+
+## Foundation model versus AutoML
+
+| Foundation-model approach | AutoML approach |
+|---|---|
+| Starts from a pretrained tabular model | Searches or combines conventional models |
+| Often little task-specific fitting | Fits candidates on the current dataset |
+| May infer from training examples in context | Tunes preprocessing and hyperparameters |
+| Fast strong baseline on supported tables | Flexible model families and pipelines |
+
+Both can overfit the evaluation process when repeatedly compared on the same test set.
+
+## The baseline ladder
+
+Before celebrating a complex model, compare with:
+
+1. Majority class or target mean
+2. Regularized linear/logistic model
+3. A well-configured tree ensemble
+4. A standard boosting model
+5. TabPFN or TabH2O
+
+Use the same split, preprocessing boundary, metric, and test observations for every candidate.
+
+## Prevent leakage
+
+Leakage occurs when training uses information unavailable at real prediction time.
+
+Common sources:
+
+- Preprocessing the full dataset before splitting
+- Future measurements in a historical prediction task
+- Duplicate people in train and test sets
+- Target-derived features
+- Tuning on the final test set
+- Random splits when deployment is temporal or grouped
+
+A foundation model does not make a leaking benchmark valid.
+
+## Choose the split from deployment
+
+| Deployment question | Suitable evaluation idea |
+|---|---|
+| New independent people | Subject-level holdout |
+| Future time periods | Forward or rolling split |
+| New hospitals or campuses | Group/site holdout |
+| Rare positive event | Stratification plus appropriate metrics |
+
+State the unit of generalization before choosing a model.
+
+## Metrics beyond accuracy
+
+For classification, inspect:
+
+- Sensitivity and specificity
+- Precision and recall
+- ROC AUC and precision–recall AUC
+- Log loss or Brier score
+- Calibration curve
+- Performance by relevant subgroup
+
+For regression, inspect error distributions, MAE or RMSE, baseline-relative performance, and residual behavior.
+
+## Probability is not a decision
+
+A predicted probability must be connected to:
+
+- Calibration in the deployment population
+- Costs of false positives and negatives
+- A chosen threshold
+- Human review and appeal
+- Monitoring for drift
+- Ethical and policy constraints
+
+Feature importance or explanation methods do not establish causality.
+
+## Computational and licensing questions
+
+Before adoption, record:
+
+- CPU/GPU and memory requirements
+- Maximum practical rows, columns, and classes
+- Inference latency
+- Package and model-weight licenses
+- Whether data leave the machine
+- Model-download and caching behavior
+- Reproducible version identifiers
+
+These facts may differ between open weights, client packages, and hosted services.
+
+## Demonstration roadmap
+
+1. Select a public binary-classification table.
+2. Remove identifiers and define the target.
+3. Create one stratified holdout split.
+4. Fit logistic regression and gradient boosting.
+5. Fit TabPFN.
+6. Fit TabH2O if the documented environment supports it.
+7. Compare discrimination, calibration, runtime, and errors.
+8. Inspect disagreements—not only the winner.
+9. Save versions, seeds, and split indices.
+
+## Mini-activity: find the leakage
+
+A team standardizes all columns, imputes missing values, and selects the 20 strongest features using the full dataset. It then creates a train/test split and reports 96% accuracy.
+
+Identify every leakage pathway. Redesign the workflow so preprocessing and feature selection are learned inside each training fold and the test set is opened only once.
+
+## Key takeaways
+
+- TabPFN and TabH2O bring pretrained foundation-model ideas to tabular prediction.
+- Their convenience does not replace a deployment-aligned split or simple baselines.
+- Compare probability quality, subgroup behavior, runtime, and licensing—not accuracy alone.
+- Keep preprocessing inside the training boundary and preserve a final untouched test set.
+- A prediction model does not explain causes or make the decision for you.
+
+## References {.smaller}
+
+All links were accessed October 3, 2026.
+
+- TabPFN: [repository](https://github.com/PriorLabs/TabPFN), [documentation](https://priorlabs.ai/docs), and [Nature paper](https://www.nature.com/articles/s41586-024-08328-6)
+- TabH2O: [repository](https://github.com/h2oai/tabh2o)
+- scikit-learn: [model evaluation](https://scikit-learn.org/stable/modules/model_evaluation.html) and [common pitfalls](https://scikit-learn.org/stable/common_pitfalls.html)
+- [H2O.ai](https://h2o.ai/)
+
+Check current model cards for supported tasks, limits, and licenses before use.
+
+## Questions & discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::
+
+- What conventional baseline would be hardest for a foundation model to beat?
+- Which split best represents your real prediction setting?
