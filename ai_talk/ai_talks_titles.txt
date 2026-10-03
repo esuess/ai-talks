@@ -11,6 +11,7 @@
 11. Using AI with version control: Github, gh, codeberg, forgejo, Aider
 12. Using AI in JASP for Psychology with OpenRouter
 13. RTutor.ai 2.0 has evolved.  Try Datably.ai the new AI-native data science platform.  
+14. What is a skill?  Hermes Agent.  pi agent skills.  
 
 Dates
 
