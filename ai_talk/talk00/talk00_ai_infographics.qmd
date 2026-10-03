@@ -3,7 +3,7 @@ format:
   pdf:
     papersize: letter
     fontsize: 10pt
-    geometry: "margin=0.5in"
+    geometry: "margin=0.5in, top=0.7in, headheight=14pt, headsep=12pt"
     keep-tex: false
     pdf-engine: pdflatex
     include-in-header: talk00_ai_infographics_header.tex
