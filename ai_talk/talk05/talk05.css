@@ -1,0 +1,41 @@
+.reveal .title {
+  font-size: 1.75em;
+}
+
+.reveal .subtitle {
+  font-size: 0.72em;
+  line-height: 1.5;
+}
+
+.reveal h2 {
+  color: #1f4e79;
+}
+
+.reveal .compact {
+  font-size: 0.88em;
+}
+
+.reveal .small {
+  font-size: 0.72em;
+}
+
+.reveal .smaller {
+  font-size: 0.62em;
+}
+
+.reveal .callout {
+  font-size: 0.82em;
+}
+
+.reveal table {
+  font-size: 0.76em;
+}
+
+.reveal pre code {
+  max-height: 420px;
+}
+
+.reveal img.julia-plot {
+  display: block;
+  margin: 0.4em auto 0;
+}
