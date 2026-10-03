@@ -1,0 +1,348 @@
+---
+title: "Using Your University OpenAI ChatGPT Account with Codex CLI and Posit Assistant"
+author: "Eric A. Suess"
+date: "November 5, 2026"
+date-format: "MMMM D, YYYY"
+subtitle: "12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex & Antigravity.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk03.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the R Code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Sign in to your university **OpenAI ChatGPT** account using institutional SSO.
+- Understand that standard user login sessions power these workflows **without requiring developer API keys**.
+- Download, install, and authenticate the **OpenAI Codex CLI** in your terminal.
+- Use the **Terminal Pane in RStudio** to interact with Codex CLI alongside your analysis.
+- Connect and use **Posit Assistant** in RStudio / Positron.
+- Enable and use **GitHub Copilot in RStudio** for real-time code completion.
+- Build clean Tidyverse data pipelines with the modern native pipe (`|>`) on the `mtcars` dataset.
+
+---
+
+## University ChatGPT Account Access
+
+::: {.callout-note}
+### Single Sign-On (SSO) & Account-Based Access
+Many universities provide access to enterprise or education **OpenAI ChatGPT** accounts.
+:::
+
+- **How to access:** Sign in at [chatgpt.com](https://chatgpt.com/) using your university email and institutional SSO credentials.
+- **No Developer API Keys Needed:** You do not need a paid developer API key or credit card. Tooling connects through browser-based account sign-in sessions.
+- **Enterprise Protections:** University accounts typically include institutional privacy safeguards and FERPA compliance.
+
+---
+
+## What is OpenAI Codex CLI?
+
+The **Codex CLI** is an open-source, terminal-based AI coding companion developed by OpenAI for interactive development directly in your shell.
+
+::: {.callout-tip}
+### Official Download & Repository
+Download and inspect the project repository on GitHub:  
+[**https://github.com/openai/codex**](https://github.com/openai/codex)
+:::
+
+### Installation Options
+
+```bash
+# Option 1: Install globally via npm
+npm install -g @openai/codex
+
+# Option 2: Standalone installer (Linux / macOS)
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+```
+
+---
+
+## Logging In to Codex CLI via Terminal
+
+::: {.callout-note}
+### Terminal-Based Authentication
+Authenticate Codex CLI directly in your terminal or RStudio Terminal pane using your university ChatGPT credentials.
+:::
+
+```bash
+# Log in to your university OpenAI ChatGPT account for Codex
+codex login
+```
+
+### Specifying ChatGPT Login Method
+
+```bash
+# codex --config preferred_auth_method='chatgpt'
+codex --config forced_login_method='"chatgpt"'
+```
+
+- Running `codex login` opens your default browser to complete university Single Sign-On (SSO).
+- No developer API keys or paid API subscriptions are required.
+
+```bash
+# Verify your active login status
+codex login status
+```
+
+---
+
+## Interactive Slash (`/`) Commands
+
+**Slash commands** are built-in terminal shortcuts prefixed with `/` that control the environment, manage sessions, or inspect usage without consuming model prompt tokens.
+
+### Checking Usage & Session Status
+
+* **OpenAI Codex CLI (`/status`):**  
+  Displays the current model, active session tokens, context window usage, and configuration.
+  ```text
+  > /status
+  Model: Codex / o3
+  Tokens: 24,150 / 128,000 context used
+  Authentication: University ChatGPT SSO
+  ```
+
+* **Google Antigravity (`/usage`):**  
+  Displays real-time model quota allowances, token consumption, and session activity. Press **`Esc`** to exit the usage overlay.
+  ```text
+  > /usage
+  Model: Gemini Pro / Flash
+  Quota & Rates: Active (92% remaining)
+  [Press Esc to close]
+  ```
+
+---
+
+## Using the Terminal Pane in RStudio
+
+The **Terminal tab** in RStudio gives you direct access to your system shell right next to the R Console.
+
+::: {.callout-note}
+### Official Documentation
+Posit RStudio Terminal User Guide:  
+[**https://docs.posit.co/ide/user/ide/guide/tools/terminal.html**](https://docs.posit.co/ide/user/ide/guide/tools/terminal.html)
+:::
+
+### Key Shortcuts & Tips
+
+- **Open Terminal:** Press `Shift + Alt + T` (or menu: *Tools > Terminal > Move Focus to Terminal*).
+- **Multiple Terminals:** Use `Alt + Shift + R` to spawn new terminal instances.
+- **Run Codex CLI in RStudio:** Launch `codex` in the Terminal tab to ask coding questions, generate scripts, or debug errors while viewing your `.qmd` notebook!
+
+---
+
+## Posit Assistant in RStudio & Positron
+
+**Posit Assistant** brings conversational and contextual AI assistance directly into Posit data science environments.
+
+::: {.callout-tip}
+### Official Website & Guide
+Posit Assistant Portal:  
+[**https://assistant.posit.co**](https://assistant.posit.co)
+:::
+
+### Access & Pricing
+
+- **Free Trial:** Users can sign up for a **30-day free trial**.
+- **Paid Tier:** After the trial, access requires **$20 per month** (via Posit AI Pass).
+- **Usage Limits:** The monthly subscription provides somewhat limited usage caps (actually quite little access for intensive workloads).
+
+### What Posit Assistant Provides
+
+- **In-Editor Context:** Understands your active R session, loaded libraries, and open scripts.
+- **Tidyverse Fluency:** Tailored specifically for modern R, `dplyr`, and `ggplot2` workflows.
+- **Interactive Chat Sidebar:** Request code refactoring, explanations of complex error messages, or documentation lookups without leaving the IDE.
+
+---
+
+## GitHub Copilot in RStudio for Code Completion
+
+RStudio includes native support for **GitHub Copilot**, providing real-time inline ghost-text completions as you type.
+
+::: {.callout-note}
+### Official Setup Guide
+Posit RStudio Copilot Guide:  
+[**https://docs.posit.co/ide/user/ide/guide/tools/copilot.html**](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
+:::
+
+### Enabling Copilot in RStudio
+
+1. Navigate to **Tools > Global Options > Assistant** (or *Copilot*).
+2. Check **Enable GitHub Copilot** and click **Sign In**.
+3. Copy the device verification code and authorize in your web browser.
+
+### Keyboard Shortcuts
+
+- **Accept suggestion:** Press `Tab`
+- **Dismiss suggestion:** Press `Esc`
+- **Next/Previous suggestion:** Press `Alt + ]` / `Alt + [`
+
+---
+
+## Demonstration: Exploring Built-in `mtcars` with Tidyverse & `|>`
+
+We use R's built-in `mtcars` dataset and convert it to a modern `tibble` using the native pipe (`|>`).
+
+```{r}
+#| label: load-data
+library(tidyverse)
+
+# Convert R's built-in mtcars dataset to a tibble
+cars_data <- mtcars |> 
+  as_tibble(rownames = "model")
+
+# Inspect the first few rows
+cars_data |> 
+  slice_head(n = 5)
+```
+
+---
+
+## Demonstration: Data Wrangling with `dplyr` and `gt` Table
+
+Prompting our AI assistant: *"Group mtcars by cylinders, compute summary statistics, and render a formatted table using the gt package."*
+
+```{r}
+#| label: wrangle-mtcars
+library(gt)
+
+# Summarize vehicle performance grouped by cylinders and format with gt
+cars_data |> 
+  group_by(cyl) |> 
+  summarize(
+    count        = n(),
+    mean_mpg     = mean(mpg, na.rm = TRUE),
+    median_mpg   = median(mpg, na.rm = TRUE),
+    mean_hp      = mean(hp, na.rm = TRUE),
+    mean_wt_1000 = mean(wt, na.rm = TRUE),
+    .groups      = "drop"
+  ) |> 
+  arrange(desc(mean_mpg)) |> 
+  gt() |> 
+  tab_header(
+    title = "Vehicle Performance Summary by Cylinders",
+    subtitle = "Aggregated metrics from the built-in mtcars dataset"
+  ) |> 
+  cols_label(
+    cyl          = "Cylinders",
+    count        = "Cars (N)",
+    mean_mpg     = "Mean MPG",
+    median_mpg   = "Median MPG",
+    mean_hp      = "Mean HP",
+    mean_wt_1000 = "Mean Wt (1k lbs)"
+  ) |> 
+  fmt_number(
+    columns = c(mean_mpg, median_mpg, mean_hp, mean_wt_1000),
+    decimals = 1
+  ) |> 
+  tab_options(
+    table.font.size = px(16),
+    heading.title.font.size = px(19),
+    heading.subtitle.font.size = px(14)
+  )
+```
+
+---
+
+## Demonstration: Visualization with `ggplot2`
+
+Prompting Posit Assistant / Codex CLI: *"Create a publication-ready scatter plot of mpg vs. wt colored by cyl with regression trend lines."*
+
+```{r}
+#| label: plot-mtcars
+#| fig-width: 9
+#| fig-height: 4.8
+#| fig-align: center
+cars_data |> 
+  mutate(cyl = factor(cyl, levels = c(4, 6, 8), labels = c("4 Cyl", "6 Cyl", "8 Cyl"))) |> 
+  ggplot(aes(x = wt, y = mpg, color = cyl)) +
+  geom_point(size = 3.5, alpha = 0.85) +
+  geom_smooth(method = "lm", se = FALSE, linewidth = 1) +
+  scale_color_brewer(palette = "Set1") +
+  labs(
+    title = "Fuel Economy vs. Vehicle Weight by Engine Cylinders",
+    subtitle = "Analysis of the built-in mtcars dataset",
+    x = "Vehicle Weight (1,000 lbs)",
+    y = "Miles Per Gallon (MPG)",
+    color = "Cylinders",
+    caption = "Source: Built-in mtcars dataset in R"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold", color = "#1f4e79"),
+    legend.position = "bottom"
+  )
+```
+
+---
+
+## Comparing the Three AI Tools in RStudio
+
+| Feature | Codex CLI | Posit Assistant | GitHub Copilot |
+|---|---|---|---|
+| **Location in RStudio** | Terminal tab (`Shift+Alt+T`) | Chat sidebar / IDE pane | Inline Source Editor |
+| **Primary Interaction** | Interactive shell dialogue | Contextual conversation | Real-time ghost text |
+| **Authentication** | University ChatGPT login | Posit / Browser sign-in | GitHub account login |
+| **Best Used For** | Script scaffolding & shell tasks | Explaining code & debugging | Fast typing & autocompletion |
+| **Cost / Access** | University ChatGPT account | 30-day trial, then $20/mo (limited access) | GitHub account subscription |
+| **API Key Needed?** | **No** (browser login) | **No** (service sign-in) | **No** (account login) |
+
+---
+
+## Best Practices for AI-Assisted R Data Science
+
+1. **Verify AI Code:** Always check that generated code uses the modern native pipe (`|>`) and current Tidyverse functions rather than deprecated syntax.
+2. **Never Paste Sensitive Data:** Share column names, schema structures, and synthetic examples rather than confidential datasets.
+3. **Reproducibility in Quarto:** Ensure your `.qmd` notebook renders cleanly end-to-end with all dependencies loaded.
+4. **Use Project Structure:** Keep datasets organized cleanly in a `/data` folder for portable, reliable path references.
+
+---
+
+## Key takeaways
+
+- **University ChatGPT Accounts:** Provide powerful AI assistance via standard web SSO without requiring developer API keys.
+- **Codex CLI:** Brings interactive coding companion workflows directly into your shell and the RStudio Terminal pane.
+- **Posit Assistant:** Offers in-editor context for Tidyverse data science, available via a 30-day free trial and paid subscription.
+- **GitHub Copilot:** Delivers fast, real-time ghost-text autocompletion in RStudio to accelerate routine coding.
+- **Critical Verification:** Always verify generated R pipelines with the native pipe (`|>`), protect sensitive data, and maintain reproducible Quarto notebooks.
+
+---
+
+## References {.smaller}
+
+All links were accessed October 2026.
+
+- OpenAI: [Codex CLI on GitHub](https://github.com/openai/codex), [ChatGPT Documentation](https://learn.chatgpt.com/docs/use-chatgpt), and [OpenAI Codex](https://openai.com/codex/)
+- Posit: [Posit Assistant](https://assistant.posit.co), [Positron IDE](https://positron.posit.co), [RStudio Terminal Guide](https://docs.posit.co/ide/user/ide/guide/tools/terminal.html), and [RStudio GitHub Copilot Guide](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
+- Quarto & R: [Quarto Revealjs Presentations](https://quarto.org/docs/presentations/revealjs/), [Tidyverse Ecosystem](https://www.tidyverse.org/), and [gt Package Documentation](https://gt.rstudio.com/)
+
+Product availability and features may vary depending on university licensing, operating system, and administrative settings.
+
+---
+
+## Questions & Discussion
+
+::: {.callout-note}
+### Join the Discussion
+**Date:** November 5, 2026  
+**Time:** 12:15 – 1:15 PM  
+**Zoom Session:** [https://csueb.zoom.us/j/88674490934](https://csueb.zoom.us/j/88674490934)
+:::
+
+1. Which interface fits your daily data science process best—command-line dialogue with **Codex CLI**, contextual in-editor chat with **Posit Assistant**, or inline completions with **GitHub Copilot**?
+2. How can we best guide students to critically verify AI-generated R code (checking tidyverse syntax and pipe operations) rather than accepting suggestions blindly?
+3. Given the university's ChatGPT SSO access, does Codex CLI in the RStudio Terminal provide the most cost-effective and accessible workflow for your projects?
