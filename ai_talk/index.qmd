@@ -1,0 +1,333 @@
+---
+title: "AI and Data Science Talks"
+subtitle: "Practical tools and workflows for teaching, research, and data science"
+author: "Eric A. Suess"
+---
+
+This series introduces university-supported AI tools, coding environments, computational notebooks, and responsible automated modeling. Select a talk below to open its materials.
+
+:::: {.talk-grid}
+::: {.talk-card}
+## Talk 00
+
+### Provost Keynote Summary and Faculty AI Checklist
+
+A summary of Provost Muscat’s Back to the Bay keynote and a practical checklist for faculty developing their AI skills.
+
+[View Talk 00](talk00/talk00_provost_keynote_summary_checklist.html){.talk-link}
+
+[View the AI infographics (PDF)](talk00/talk00_ai_infographics.pdf){.talk-secondary}
+:::
+
+::: {.talk-card}
+## Talk 01
+
+### University ChatGPT and Microsoft Copilot Accounts
+
+**October 8, 2026**
+
+Learn how to use university OpenAI ChatGPT and Microsoft Copilot accounts with Office 365.
+
+[View Talk 01](talk01/talk01_university_ai_accounts.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 02
+
+### Desktop AI Applications and Local Files
+
+**October 22, 2026**
+
+Use ChatGPT Desktop, Codex, and local files, and compare Google Gemini with Google Antigravity.
+
+[View Talk 02](talk02/talk02_desktop_apps_local_files.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 03
+
+### Codex CLI and Posit Assistant
+
+**November 5, 2026**
+
+Use a university ChatGPT account with Codex CLI in RStudio and explore Posit Assistant.
+
+[View Talk 03](talk03/talk03_university_chatgpt_codex_posit_assistant.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 04
+
+### Positron, VS Code, and Other Coding IDEs
+
+**November 19, 2026**
+
+Compare coding environments for R, Python, notebooks, Quarto, and general programming.
+
+[View Talk 04](talk04/talk04_positron_vscode.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 05
+
+### Gemini Notebook, Colab, Jupyter, Quarto, and Marimo
+
+**December 3, 2026**
+
+Compare source-grounded AI notebooks, computational notebooks, reproducible publishing, and reactive Python workflows.
+
+[View Talk 05](talk05/talk05_gemini_colab_jupyter_quarto_marimo.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 05a
+
+### MLJAR Studio and AutoML
+
+**December 3, 2026**
+
+Explore MLJAR Studio, automated model comparison, evaluation practices, and responsible predictive modeling.
+
+[View Talk 05a](talk05a/talk05a_mljar.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 06
+
+### AI Agents, Muse Code, Hermes Agent, and Spynel
+
+**Date to be announced**
+
+Learn how agents use tools, compare three different agent and orchestration systems, and design reliable scheduled reports.
+
+[View Talk 06](talk06/talk06_agents_muse_hermes_spynel.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 07
+
+### Coding Harnesses
+
+**Date to be announced**
+
+Compare OpenCode, Pi, Cline, Kilo, Freebuff, Ollama with Claude Code, and Prime Agent.
+
+[View Talk 07](talk07/talk07_coding_harnesses.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 08
+
+### OpenRouter and Free-Model Access
+
+**Date to be announced**
+
+Explore OpenRouter’s model gateway, free-model routing, API use from R, pricing, limits, and privacy considerations.
+
+[View Talk 08](talk08/talk08_openrouter_free_models.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 09
+
+### Learning Practical AI Skills Online
+
+**Date to be announced**
+
+Build a trustworthy learning network using courses, YouTube, newsletters, documentation, and online communities.
+
+[View Talk 09](talk09/talk09_learning_practical_ai_online.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 10
+
+### Omarchy: Agentic Linux and AI-Assisted Customization
+
+**Date to be announced**
+
+Introduce Omarchy and demonstrate a safer AI-assisted customization workflow using plans, diffs, testing, and rollback.
+
+[View Talk 10](talk10/talk10_omarchy_demo.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 11
+
+### Using AI with Version Control
+
+**Date to be announced**
+
+Use GitHub, `gh`, Codeberg, Forgejo, and Aider in a reviewable workflow built around branches, diffs, tests, and pull requests.
+
+[View Talk 11](talk11/talk11_ai_version_control.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 12
+
+### Using AI in JASP for Psychology
+
+**Date to be announced**
+
+Connect JASP’s AI Agent through OpenRouter while preserving statistical judgment, participant privacy, and reproducible analysis.
+
+[View Talk 12](talk12/talk12_jasp_ai_openrouter.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 13
+
+### RTutor 2.00 and Datably.ai
+
+**Date to be announced**
+
+Compare two AI-assisted paths from uploaded data to inspectable R or Python code, results, and reproducible analysis.
+
+[View Talk 13](talk13/talk13_rtutor_datably.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 14
+
+### What Is an Agent Skill?
+
+**Date to be announced**
+
+Learn how Hermes Agent and pi load reusable procedural instructions, references, scripts, and verification practices on demand.
+
+[View Talk 14](talk14/talk14_agent_skills.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 15
+
+### AI Code Editors and IDEs
+
+**Date to be announced**
+
+Compare VS Code extensions, VS Code Insiders, Zed, Qoder, and Positron using the same bounded coding and data-science tasks.
+
+[View Talk 15](talk15/talk15_ai_code_editors.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 16
+
+### Marimo with AI
+
+**Date to be announced**
+
+Explore reactive Python notebooks, AI-assisted editing, Git-friendly source files, reproducible execution, and interactive apps.
+
+[View Talk 16](talk16/talk16_marimo_ai.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 17
+
+### TabPFN and TabH2O for Tabular Data
+
+**Date to be announced**
+
+Evaluate foundation-model approaches to tabular classification and regression using leakage-safe splits and strong baselines.
+
+[View Talk 17](talk17/talk17_tabpfn_tabh2o.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 18
+
+### Modern Time-Series Forecasting
+
+**Date to be announced**
+
+Compare StatsForecast, NeuralForecast, the Nixtla ecosystem, and Google’s TimesFM using rolling-origin evaluation.
+
+[View Talk 18](talk18/talk18_ai_forecasting.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 19
+
+### Jev and Laya
+
+**Date to be announced**
+
+Use fast typed decision models for bounded routing, scoring, probabilities, and escalation within agent workflows.
+
+[View Talk 19](talk19/talk19_jev_laya.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 20
+
+### The Karpathy Guidelines Skill in pi
+
+**Date to be announced**
+
+Guide coding agents toward explicit assumptions, simpler solutions, surgical changes, and evidence-based completion claims.
+
+[View Talk 20](talk20/talk20_karpathy_skill_pi.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 21
+
+### Retraining Models with Unsloth Studio
+
+**Date to be announced**
+
+Introduce local fine-tuning with careful dataset preparation, LoRA or QLoRA, independent evaluation, and documented export.
+
+[View Talk 21](talk21/talk21_unsloth_studio.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 22
+
+### Ollama, Ollaya, and LM Studio
+
+**Date to be announced**
+
+Compare local generative and decision-model runtimes across command-line, desktop, and API workflows.
+
+[View Talk 22](talk22/talk22_ollama_ollaya_lmstudio.html){.talk-link}
+:::
+
+::: {.talk-card .talk-placeholder}
+## Talk 23
+
+### ChatGPT and Robert’s Rules for Committee Meetings
+
+**Date to be announced**
+
+Use ChatGPT to draft meeting instructions, agendas, motions, and process checklists that can be checked against the committee’s governing rules.
+
+[Materials coming soon]{.talk-status}
+:::
+
+::: {.talk-card .talk-placeholder}
+## Talk 24
+
+### ChatGPT, Committees, and University Bylaws
+
+**Date to be announced**
+
+Ask clearer questions about committee authority, responsibilities, and procedures while verifying answers against the official university bylaws.
+
+[Materials coming soon]{.talk-status}
+:::
+
+::: {.talk-card .talk-placeholder}
+## Talk 25
+
+### ChatGPT and University RT&P Policy
+
+**Date to be announced**
+
+Use AI to clarify retention, tenure, and promotion procedures and identify possible inconsistencies without treating AI as the final policy authority.
+
+[Materials coming soon]{.talk-status}
+:::
+::::

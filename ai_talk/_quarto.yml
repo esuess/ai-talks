@@ -1,0 +1,43 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+  resources:
+    - talk00/talk00_provost_keynote_summary_checklist.html
+    - talk00/talk00_ai_infographics.pdf
+    - talk01/talk01_university_ai_accounts.html
+    - talk02/talk02_desktop_apps_local_files.html
+    - talk03/talk03_university_chatgpt_codex_posit_assistant.html
+    - talk04/talk04_positron_vscode.html
+    - talk05/talk05_gemini_colab_jupyter_quarto_marimo.html
+    - talk05a/talk05a_mljar.html
+    - talk06/talk06_agents_muse_hermes_spynel.html
+    - talk07/talk07_coding_harnesses.html
+    - talk08/talk08_openrouter_free_models.html
+    - talk09/talk09_learning_practical_ai_online.html
+    - talk10/talk10_omarchy_demo.html
+    - talk11/talk11_ai_version_control.html
+    - talk12/talk12_jasp_ai_openrouter.html
+    - talk13/talk13_rtutor_datably.html
+    - talk14/talk14_agent_skills.html
+    - talk15/talk15_ai_code_editors.html
+    - talk16/talk16_marimo_ai.html
+    - talk17/talk17_tabpfn_tabh2o.html
+    - talk18/talk18_ai_forecasting.html
+    - talk19/talk19_jev_laya.html
+    - talk20/talk20_karpathy_skill_pi.html
+    - talk21/talk21_unsloth_studio.html
+    - talk22/talk22_ollama_ollaya_lmstudio.html
+
+website:
+  title: "AI and Data Science Talks"
+  page-footer:
+    center: "Eric A. Suess"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: false
+    anchor-sections: false

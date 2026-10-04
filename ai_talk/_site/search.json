@@ -1,0 +1,198 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "AI and Data Science Talks",
+    "section": "",
+    "text": "This series introduces university-supported AI tools, coding environments, computational notebooks, and responsible automated modeling. Select a talk below to open its materials."
+  },
+  {
+    "objectID": "index.html#talk-00",
+    "href": "index.html#talk-00",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 00",
+    "text": "Talk 00\n\nProvost Keynote Summary and Faculty AI Checklist\nA summary of Provost Muscat’s Back to the Bay keynote and a practical checklist for faculty developing their AI skills.\nView Talk 00\nView the AI infographics (PDF)"
+  },
+  {
+    "objectID": "index.html#talk-01",
+    "href": "index.html#talk-01",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 01",
+    "text": "Talk 01\n\nUniversity ChatGPT and Microsoft Copilot Accounts\nOctober 8, 2026\nLearn how to use university OpenAI ChatGPT and Microsoft Copilot accounts with Office 365.\nView Talk 01"
+  },
+  {
+    "objectID": "index.html#talk-02",
+    "href": "index.html#talk-02",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 02",
+    "text": "Talk 02\n\nDesktop AI Applications and Local Files\nOctober 22, 2026\nUse ChatGPT Desktop, Codex, and local files, and compare Google Gemini with Google Antigravity.\nView Talk 02"
+  },
+  {
+    "objectID": "index.html#talk-03",
+    "href": "index.html#talk-03",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 03",
+    "text": "Talk 03\n\nCodex CLI and Posit Assistant\nNovember 5, 2026\nUse a university ChatGPT account with Codex CLI in RStudio and explore Posit Assistant.\nView Talk 03"
+  },
+  {
+    "objectID": "index.html#talk-04",
+    "href": "index.html#talk-04",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 04",
+    "text": "Talk 04\n\nPositron, VS Code, and Other Coding IDEs\nNovember 19, 2026\nCompare coding environments for R, Python, notebooks, Quarto, and general programming.\nView Talk 04"
+  },
+  {
+    "objectID": "index.html#talk-05",
+    "href": "index.html#talk-05",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 05",
+    "text": "Talk 05\n\nGemini Notebook, Colab, Jupyter, Quarto, and Marimo\nDecember 3, 2026\nCompare source-grounded AI notebooks, computational notebooks, reproducible publishing, and reactive Python workflows.\nView Talk 05"
+  },
+  {
+    "objectID": "index.html#talk-05a",
+    "href": "index.html#talk-05a",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 05a",
+    "text": "Talk 05a\n\nMLJAR Studio and AutoML\nDecember 3, 2026\nExplore MLJAR Studio, automated model comparison, evaluation practices, and responsible predictive modeling.\nView Talk 05a"
+  },
+  {
+    "objectID": "index.html#talk-06",
+    "href": "index.html#talk-06",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 06",
+    "text": "Talk 06\n\nAI Agents, Muse Code, Hermes Agent, and Spynel\nDate to be announced\nLearn how agents use tools, compare three different agent and orchestration systems, and design reliable scheduled reports.\nView Talk 06"
+  },
+  {
+    "objectID": "index.html#talk-07",
+    "href": "index.html#talk-07",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 07",
+    "text": "Talk 07\n\nCoding Harnesses\nDate to be announced\nCompare OpenCode, Pi, Cline, Kilo, Freebuff, Ollama with Claude Code, and Prime Agent.\nView Talk 07"
+  },
+  {
+    "objectID": "index.html#talk-08",
+    "href": "index.html#talk-08",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 08",
+    "text": "Talk 08\n\nOpenRouter and Free-Model Access\nDate to be announced\nExplore OpenRouter’s model gateway, free-model routing, API use from R, pricing, limits, and privacy considerations.\nView Talk 08"
+  },
+  {
+    "objectID": "index.html#talk-09",
+    "href": "index.html#talk-09",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 09",
+    "text": "Talk 09\n\nLearning Practical AI Skills Online\nDate to be announced\nBuild a trustworthy learning network using courses, YouTube, newsletters, documentation, and online communities.\nView Talk 09"
+  },
+  {
+    "objectID": "index.html#talk-10",
+    "href": "index.html#talk-10",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 10",
+    "text": "Talk 10\n\nOmarchy: Agentic Linux and AI-Assisted Customization\nDate to be announced\nIntroduce Omarchy and demonstrate a safer AI-assisted customization workflow using plans, diffs, testing, and rollback.\nView Talk 10"
+  },
+  {
+    "objectID": "index.html#talk-11",
+    "href": "index.html#talk-11",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 11",
+    "text": "Talk 11\n\nUsing AI with Version Control\nDate to be announced\nUse GitHub, gh, Codeberg, Forgejo, and Aider in a reviewable workflow built around branches, diffs, tests, and pull requests.\nView Talk 11"
+  },
+  {
+    "objectID": "index.html#talk-12",
+    "href": "index.html#talk-12",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 12",
+    "text": "Talk 12\n\nUsing AI in JASP for Psychology\nDate to be announced\nConnect JASP’s AI Agent through OpenRouter while preserving statistical judgment, participant privacy, and reproducible analysis.\nView Talk 12"
+  },
+  {
+    "objectID": "index.html#talk-13",
+    "href": "index.html#talk-13",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 13",
+    "text": "Talk 13\n\nRTutor 2.00 and Datably.ai\nDate to be announced\nCompare two AI-assisted paths from uploaded data to inspectable R or Python code, results, and reproducible analysis.\nView Talk 13"
+  },
+  {
+    "objectID": "index.html#talk-14",
+    "href": "index.html#talk-14",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 14",
+    "text": "Talk 14\n\nWhat Is an Agent Skill?\nDate to be announced\nLearn how Hermes Agent and pi load reusable procedural instructions, references, scripts, and verification practices on demand.\nView Talk 14"
+  },
+  {
+    "objectID": "index.html#talk-15",
+    "href": "index.html#talk-15",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 15",
+    "text": "Talk 15\n\nAI Code Editors and IDEs\nDate to be announced\nCompare VS Code extensions, VS Code Insiders, Zed, Qoder, and Positron using the same bounded coding and data-science tasks.\nView Talk 15"
+  },
+  {
+    "objectID": "index.html#talk-16",
+    "href": "index.html#talk-16",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 16",
+    "text": "Talk 16\n\nMarimo with AI\nDate to be announced\nExplore reactive Python notebooks, AI-assisted editing, Git-friendly source files, reproducible execution, and interactive apps.\nView Talk 16"
+  },
+  {
+    "objectID": "index.html#talk-17",
+    "href": "index.html#talk-17",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 17",
+    "text": "Talk 17\n\nTabPFN and TabH2O for Tabular Data\nDate to be announced\nEvaluate foundation-model approaches to tabular classification and regression using leakage-safe splits and strong baselines.\nView Talk 17"
+  },
+  {
+    "objectID": "index.html#talk-18",
+    "href": "index.html#talk-18",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 18",
+    "text": "Talk 18\n\nModern Time-Series Forecasting\nDate to be announced\nCompare StatsForecast, NeuralForecast, the Nixtla ecosystem, and Google’s TimesFM using rolling-origin evaluation.\nView Talk 18"
+  },
+  {
+    "objectID": "index.html#talk-19",
+    "href": "index.html#talk-19",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 19",
+    "text": "Talk 19\n\nJev and Laya\nDate to be announced\nUse fast typed decision models for bounded routing, scoring, probabilities, and escalation within agent workflows.\nView Talk 19"
+  },
+  {
+    "objectID": "index.html#talk-20",
+    "href": "index.html#talk-20",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 20",
+    "text": "Talk 20\n\nThe Karpathy Guidelines Skill in pi\nDate to be announced\nGuide coding agents toward explicit assumptions, simpler solutions, surgical changes, and evidence-based completion claims.\nView Talk 20"
+  },
+  {
+    "objectID": "index.html#talk-21",
+    "href": "index.html#talk-21",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 21",
+    "text": "Talk 21\n\nRetraining Models with Unsloth Studio\nDate to be announced\nIntroduce local fine-tuning with careful dataset preparation, LoRA or QLoRA, independent evaluation, and documented export.\nView Talk 21"
+  },
+  {
+    "objectID": "index.html#talk-22",
+    "href": "index.html#talk-22",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 22",
+    "text": "Talk 22\n\nOllama, Ollaya, and LM Studio\nDate to be announced\nCompare local generative and decision-model runtimes across command-line, desktop, and API workflows.\nView Talk 22"
+  },
+  {
+    "objectID": "index.html#talk-23",
+    "href": "index.html#talk-23",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 23",
+    "text": "Talk 23\n\nChatGPT and Robert’s Rules for Committee Meetings\nDate to be announced\nUse ChatGPT to draft meeting instructions, agendas, motions, and process checklists that can be checked against the committee’s governing rules.\nMaterials coming soon"
+  },
+  {
+    "objectID": "index.html#talk-24",
+    "href": "index.html#talk-24",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 24",
+    "text": "Talk 24\n\nChatGPT, Committees, and University Bylaws\nDate to be announced\nAsk clearer questions about committee authority, responsibilities, and procedures while verifying answers against the official university bylaws.\nMaterials coming soon"
+  },
+  {
+    "objectID": "index.html#talk-25",
+    "href": "index.html#talk-25",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 25",
+    "text": "Talk 25\n\nChatGPT and University RT&P Policy\nDate to be announced\nUse AI to clarify retention, tenure, and promotion procedures and identify possible inconsistencies without treating AI as the final policy authority.\nMaterials coming soon"
+  }
+]
