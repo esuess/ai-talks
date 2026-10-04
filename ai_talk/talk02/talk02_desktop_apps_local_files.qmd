@@ -325,5 +325,9 @@ Product availability and features may vary depending on university licensing, op
 
 What local file workflows or AI desktop tools are you most excited to explore?
 
-**Date:** October 22, 2026 | **Time:** 12:15–1:15 PM  
+::: {.callout-note}
+### Join the Discussion
+**Date:** October 22, 2026  
+**Time:** 12:15 – 1:15 PM  
 **Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::

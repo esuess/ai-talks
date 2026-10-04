@@ -1,10 +1,15 @@
 ---
 title: "AI and Data Science Talks"
 subtitle: "Practical tools and workflows for teaching, research, and data science"
-author: "Eric A. Suess"
+author:
+  - "Eric A. Suess"
+  - "Codex"
+  - "pi"
 ---
 
-This series introduces university-supported AI tools, coding environments, computational notebooks, and responsible automated modeling. Select a talk below to open its materials.
+**All presentations in this series were developed with the help of AI, including Codex and pi.**
+
+This series introduces AI tools, coding environments, and responsible automated usage. The series is part of the AI and Data Science Workgroup and is presented as part of the Eric Lee Lectures in AI and Data Science, with the support of Wells Fargo Bank.
 
 :::: {.talk-grid}
 ::: {.talk-card}
@@ -78,7 +83,15 @@ Compare source-grounded AI notebooks, computational notebooks, reproducible publ
 
 [View Talk 05](talk05/talk05_gemini_colab_jupyter_quarto_marimo.html){.talk-link}
 :::
+::::
 
+::: {.callout-note}
+## Work in Progress
+
+All talks after **Talk 05** are **Work in Progress**. Topics and materials may be revised as the series develops.
+:::
+
+:::: {.talk-grid}
 ::: {.talk-card}
 ## Talk 05a
 
@@ -329,5 +342,41 @@ Ask clearer questions about committee authority, responsibilities, and procedure
 Use AI to clarify retention, tenure, and promotion procedures and identify possible inconsistencies without treating AI as the final policy authority.
 
 [Materials coming soon]{.talk-status}
+:::
+
+::: {.talk-card .talk-placeholder}
+## Talk 26
+
+### Checking a Syllabus Against University Syllabus Policy
+
+**Date to be announced**
+
+Check whether a syllabus addresses the requirements in the official university Syllabus Policy and identify items that need clarification or revision.
+
+[Materials coming soon]{.talk-status}
+:::
+
+::: {.talk-card .talk-placeholder}
+## Talk 27
+
+### Accessibility in R/Quarto HTML Documents
+
+**Date to be announced**
+
+Review rendered R/Quarto notebooks for accessibility, including WCAG 1.4.1 on the use of color, and identify checks beyond color needed for accessible documents.
+
+[Materials coming soon]{.talk-status}
+:::
+
+::: {.talk-card}
+## Talk 28
+
+### Statistics in the Age of AI
+
+**Date to be announced**
+
+Explore the paper’s five themes, MS and BS program ideas, the three C’s, first-course ML concepts and textbooks, and potential industry partners near Hayward.
+
+[View Talk 28](talk28/talk28_statistics_in_the_age_of_ai.html){.talk-link}
 :::
 ::::

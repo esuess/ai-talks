@@ -1,6 +1,52 @@
+Talk28
+
+
+Read the file ai_talks_titles.txt Give me a summary of an R Quarto presentation for the 28 titles.  These talks do not have dates yet.  Make similar .qmd file for these titles as were made for the first 2Please0 titles.  Store the files in the talk subdirectories.
+
+
+Talk11 - Talk22 pi
+
+Read the file ai_talks_titles.txt Give me a summary of an R Quarto presentation for the 11 - 22 titles.  These talks do not have dates yet.  Make similar .qmd file for these titles as were made for the first 10 titles.  Store the files in the talk subdirectories.
+
+Talk06 - Talk10 pi
+
+Read the file ai_talks_titles.txt Give me a summary of an R Quarto presentation for the sixth through tenth titles.  These talks do not have dates yet.  Make similar .qmd file for these titles as were made for the first five titles.  Store the files in the talk subdirectories.
+
+using Pkg
+Pkg.add("PalmerPenguins")
+using PalmerPenguins
+
+Talk04 fix into Talk05a pi
+
+I have rethought about talk04, please move all references to MLJAR to a new presentation that will follow talk05, call it talk05a.  Double check that the talk04 does not contain any reference to MLJAR or AutoML, make sure
+that is moved to talk05a.  Change the filename by removing mljar and automl from the filename.
+
+
+Talk05 pi agent
+
+Read the file ai_talks_titles.txt Give me a summary of an R Quarto presentation for the fifth title.  The talk is on December 3, 2026.
+
+
+Make the same kind of presentation for the fifth title in the /ai_talk/talk05 folder, as was done for talk01, taslk02, talk03, and talk04.
+
+
+Talk04 pi agent
+
+Read the file ai_talks_titles.txt Give me a summary of an R Quarto presentation for the fourth title.  The talk is on November 19.
+
+
+Make the same kind of presentation for the fourth title in the /ai_talk/talk04 folder, as was done for talk01, taslk02 and talk03.
+
+
+Talk03 Agy
+
+Read the file ai_talks_titles.txt Give me a summary of an R Quarto presentation for the third title.
+
+Make the same kind of presentation for the third title in the /ai_talk/talk03 folder, as was done for talk01 and talk02.
+
 Talk02 Agy
 
-Read the file 
+Read the file ai_talks_titles.txt Give me a summary of an R Quarto presentation for the second title.
 
 Make the same kind of presentation for the second title in the /ai_talk/talk02 folder.
 
@@ -14,3 +60,20 @@ I would like to see an explaination of what is Context for an LLM and what is th
 Reread the ai_talks_titles.txt file for the date of the first talk.  Include the zoom line on the title page.  Also, for the author: "Eric A. Suess"
 
 This all looks good.  Build the presentation and store it in the /talk01 folder.
+
+Talk00 pi
+
+Read the /ProvostAI/provost-muscat-b2b-keynote.pdf document.  Make an R Quarto Document summarizing his talk.  Read the other files in /PovostAI and make a checklist for faculty to help develop their AI Skills.
+
+Website pi
+
+Create an R Quarto Website out the of the files in the talk00 through talk05, talk05a. 
+
+Update the R Quarto Website including the new files in talk06 through talk10.
+
+Update the R Quarto Website including the new files in talk28.  Make place holders on the webpage for talk26 thorugh talk27, see the titles document.
+
+Commit and push to Github
+
+Please committee the changes in the talks and push them to Github.
+

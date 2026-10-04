@@ -29,11 +29,12 @@ project:
     - talk20/talk20_karpathy_skill_pi.html
     - talk21/talk21_unsloth_studio.html
     - talk22/talk22_ollama_ollaya_lmstudio.html
+    - talk28/talk28_statistics_in_the_age_of_ai.html
+    - talk28/talk28_statistics_in_the_age_of_ai.qmd
+    - talk28/talk28.css
 
 website:
   title: "AI and Data Science Talks"
-  page-footer:
-    center: "Eric A. Suess"
 
 format:
   html:

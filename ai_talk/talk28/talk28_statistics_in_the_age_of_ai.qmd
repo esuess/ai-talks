@@ -1,0 +1,593 @@
+---
+title: "Statistics in the Age of AI"
+author: "Eric A. Suess"
+subtitle: "Culture, infrastructure, training, and opportunities at CSU East Bay<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk28.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, you should be able to:
+
+- Summarize the paper’s five main themes.
+- Explain statistics’ distinctive contribution to AI.
+- Identify practical MS and BS program changes.
+- Incorporate communication, collaboration, and computation.
+- Identify potential industry partners near Hayward.
+- Propose one small, measurable program experiment.
+
+## The paper behind this discussion
+
+**Donoho and colleagues (2026)**  
+*“Rebuilding” Statistics in the Age of AI: Culture, Infrastructure, and Training*  
+*Journal of the American Statistical Association*
+
+- A perspective drawing on the **2024 JSM town hall**.
+- Not an experimental study of curricula or recruitment.
+- Recognizes existing statistical leadership and uneven needs across subfields.
+- Calls for extending statistical strengths into end-to-end AI systems.
+
+[Read the paper and abstract](https://www.tandfonline.com/doi/full/10.1080/01621459.2026.2680161#abstract)
+
+::: {.notes}
+The source PDF is stored alongside this presentation. Distinguish the authors’ recommendations from the CSU East Bay proposals developed for this talk. Neither the paper nor this presentation establishes that a particular curriculum change will increase enrollment.
+:::
+
+## Five main points
+
+1. **Culture:** Reward useful, system-level problem solving.
+2. **Data work:** Treat curation and annotation as science.
+3. **Empirical modeling:** Participate directly in modern AI.
+4. **Training:** Develop the three C’s through real work.
+5. **Partnerships:** Build sustained relationships and leadership.
+
+**The goal is to build on statistics’ strengths and expand its opportunities.**
+
+## 1. Culture: from methods to working systems
+
+The paper argues for contributions across the full process:
+
+- Understand the real problem and decision.
+- Help design data collection and measurement.
+- Develop appropriate methods and evaluate their limits.
+- Make analyses reproducible and usable.
+- Monitor performance after deployment.
+
+Mathematical rigor matters; so does dependable performance under actual operating conditions.
+
+## 2. Data work is scientific work
+
+Cleaning, curation, annotation, and documentation shape:
+
+- What the measurements mean
+- Which populations are represented
+- Bias, missingness, and measurement error
+- Whether comparisons and conclusions are valid
+- Whether another team can reuse the resource
+
+**A larger dataset does not automatically repair biased data.**
+
+Reward datasets, standards, and reproducible pipelines alongside new methods.
+
+## 3. Engage with modern empirical modeling
+
+Do not treat machine learning as somebody else’s engineering problem.
+
+Statisticians can contribute:
+
+- Meaningful evaluation targets and metrics
+- Uncertainty quantification and calibration
+- Bias assessment and causal reasoning
+- Robustness checks and model auditing
+- Theory connected to actual training and operating conditions
+
+Participate in building systems, not only in critiquing them afterward.
+
+## ML from the first MS course: foundations
+
+Introduce these ideas early and revisit them throughout the course:
+
+1. **Purpose:** Distinguish description, prediction, inference, and causal questions.
+2. **Learning tasks:** Contrast supervised and unsupervised learning; establish simple baselines.
+3. **Generalization:** Training fit is not future performance; demonstrate overfitting and the bias–variance tradeoff.
+4. **Honest evaluation:** Separate fitting, tuning, and testing; split by person, group, or time when needed.
+5. **Leakage prevention:** Learn imputation, scaling, and feature selection inside training folds—not on all the data.
+
+::: {.notes}
+These are proposed curriculum priorities informed by ISLR and Tidy Modeling with R, not a prescribed syllabus from the JASA paper. The bias–variance tradeoff is a useful starting point, not a universal claim that test error must increase with model size; later courses can revisit modern interpolation regimes and double descent.
+:::
+
+## ML from the first MS course: dependable results
+
+6. **Resampling:** Use cross-validation to assess/tune prediction and the bootstrap to study sampling uncertainty; distinguish their purposes.
+7. **Loss and metrics:** Connect squared error and log loss to fitting; evaluate error costs, class imbalance, and calibration.
+8. **Regularization:** Introduce shrinkage and hyperparameters; explain optimization as minimizing an objective.
+9. **Uncertainty and scope:** Distinguish confidence from prediction intervals; check subgroups and distribution shift.
+10. **Reproducibility:** Document data provenance, splits, seeds, software, and limitations in a rerunnable report.
+
+::: {.notes}
+Resampling must respect the dependence structure. Bootstrap applications extend beyond inference, but resampling observations does not automatically validate a prediction workflow. Calibration describes agreement between predicted probabilities and observed frequencies; discrimination alone is insufficient. Prediction accuracy is not evidence of a causal effect.
+:::
+
+## Start small: one dataset, a complete workflow
+
+**An illustrative first-month sequence—not four additional units.**
+
+| Stage | Experience |
+|---|---|
+| Week 1 | Define the question, inspect data provenance, reserve a test set, and establish a baseline |
+| Week 2 | Fit a simple regression or classification model; compare training and validation results |
+| Week 3 | Use cross-validation and a leakage-safe pipeline; vary one complexity parameter |
+| Week 4 | Evaluate the selected model once on the test set; communicate uncertainty and limitations |
+
+Start with linear/logistic regression and one simple tree example. Advanced deep learning can come later.
+
+::: {.notes}
+Use public or synthetic data and scaffold the code for students new to programming. Integrate sampling, study design, simulation, and inference rather than replacing them. In CSU East Bay’s published first-semester structure, this could be a thread in STAT 630, coordinated with STAT 620 and computing instruction. It is not a proposal to replace the probability/theory course with a software survey. A resampling demonstration can be introduced before students master every derivation.
+:::
+
+## ModernDive: an updated starting point {.compact}
+
+[ModernDive, second edition](https://moderndive.com/v2/) — **Chester Ismay, Albert Y. Kim, and Arturo Valdivia**
+
+- The second print edition appeared in **2025**; the online edition continues to evolve.
+- Integrates tidyverse data work, regression, simulation-based inference, and communication.
+- Uses the native R pipe `|>`; the current online edition adds Quarto, browser-based R, and more practice exercises.
+- Assumes no prior mathematics or coding: valuable for an entry bridge or a mixed-background cohort.
+
+**For the proposed MS course, supplement it with explicit ML evaluation, classification, and regularization.**
+
+<small>Source: [second-edition preface and update history](https://moderndive.com/v2/preface.html). Do not confuse the older homepage edition with v2.</small>
+
+## Books for a broad first course {.compact}
+
+**[Modern Statistics with R, 2nd ed. (2024)](https://www.modernstatisticswithr.com/)** — Måns Thulin
+
+- Broad coverage: data work, inference, simulation, regression, and ML.
+- My strongest single-volume candidate for a broader applied MS course.
+- Select chapters; it is too broad to cover in full. Its ML examples use `caret`, so adapt labs if standardizing on tidymodels.
+
+**[Introduction to Modern Statistics, 2nd ed. (2024)](https://openintro-ims.netlify.app/)** — Mine Çetinkaya-Rundel and Johanna Hardin
+
+- Strong study-design, regression, and simulation-based inference foundation.
+- A useful introductory/bridge alternative, not by itself a deeper graduate ML text.
+
+Both have free online editions; suitability depends on students’ preparation.
+
+## Books for statistical learning {.compact}
+
+**[An Introduction to Statistical Learning](https://www.statlearning.com/)** — James, Witten, Hastie, and Tibshirani
+
+- R second edition: **2021**; Python edition: **2023**, also with Jonathan Taylor.
+- My preferred accessible ML text: generalization, resampling, classification, regularization, and trees.
+- Start with Chapters 2–6 and selected tree-based methods; add graduate-level depth through assignments.
+
+**[Tidy Modeling with R](https://www.tmwr.org/)** — Max Kuhn and Julia Silge
+
+- A practical companion for splitting, preprocessing, workflows, metrics, resampling, and tuning.
+- Assumes some R and introductory statistics; complements rather than replaces a methods/theory text.
+
+Free official online reading/downloads are available for both.
+
+## My recommendation: build on ModernDive {.compact}
+
+**Is something “better” available? Better for a particular purpose—not a universal replacement.**
+
+- **Entry bridge:** Use ModernDive **v2**, selectively rather than repeating material students already know.
+- **Broad applied first MS course:** Pilot selected chapters of **Modern Statistics with R**, introducing its model-evaluation material early.
+- **ML-focused first course:** Use **ISLR** for concepts and a few **Tidy Modeling with R** labs for practice.
+- **Across either route:** Retain probability, study design, inference, and communication; introduce honest evaluation from the first project.
+
+Choose one main text and selected free readings—not several cover-to-cover requirements.
+
+::: {.notes}
+For a broad STAT 630 redesign, evaluate Thulin Chapters 3, 5, 7, selected sections of 8, and 11.1 alongside existing course outcomes. For the ML thread, ISLR Chapters 2–6 and selected Chapter 8 material pair well with selected Tidy Modeling with R sections on splitting, workflows, recipes, metrics, resampling, and tuning. Course level comes from the questions, reasoning, and assessments as well as the book. These recommendations reflect scope and prerequisite comparisons, not a controlled comparison of teaching outcomes.
+:::
+
+## 4. Train for the three C’s
+
+**Communication:** Explain evidence, uncertainty, and decisions.
+
+**Collaboration:** Work effectively with domain experts and engineers.
+
+**Computation:** Build reproducible analyses that others can run.
+
+The paper recommends experiential projects and interdisciplinary mentorship while preserving statistical foundations.
+
+**Avoid tool overload:** not every student needs every specialization.
+
+## 5. Build durable partnerships
+
+The paper favors sustained involvement over occasional consulting:
+
+- Work with academia, industry, government, and national laboratories.
+- Participate in institutional data and computing decisions.
+- Develop shared resources and evaluation infrastructure.
+- Recognize software, data, and implementation in reward systems.
+- Explain what risks statistical work reduces and what value it creates.
+
+Influence grows through concrete contributions.
+
+## Example: a healthcare prediction system
+
+| Stage | Statistical contribution |
+|---|---|
+| Define the problem | Specify population, outcome, and decision |
+| Prepare data | Examine missingness, measurement, and bias |
+| Fit a model | Select methods and quantify uncertainty |
+| Evaluate | Check calibration, subgroups, and transportability |
+| Deploy and monitor | Detect drift and document limitations |
+
+A good model is only one part of a trustworthy system.
+
+::: {.notes}
+This follows the paper’s electronic-health-record example. Prediction does not establish a causal treatment effect. A classroom project is not a clinically validated decision system.
+:::
+
+## CSU East Bay: build on existing strengths
+
+The department’s public pages already advertise:
+
+- A new **BS in Data Science**
+- **FAST 4+1** pathways into the MS in Statistics
+- DataFest and student research showcases
+- MS courses in statistical ML, NLP, and applied deep learning
+- R/Python computing and health-related electives
+
+**The opportunity is to connect these experiences—not simply add more AI courses.**
+
+<small>Sources: [department homepage](https://www.csueastbay.edu/statistics/) and [graduate roadmaps](https://www.csueastbay.edu/statistics/degrees-programs/graduate-programs.html). Confirm requirements with the current catalog.</small>
+
+## Diagnose the recruiting problem first
+
+Declining enrollment can have different causes:
+
+- Fewer prospective students finding the program
+- Confusing prerequisites or application information
+- Cost, schedule, or time-to-completion barriers
+- Unclear career value
+- Admitted students choosing other options
+- Retention or course-availability problems
+
+Examine the enrollment process and interview students before choosing a remedy.
+
+::: {.notes}
+Enrollment decline is the instructor’s reported context, not a trend estimated for this presentation. Review aggregate inquiry, application, admission, enrollment, retention, and completion data. Do not assume curriculum alone explains the decline.
+:::
+
+## MS proposals: make access predictable
+
+**Local proposals—not findings from the paper.**
+
+- Publish reliable full-time and part-time course rotations.
+- Explore evening/hybrid delivery where staffing supports it.
+- Show prerequisites, realistic completion plans, and costs.
+- Offer advising and a bridge for career-changing applicants.
+- Clarify existing certificate-to-MS pathways.
+- Promote the existing FAST pathway early to eligible students.
+
+Expand access without weakening the preparation needed for success.
+
+## MS proposals: make practice visible
+
+- Pilot a faculty-supervised, industry-facing project.
+- Use an appropriate existing course, potentially **STAT 694**.
+- Require a documented dataset and reproducible workflow.
+- Compare model performance, uncertainty, and failure modes.
+- Finish with a client briefing and individual oral defense.
+- Seek stipends and recognize faculty supervision workload.
+
+A project-based culminating pathway would require formal approval; do not advertise it as an existing option.
+
+## MS proposals: pathways, not more silos
+
+Begin with elective and project advising guides:
+
+| Possible pathway | Illustrative emphasis |
+|---|---|
+| Health and biostatistics | Trials, survival, measurement, health data |
+| Industrial statistics | Quality, experiments, reliability, forecasting |
+| Statistical ML and AI evaluation | Calibration, validation, shift, model auditing |
+
+Preserve shared foundations in probability, inference, study design, and uncertainty.
+
+Pilot demand before creating additional formal concentrations.
+
+## BS proposals: build the pipeline
+
+- Introduce real-data projects early, including through DATA 130.
+- Develop current transfer maps with regional community colleges.
+- Extend DataFest with preparation and portfolio workshops.
+- Promote existing minors and feasible cross-major pathways.
+- Create BS–MS teams with meaningful work at both levels.
+- Advise eligible students into FAST before their final year.
+
+Recruit through experiences students can see and explain.
+
+## Recruiting: make the value easy to find
+
+One clear page per program should show:
+
+- Who the program serves and how to prepare
+- Current requirements, costs, and delivery format
+- Realistic completion plans
+- Student projects and verified alumni outcomes
+- Advising contacts and application steps
+
+Public pages currently mix newer offerings with older material. Reconcile them with the catalog before a recruiting campaign.
+
+::: {.notes}
+In the pages reviewed for this discussion, the homepage announces the new BS while the degree listing does not clearly reflect it; the undergraduate page contains Fall 1999 and quarter-unit material; the certificate FAQ references CSU Mentor. These are observed inconsistencies, not evidence that they caused enrollment decline. Recheck before presenting specific examples.
+:::
+
+## Communication: explain, listen, defend
+
+**BS practice**
+
+- Pair a technical report with a one-page plain-language summary.
+- Explain uncertainty without overstating conclusions.
+- Interview a mock client before analyzing the data.
+
+**MS practice**
+
+- Lead a project-scoping meeting.
+- Deliver an executive brief and technical appendix.
+- Defend assumptions, limitations, and recommended actions.
+
+## Collaboration: make teamwork teachable
+
+- Rotate data steward, analyst, reviewer, and presenter roles.
+- Pair statistical mentorship with domain expertise.
+- Use shared project plans and documented handoffs.
+- Have one team reproduce another team’s analysis.
+- Assess individual understanding as well as team output.
+- Credit data cleaning, documentation, and review explicitly.
+
+A team project should not become one student’s coding assignment.
+
+## Computation: teach a coherent workflow
+
+**BS baseline**
+
+- One language well, SQL basics, Git, and reproducible reports
+- A raw-data-to-results analysis another student can rerun
+
+**MS extension**
+
+- APIs, testing, environment management, and secure data access
+- Basic cloud execution with attention to cost and permissions
+- Validation checks and a plan for monitoring repeated use
+
+Add tools when the problem requires them—not because they are fashionable.
+
+## Responsible AI use in the curriculum
+
+The paper favors responsible use rather than blanket punishment.
+
+- Permit assistance within a clearly stated course policy.
+- Require disclosure of substantial AI contributions.
+- Have students explain and verify code and conclusions.
+- Use independent checks and individual oral questions.
+- Keep protected data out of unapproved services.
+
+**Delegating a routine task does not delegate accountability.**
+
+## Four questions for every major project
+
+1. **Decision:** What question or action are we supporting?
+2. **Data:** How were the observations produced, and what could be wrong?
+3. **Dependability:** How do we know the result is reliable?
+4. **Delivery:** Can another person reproduce and understand it?
+
+Use a shared rubric across courses; increase expectations from BS to MS.
+
+::: {.notes}
+Assess communication through the brief and discussion, collaboration through role records and peer review, and computation through independent reproduction. Do not grade only presentation polish or predictive accuracy.
+:::
+
+## Potential partners: health and biomedicine
+
+| Company | Local presence | Possible educational focus |
+|---|---|---|
+| [Arcus Biosciences](https://arcusbio.com/) | Hayward | Clinical trials, survival, biomarkers |
+| [RefleXion Medical](https://www.reflexion.com/contact/) | Hayward | Imaging, device reliability, measurement |
+
+Start with a seminar and a project using public, synthetic, or appropriately approved data.
+
+**These are outreach candidates, not confirmed partners or internship commitments.**
+
+## Potential partners: manufacturing
+
+| Company | Local presence | Possible educational focus |
+|---|---|---|
+| [Plastikon Industries](https://www.plastikon.com/contact-us/) | Hayward headquarters | Process capability, experiments, quality |
+| [Heat and Control](https://www.heatandcontrol.com/about-us) | Hayward | Sensor data, process variation, reliability |
+| [GILLIG](https://www.gillig.com/contact-us/) | Hayward parts; Livermore HQ/manufacturing | Parts demand, inventory, reliability |
+
+Industry needs extend beyond jobs titled “data scientist.”
+
+Project topics are suggestions, not verified company requests.
+
+## 1X: NEO humanoid robots in Hayward
+
+**NEO is the robot; 1X is the company.**
+
+- 1X describes itself as based in Palo Alto.
+- Its **58,000-square-foot NEO factory is in Hayward**.
+- The company describes manufacturing, metrology, testing, and a reliability laboratory.
+- Possible statistical connections: component life, process control, task-success evaluation, and training-data quality.
+
+First ask: a quality/reliability seminar, possible site visit, and a bounded student project.
+
+<small>Sources: [1X company background](https://www.1x.tech/about) and [factory announcement, April 30, 2026](https://www.1x.tech/discover/neo-factory). Facility details are company-reported.</small>
+
+## Zoox: robotaxi production in Hayward
+
+- Zoox announced its **220,000-square-foot Hayward facility in June 2025**.
+- Work includes assembly, hardware/software integration, and end-of-line testing.
+- Zoox reports capacity for **more than 10,000 robotaxis per year at full scale**—not actual annual output.
+- Possible connections: manufacturing quality, sensor calibration, reliability, and test-data analysis.
+
+Start with manufacturing analytics rather than assuming access to proprietary autonomous-driving data.
+
+<small>Source: [Zoox production-facility announcement, June 18, 2025](https://zoox.com/journal/zoox-robotaxi-serial-production-facility).</small>
+
+## Robotics projects at two levels
+
+| Candidate | BS project idea | MS project idea |
+|---|---|---|
+| 1X / NEO | Control charts or task-success summaries | Component survival or experiments across operating conditions |
+| Zoox | Assembly cycle times or test-failure categories | Reliability modeling or shifts in test measurements |
+
+Account for dependence: repeated trials on one robot are not the same as trials on many independent robots.
+
+Use approved or synthetic data; classroom analyses do not certify safety.
+
+## Begin with a small partnership request
+
+> Would someone from your team help define a one-semester student project and attend three mentoring meetings? We can begin with public, synthetic, or appropriately approved data.
+
+Then build toward:
+
+- Sponsored project stipends
+- Paid internships and employee education
+- Recurring mentorship and advisory participation
+
+The [City of Hayward’s business resources](https://www.hayward-ca.gov/business) may help identify additional local contacts.
+
+## Make partnerships sustainable
+
+Before a project begins, agree on:
+
+- A feasible question and limited deliverables
+- Data permissions, security, and confidentiality
+- Portfolio/publication rights and intellectual property
+- Faculty workload and mentor availability
+- Student compensation or an accessible alternative
+- Limits on operational use of student results
+
+Do not make confidential company data essential to passing a course.
+
+## Mini-activity: redesign one experience
+
+In small groups, choose **one existing BS or MS course**.
+
+Propose:
+
+1. A meaningful question and an obtainable dataset
+2. One communication deliverable
+3. A collaboration structure with individual accountability
+4. A reproducible computational artifact
+5. An assessment and a feasible workload
+
+Take five minutes to plan, then share a one-minute proposal.
+
+## A practical first-year plan
+
+| When | Proposed action |
+|---|---|
+| First 90 days | Audit program information; interview students; invite employers to listen |
+| Next term | Pilot a project and shared three-C’s rubric; hold a recruiting showcase |
+| Within one year | Evaluate the pilot; review scheduling and certificate pathways; seek stipends |
+
+Use existing courses and relationships where possible.
+
+Expand only after identifying the resources and evidence needed.
+
+## Measure outcomes, not only activity
+
+- **Recruitment:** Inquiries, completed applications, and enrollment yield
+- **Access:** Reasons students decline, scheduling barriers, retention, and completion
+- **Learning:** Independent reproduction, oral defense, and student feedback
+- **Partnerships:** Mentor feedback, paid opportunities, and repeat sponsors
+
+Compare with a baseline; a before/after change alone does not establish causation.
+
+## Key takeaways
+
+- Preserve statistics’ strengths while extending its reach.
+- Recognize data work and implementation as intellectual contributions.
+- Teach the three C’s through repeated, assessed practice.
+- Build on CSU East Bay’s existing courses and pathways.
+- Explore all seven local industry candidates, including 1X and Zoox.
+- Start with clearer information, predictable access, and visible student work.
+
+**Make data and AI reliable enough for real decisions.**
+
+## References: the paper
+
+Donoho, D. L., Kang, J., Lin, X., Mukherjee, B., Nettleton, D., Nugent, R., Rodriguez, A., Xing, E. P., Zheng, T., and Zhu, H. (2026).
+
+**“Rebuilding” Statistics in the Age of AI: Culture, Infrastructure, and Training.**
+
+*Journal of the American Statistical Association*, published online August 28, 2026.
+
+[doi:10.1080/01621459.2026.2680161](https://doi.org/10.1080/01621459.2026.2680161)
+
+Sections 2–6 organize the five themes; local program and partnership proposals in this talk are applications of those ideas.
+
+## References: first-course books {.compact}
+
+Official book sites and authors’ descriptions reviewed October 4, 2026:
+
+- Ismay, Kim, and Valdivia: [ModernDive, 2nd edition](https://moderndive.com/v2/) and [preface/update history](https://moderndive.com/v2/preface.html)
+- Thulin: [Modern Statistics with R, 2nd edition](https://www.modernstatisticswithr.com/) and [scope and prerequisites](https://www.modernstatisticswithr.com/introduction.html)
+- James, Witten, Hastie, and Tibshirani: [An Introduction to Statistical Learning](https://www.statlearning.com/) — R and Python editions; Taylor joins the Python author team
+- Kuhn and Silge: [Tidy Modeling with R](https://www.tmwr.org/), especially [data splitting](https://www.tmwr.org/splitting) and [resampling](https://www.tmwr.org/resampling)
+- Çetinkaya-Rundel and Hardin: [Introduction to Modern Statistics, 2nd edition](https://openintro-ims.netlify.app/)
+
+Publication years and online revision dates differ. Test assigned code with the course’s package versions.
+
+## References: CSU East Bay {.compact}
+
+- [Department of Statistics and Data Science](https://www.csueastbay.edu/statistics/)
+- [Degrees and programs](https://www.csueastbay.edu/statistics/degrees-programs/index.html)
+- [Graduate programs and roadmaps](https://www.csueastbay.edu/statistics/degrees-programs/graduate-programs.html)
+- [FAST 4+1 pathway](https://www.csueastbay.edu/statistics/degrees-programs/fast-program-statistics.html)
+- [Undergraduate program page](https://www.csueastbay.edu/statistics/degrees-programs/undergraduate-program.html)
+- [Certificate FAQ](https://www.csueastbay.edu/statistics/degrees-programs/certificate-faqs.html)
+- [University catalog](https://catalog.csueastbay.edu/)
+
+Public pages contain mixed-vintage information. Confirm official requirements, offerings, and approvals before advising or advertising.
+
+## References: industry and local resources {.compact}
+
+- [Arcus Biosciences](https://arcusbio.com/)
+- [RefleXion Medical: contact and location](https://www.reflexion.com/contact/)
+- [Plastikon Industries: contact and location](https://www.plastikon.com/contact-us/)
+- [Heat and Control: company history](https://www.heatandcontrol.com/about-us)
+- [GILLIG: facilities and contacts](https://www.gillig.com/contact-us/)
+- [1X: Hayward NEO factory](https://www.1x.tech/discover/neo-factory)
+- [Zoox: Hayward production facility](https://zoox.com/journal/zoox-robotaxi-serial-production-facility)
+- [City of Hayward: business resources](https://www.hayward-ca.gov/business)
+
+Official sites support company descriptions and locations—not a promise of partnership or student access.
+
+## Questions & discussion
+
+- Which existing course is the best home for a pilot?
+- What would make the program’s value clearer to applicants?
+- Which potential partner should we approach first?
+
+::: {.callout-note}
+### Join the Discussion
+**Date:** To be announced  
+**Time:** 12:15–1:15 PM  
+**Zoom:** <https://csueb.zoom.us/j/88674490934>
+:::

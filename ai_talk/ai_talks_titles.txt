@@ -1,17 +1,32 @@
 1. Using your university OpenAI ChatGPT account and using your Microsoft CoPilot account with Office365
 2. Using the ChatGPT Desktop App, Chat and Codex, with local files, and using Google Gemini App vs Google Antigravity Desktop App
-3. Install and using your university OpenAI ChatGPT account with Codex CLI and using it in RStudio, or using Posit Assistant 
-4. What is Positron, VSCode and other Coding IDEs?  MLJAR and AutoML
+3. Install and use your university OpenAI ChatGPT account with Codex CLI and using it in RStudio, or using Posit Assistant 
+4. What is Positron, VSCode and other Coding IDEs?
 5. Google Gemini Notebook (formally NotebookLM), Google Colab, Jupyter Notebooks, JupyterLab, Quarto Notebooks with R, Python or Julia
+5a. MLJAR and AutoML
 6. What is an agent?  Muse, Hermes, Spynel.  How to have an agent collect, analyze data, and send a report on a schedule.
 7. What is a Coding Harnesses: OpenCode, pi, Cline, Kilo, FreeBuff, ollama launch Claude, Prime agent
 8. What is OpenRouter?  Pay $10.50 and use their free models
-9. Who to learn practical AI skills from online, Youtube and Facebook
+9. How to learn practical AI skills from online, Youtube and Facebook
 10. AI developed Linux os Omarchy demo
 11. Using AI with version control: Github, gh, codeberg, forgejo, Aider
 12. Using AI in JASP for Psychology with OpenRouter
 13. RTutor.ai 2.0 has evolved.  Try Datably.ai the new AI-native data science platform.  
 14. What is a skill?  Hermes Agent.  pi agent skills.  
+15. VSCode Extensions, VSCode Insiders, Zed, Qoder, Positron
+16. Marimo with AI
+17. TabPFN, TabH2O AI for Tabular Data
+18. statsforecast, neuralforecat, Nixla, TimesFM
+19. Jev, laya
+20. Karpathy Skill in pi
+21. Unsloth Studio model retraining
+22. ollama, ollaya, LMStudio
+23. How to ask ChatGPT to provide instructions for Committee Meeting using Robert's Rules.
+24. How to ask ChatGPT to provide instructions for Committees to operate within the University By Laws.
+25. How to ask ChatGPT to provide clarity about the University RT&P Policy and Proceedures.  Also, how to get a list of inconsistencies in the document and what should be the final decision about how to proceed.
+26. How to check if my syllabus meets the requirements in the university Syllabus Policy.
+27. Do my R Quarto Notebooks Rendering .html documents that meet the ADA requirements (WCAG Rule 1.4.1)for accessibiltiy?
+28. Statistics in the Age of AI
 
 Dates
 
@@ -20,6 +35,7 @@ Dates
 3. Nov 5
 4. Nov 19
 5. Dec 3
+5a. Dec 3
 
 All from 12:15–1:15 PM.
 
