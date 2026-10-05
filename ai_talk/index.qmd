@@ -9,7 +9,7 @@ author:
 
 **All presentations in this series were developed with the help of AI, including Codex and pi.**
 
-This series introduces AI tools, coding environments, and responsible automated usage. These talks will be for the Department of Statistics and Data Science, in support of our new Data Science BS program and for our MS Statistics Option in Data Science, they will be part of my AI and Data Science Workgroup meetings, and they will be considered the Erik Lee AI and Data Science Lecture Series and sponsored by Well Fargo Bank. (This last part is still being discussed.)
+This series introduces AI tools, coding environments, and responsible automated usage. These talks will be for the Department of Statistics and Data Science, in support of our new Data Science BS program and for our MS Statistics Option in Data Science, they will be part of my AI and Data Science Workgroup meetings, and they will be considered part of the new Erik Lee AI and Data Science Lecture Series and sponsored by Well Fargo Bank. (This last part is still being discussed.)
 
 :::: {.talk-grid}
 ::: {.talk-card}
