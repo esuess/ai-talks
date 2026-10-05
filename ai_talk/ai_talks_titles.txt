@@ -26,6 +26,10 @@
 25. How to ask ChatGPT to provide clarity about the University RT&P Policy and Proceedures.  Also, how to get a list of inconsistencies in the document and what should be the final decision about how to proceed.
 26. How to check if my syllabus meets the requirements in the university Syllabus Policy.
 27. Do my R Quarto Notebooks Rendering .html documents that meet the ADA requirements (WCAG Rule 1.4.1)for accessibiltiy?
+  a. https://mshin77.github.io/a11yviz/
+  b. https://www.w3.org/TR/WCAG21/
+  c. https://rfortherestofus.com/2026/02/introducing-the-pdfcheck-r-package-for-checking-the-accessibility-of-pdfs
+  d. https://github.com/rfortherestofus/pdfcheck/
 28. Statistics in the Age of AI
 
 Dates

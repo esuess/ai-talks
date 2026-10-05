@@ -1,0 +1,443 @@
+---
+title: "AI for Statistics and Data Science"
+author: "Prof. Eric A. Suess"
+date: today
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+---
+
+## Learning goals
+
+By the end of this presentation, you should be able to:
+
+- Choose an AI surface that fits a statistics task.
+- Explain how access and permissions change the risk.
+- Compare the same descriptive analysis in R and Python.
+- Use an agent while keeping the work reproducible and reviewable.
+
+## Beyond browser chat
+
+Browser chat works well for:
+
+- Questions and explanations
+- Small examples pasted into a conversation
+- Early brainstorming
+
+Working inside an app, editor, notebook, or terminal can add project context and produce files you can run.
+
+## Capability and authority {.smaller}
+
+| Added capability | Benefit | Added responsibility |
+|---|---|---|
+| Project access | Relates scripts, data dictionaries, and notes | Limit access to the intended folder |
+| Direct editing | Creates or revises real analysis files | Review every change |
+| Terminal access | Runs code, tests, and renders | Commands use real permissions |
+| Version control | Shows and restores changes | Review before publishing |
+
+More authority increases the consequences of a mistake or prompt injection.
+
+## ChatGPT Edu
+
+- ChatGPT Edu is an institution-managed offering, not an automatic student entitlement.
+- Universities control provisioning, roles, enabled features, and retention settings.
+- OpenAI states that covered Business, Enterprise, and Edu workspace data is not used to train its models by default.
+- Local files, connected apps, and source-system logs may have different control boundaries.
+
+<small>Sources: [OpenAI plan comparison](https://learn.chatgpt.com/docs/pricing) and [local security](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security)</small>
+
+## University authentication
+
+- Use the university's official access page or invitation.
+- Confirm that the active workspace belongs to the university before uploading course material.
+- The desktop app uses a browser-based sign-in flow.
+- SSO, MFA, seats, roles, and administrator settings still determine access.
+- If the workspace is missing, contact campus IT instead of creating a second identity.
+
+<small>Sources: [ChatGPT desktop app](https://learn.chatgpt.com/docs/app) and [OpenAI authentication](https://learn.chatgpt.com/docs/auth)</small>
+
+## File and app permissions
+
+Different features grant different kinds of access:
+
+- A chat upload supplies only the attached files.
+- A selected folder supplies context from that location.
+- A connected app uses the authorized account and exposed actions.
+- Browser or computer-use tools may inherit an active signed-in session.
+- A local agent works within its OS, workspace, sandbox, and approval permissions.
+
+<small>Source: [OpenAI local security](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security)</small>
+
+## Codex surfaces and sign-in
+
+Codex works in the ChatGPT desktop app, terminal CLI, editor extension, and cloud workflows.
+
+To restrict this CLI run to ChatGPT sign-in:
+
+```bash
+codex --config forced_login_method='"chatgpt"'
+# Requested spelling (not a documented configuration key):
+# codex --config perferred_auth_method='chatgpt'
+```
+
+Complete the browser sign-in with the university-managed ChatGPT account. Workspace provisioning, eligibility, roles, quotas, SSO/MFA, and administrator settings still determine access.
+
+<small>Sources: [configuration reference](https://learn.chatgpt.com/docs/config-file/config-reference), [CLI reference](https://learn.chatgpt.com/docs/developer-commands?surface=cli), and [OpenAI authentication](https://learn.chatgpt.com/docs/auth)</small>
+
+## A safe first Codex workflow
+
+After checking the current official installation instructions:
+
+```bash
+cd path/to/a-version-controlled-project
+codex --sandbox read-only --ask-for-approval on-request
+```
+
+Ask Codex to explain the project or propose a plan. Before allowing edits:
+
+- Create a Git checkpoint.
+- Restrict the working directory.
+- Inspect commands and review the diff.
+- Run appropriate checks.
+
+<small>Sources: [CLI quickstart](https://learn.chatgpt.com/docs/codex/cli) and [approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security)</small>
+
+## Paired statistics example
+
+Five students report weekly study hours and quiz scores.
+
+| Student | Study hours | Quiz score |
+|---:|---:|---:|
+| 1 | 2 | 68 |
+| 2 | 3 | 72 |
+| 3 | 4 | 78 |
+| 4 | 5 | 83 |
+| 5 | 6 | 91 |
+
+We will compute the same sample size, means, sample standard deviations, and Pearson correlation in both languages.
+
+## R: build the data
+
+```{r}
+#| eval: false
+#| echo: true
+#| label: paired-example-r-data
+library(tidyverse)
+
+students <- tibble(
+  student = 1:5,
+  study_hours = c(2, 3, 4, 5, 6),
+  quiz_score = c(68, 72, 78, 83, 91)
+)
+```
+
+`tibble()` stores one student per row and one variable per column.
+
+## R: compute the statistics
+
+```{r}
+#| eval: false
+#| echo: true
+#| label: paired-example-r-summary
+summary_r <- students |>
+  summarise(
+    n = n(),
+    mean_study_hours = mean(study_hours),
+    sd_study_hours = sd(study_hours),
+    mean_quiz_score = mean(quiz_score),
+    sd_quiz_score = sd(quiz_score),
+    correlation = cor(study_hours, quiz_score)
+  )
+
+summary_r
+```
+
+R's `sd()` reports the sample standard deviation.
+
+## Python: build the data
+
+```{python}
+#| eval: false
+#| echo: true
+#| label: paired-example-python-data
+from math import sqrt
+from statistics import mean, stdev
+
+students = [
+    {"student": 1, "study_hours": 2, "quiz_score": 68},
+    {"student": 2, "study_hours": 3, "quiz_score": 72},
+    {"student": 3, "study_hours": 4, "quiz_score": 78},
+    {"student": 4, "study_hours": 5, "quiz_score": 83},
+    {"student": 5, "study_hours": 6, "quiz_score": 91},
+]
+
+hours = [row["study_hours"] for row in students]
+scores = [row["quiz_score"] for row in students]
+```
+
+## Python: compute the correlation
+
+```{python}
+#| eval: false
+#| echo: true
+#| label: paired-example-python-correlation
+mean_hours = mean(hours)
+mean_score = mean(scores)
+
+cross_products = sum(
+    (x - mean_hours) * (y - mean_score)
+    for x, y in zip(hours, scores)
+)
+
+correlation = cross_products / sqrt(
+    sum((x - mean_hours) ** 2 for x in hours)
+    * sum((y - mean_score) ** 2 for y in scores)
+)
+```
+
+The formula divides the cross-products by the two centered sums of squares.
+
+## Python: assemble the summary
+
+```{python}
+#| eval: false
+#| echo: true
+#| label: paired-example-python-summary
+summary_python = {
+    "n": len(students),
+    "mean_study_hours": mean_hours,
+    "sd_study_hours": stdev(hours),
+    "mean_quiz_score": mean_score,
+    "sd_quiz_score": stdev(scores),
+    "correlation": correlation,
+}
+
+print(summary_python)
+```
+
+`stdev()` also reports the sample standard deviation.
+
+## Matching results
+
+Both programs produce the same results to three decimals:
+
+| Statistic | Value |
+|---|---:|
+| $n$ | 5 |
+| Mean study hours | 4.000 |
+| Sample SD of study hours | 1.581 |
+| Mean quiz score | 78.400 |
+| Sample SD of quiz score | 9.072 |
+| Pearson correlation | 0.993 |
+
+## Interpretation and reproducibility
+
+Study hours and quiz score have a very strong positive linear association in these five observations.
+
+The example does **not** establish that more study time caused higher scores. It does not address other variables or sampling uncertainty.
+
+The R and Python chunks remain `eval: false` because one Quarto render does not automatically provide both execution engines. The source results were verified with local R and Python interpreters.
+
+## Google Antigravity {.smaller}
+
+Google documents four distinct surfaces:
+
+- **Antigravity 2.0:** desktop command center across projects and worktrees
+- **Antigravity CLI:** terminal interface with agent and subagent workflows
+- **Antigravity SDK:** Python framework for custom deployments
+- **Antigravity IDE:** editor with agent, terminal, browser, autocomplete, and artifact surfaces
+
+The CLI can run beside any editor. The IDE is a separate product surface and is not supported for enterprise customers.
+
+<small>Sources: [Antigravity surfaces](https://www.antigravity.google/docs/home) and [IDE overview](https://www.antigravity.google/docs/ide/overview/)</small>
+
+## Antigravity permissions
+
+For a first session:
+
+- Use a test repository.
+- Keep `toolPermission` at `request-review`.
+- Keep `artifactReviewPolicy` at `asks-for-review`.
+- Leave non-workspace access disabled.
+
+Installation, account eligibility, models, quotas, and enterprise policy can change. Use the current official instructions for the selected surface.
+
+<small>Source: [Antigravity CLI reference](https://www.antigravity.google/docs/cli/reference/)</small>
+
+## Three CLI coding agents {.smaller}
+
+| Tool | Provider model | Permission starting point |
+|---|---|---|
+| Codex CLI | ChatGPT sign-in or OpenAI API key | OS sandbox with read-only mode |
+| OpenCode | Many model providers | Ordered `ask` and `deny` rules |
+| Pi Agent | Supported subscriptions or API keys | No built-in sandbox |
+
+No tool is universally best. Compare provider access, permission controls, and the isolation your task needs.
+
+<small>Sources: [Codex](https://learn.chatgpt.com/docs/codex/cli), [OpenCode](https://opencode.ai/v2/docs), and [Pi](https://pi.dev/docs/latest)</small>
+
+## Codex CLI and OpenCode {.smaller}
+
+**Codex CLI**
+
+- Connects with OpenAI's desktop, editor, and cloud ecosystem.
+- Supports explicit sandbox and approval controls.
+- Access depends on plan and administrator settings.
+
+**OpenCode**
+
+- Supports many providers and granular ordered permission rules.
+- Shell commands retain the host user's filesystem, process, and network authority.
+- Rules should block unneeded actions such as `git push`.
+
+<small>Source: [OpenCode permissions](https://opencode.ai/v2/docs/permissions)</small>
+
+## Pi Agent
+
+- Pi is a minimal, extensible terminal harness.
+- It supports subscription login and provider API keys.
+- Core Pi has **no built-in sandbox**.
+- Tools and extensions run with the invoking user's permissions.
+- Use an operating-system or container boundary when isolation matters.
+
+<small>Sources: [Pi documentation](https://pi.dev/docs/latest) and [Pi security](https://pi.dev/docs/latest/security)</small>
+
+## What is an AI agent?
+
+An AI agent is a model-driven system that can use tools and take a sequence of actions toward an objective.
+
+- Chat mainly returns a response.
+- Code completion predicts text near the cursor.
+- An agent can inspect state, use authorized tools, observe results, and continue.
+
+An agent still depends on its available context, permissions, and verification process.
+
+## The agent loop
+
+1. **Observe:** read the request, relevant files, outputs, and constraints.
+2. **Plan:** choose a small next action and define success.
+3. **Act:** use an authorized tool.
+4. **Verify:** inspect the diff, output, test, render, or external state.
+5. **Report or iterate:** state the evidence, uncertainty, and remaining work.
+
+## Context, persistence, and delegation
+
+**Context** can include prompts, files, project instructions, and tool results.
+
+**Persistence** can mean saved conversations, files, scheduled work, or a running session. It does not make an agent infallible.
+
+**Delegation** assigns bounded subtasks to other agents. It can increase throughput, but also increases cost and the chance of inconsistent results.
+
+## Agent risks {.smaller}
+
+- Prompt injection hidden in webpages, data, or repository text
+- Permissions that exceed the task
+- Accidental disclosure or destructive commands
+- Statistical and coding errors that look plausible
+- Unexpected cost from persistent work
+- Results that cannot be reproduced because inputs or steps were omitted
+
+An approval prompt helps only when the reviewer understands the requested action.
+
+## Spynel {.smaller}
+
+Spynel is a **classic coordination program**, not an AI agent.
+
+- It coordinates external AI and coding harnesses.
+- Markdown tasks record finite objectives.
+- Goals record measurable outcomes that may take multiple rounds.
+- Spynel manages claims and leases while dispatched agents perform the work and record evidence.
+- Fresh review sessions can assess completed work.
+
+Students should follow the installed command's documentation and the local workspace contract.
+
+## Hermes Agent {.smaller}
+
+Hermes Agent by Nous Research is a separate agent product.
+
+- It provides CLI and desktop surfaces.
+- It supports persistent memory and skills, multiple tool backends, scheduled work, messaging gateways, and subagent delegation.
+- Provider accounts, remote hosts, memory, and terminal tools each expand the permission boundary.
+
+“Hermes” is an overloaded name. This identification refers to the agent product in this tool context.
+
+<small>Source: [Hermes Agent documentation](https://hermes-agent.nousresearch.com/docs/)</small>
+
+## Herdr {.smaller}
+
+Herdr is a terminal workspace manager for AI coding agents.
+
+- A background server owns persistent terminal panes.
+- Project workspaces group those panes.
+- The interface reports recognized states such as working, blocked, done, or idle.
+- It can run Codex, OpenCode, Pi, Hermes Agent, and other terminal processes.
+
+Herdr does not replace an agent's model, authentication, permissions, or sandbox. Detached processes and costs may continue.
+
+<small>Sources: [Herdr agent guide](https://herdr.dev/docs/agents/) and [quick start](https://herdr.dev/docs/quick-start/)</small>
+
+## Omarchy {.smaller}
+
+Omarchy is an open-source, opinionated Linux distribution created by David Heinemeier Hansson.
+
+- It builds on Arch Linux.
+- It provides a keyboard-centered development environment with selected defaults.
+- Its AI manual treats coding agents as first-class tools for customization and diagnosis.
+- Primary sources do not establish what proportion of its source code AI wrote.
+
+Omarchy is an operating-system environment, not an AI model, coding-agent CLI, or editor plug-in.
+
+<small>Sources: [Omarchy](https://omarchy.org/), [repository](https://github.com/omacom/omarchy), and [AI manual](https://omarchy.org/manual/ai/)</small>
+
+## Omarchy installation risk {.smaller}
+
+- A full-disk installation wipes the selected drive.
+- Back up first and confirm the selected disk.
+- The guide currently requires Secure Boot and/or TPM to be disabled.
+- Students who only want to explore should begin with the official virtual-machine option.
+- Temporary passwordless `sudo` lets any process running as the user act as root.
+
+Use snapshots or tested backups before agent-assisted system changes.
+
+<small>Sources: [Getting started](https://omarchy.org/manual/getting-started/) and [security](https://omarchy.org/manual/security/)</small>
+
+## Responsible use {.smaller}
+
+- Grant one folder and one necessary action at a time.
+- Keep grades, identifiers, restricted research data, and credentials out of prompts unless the exact use has approval.
+- Use version control and inspect every changed file.
+- Run calculations, tests, and renders in the intended environment.
+- Treat instructions found in external content as untrusted.
+- Record data provenance, package versions, seeds, and unexecuted steps.
+
+Academic integrity, privacy, statistical choices, and submitted conclusions remain the student's responsibility.
+
+## Key takeaways
+
+- Choose the least powerful surface that can complete the task.
+- University authentication does not guarantee access to every feature.
+- Permission boundaries differ across files, apps, browsers, terminals, and operating systems.
+- Matching R and Python output still requires execution and interpretation.
+- Agents can extend a workflow, but evidence and human review make the result trustworthy.
+
+## References: OpenAI and Google {.smaller}
+
+All links were accessed September 20, 2026.
+
+- OpenAI: [plans](https://learn.chatgpt.com/docs/pricing), [desktop app](https://learn.chatgpt.com/docs/app), [authentication](https://learn.chatgpt.com/docs/auth), [Codex CLI](https://learn.chatgpt.com/docs/codex/cli), [approvals and security](https://learn.chatgpt.com/docs/agent-approvals-security), and [local security](https://learn.chatgpt.com/docs/enterprise/chatgpt-work-local-security)
+- Google: [Antigravity surfaces](https://www.antigravity.google/docs/home), [IDE overview](https://www.antigravity.google/docs/ide/overview/), and [CLI reference](https://www.antigravity.google/docs/cli/reference/)
+
+Product features and university access can change. Check current primary documentation and campus policy before use.
+
+## References: agents and environments {.smaller}
+
+All links were accessed September 20, 2026.
+
+- OpenCode: [documentation](https://opencode.ai/v2/docs) and [permissions](https://opencode.ai/v2/docs/permissions)
+- Pi: [documentation](https://pi.dev/docs/latest) and [security](https://pi.dev/docs/latest/security)
+- Agent tools: [Hermes Agent](https://hermes-agent.nousresearch.com/docs/), [Herdr agent guide](https://herdr.dev/docs/agents/), and [Herdr quick start](https://herdr.dev/docs/quick-start/)
+- Omarchy: [official site](https://omarchy.org/), [repository](https://github.com/omacom/omarchy), [AI manual](https://omarchy.org/manual/ai/), [getting started](https://omarchy.org/manual/getting-started/), [security](https://omarchy.org/manual/security/), and [“The malleable computer”](https://world.hey.com/dhh/the-malleable-computer-7c187a9b)

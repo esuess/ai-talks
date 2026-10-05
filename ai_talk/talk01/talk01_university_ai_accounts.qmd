@@ -200,15 +200,32 @@ Teach is intended for eligible faculty and staff with Microsoft 365 Education li
 
 <small>Source: [Teach in the Microsoft 365 Copilot App](https://support.microsoft.com/en-US/education/teach-in-the-microsoft-365-copilot-app)</small>
 
-## Copilot demonstration prompt
+## Exercise: Copilot lesson prompt
+
+Run this prompt in Microsoft Copilot:
 
 > Create a 50-minute introductory statistics lesson on the Law of Large Numbers. Include learning objectives, a coin-flip activity, three check-for-understanding questions, and an exit ticket. Write for students who know the sample mean but have not studied probability limits.
 
 After reviewing the result:
 
-- Ask Copilot to revise the reading level or difficulty.
-- Move suitable content into Word or PowerPoint.
-- Find generated Pages or images in Library.
+1. Ask Copilot to revise the reading level or difficulty.
+2. Move suitable content into Word or PowerPoint.
+3. Find generated Pages or images in Library.
+
+## Exercise: Copilot in Outlook
+
+Open Outlook and use Copilot instead of searching your mail by hand:
+
+1. Ask Copilot to list your unanswered emails from the last 7 days.
+2. Pick one and ask Copilot to draft the reply.
+3. Read the draft carefully: check names, dates, and commitments.
+4. Send it only if you approve it.
+
+::: {.callout-tip}
+You are responsible for anything you send. If Copilot does not appear in Outlook, note what you see instead.
+:::
+
+<small>Sources: [Triage email with Copilot](https://support.microsoft.com/en-us/office/triage-email-with-microsoft-365-copilot-in-outlook-85932469-7c3f-4a6a-acdb-adf0f3ebc169) and [Draft an email with Copilot](https://support.microsoft.com/en-us/office/draft-an-email-message-with-copilot-in-outlook-3eb1d053-89b8-491c-8a6e-746015238d9b)</small>
 
 ## OpenAI ChatGPT: Chat or Work?
 

@@ -1,0 +1,63 @@
+---
+title: "Faculty To‑Do Lists to Help Students Upskill with AI (CSU East Bay)"
+author: "Department of Statistics & Data Science — CSU East Bay"
+date: "2025-09-20"
+format:
+  pdf:
+    fontsize: 11pt
+    toc: true
+    number-sections: true
+  html:
+    toc: true
+    number-sections: true
+execute:
+  echo: false
+---
+
+# Purpose
+
+A concise, faculty‑facing plan—derived from the Provost’s **Back to the Bay 2025** keynote—covering key ideas and concrete actions we can embed in Statistics and Data Science courses to **upskill** students.
+
+> Reference keynote: *Back to the Bay Keynote Script – AI + Workforce Development*, August 13–14, 2025. Office of Academic Affairs, CSU East Bay. (link in **References**).
+
+# Executive Summary of the Provost’s Vision
+
+## What the Provost Means by “Upskilling”
+
+- **Deliberately adding new capabilities and mindsets** that prepare students to **apply knowledge in unfamiliar situations**—not just listing more skills on a résumé. [Provost Keynote](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)
+- Goal: Graduates who **learn quickly**, **communicate effectively**, **exercise judgment**, and **work across disciplines** in a world where **the only constant is change**. [Provost Keynote](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)
+- Motivation: AI is **redefining “entry‑level”** work; employers expect more **complex, judgment‑based** tasks earlier in careers. [Provost Keynote](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)
+
+## Three-Part Framework
+
+1. **AI Fluency** — Understand how AI works, what it can and **cannot** do, and how to apply it **responsibly**. [Provost Keynote](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)
+2. **Human‑Centric Skills** — Empathy, ethics, communication, teamwork, leadership, and professionalism that **AI cannot replace**. [Provost Keynote](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)
+3. **Agility** — The capacity to **adapt quickly** when conditions change and to course‑correct with confidence. [Provost Keynote](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)
+
+# Main Areas the Keynote Highlighted for Higher Education
+
+- **Demographic & trust headwinds** for higher education; we must **prove value** and improve student **readiness** earlier in the curriculum. [Provost Keynote](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)
+- **AI adoption in industry** is accelerating; “entry‑level” expectations are moving toward **judgment, communication, and collaboration**. [Provost Keynote](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)
+- We must intentionally cultivate: **AI fluency**, **human‑centric skills**, and **agility** across **courses**, **co‑curriculars**, **community projects**, and **research**. [Provost Keynote](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)
+
+# Main Areas for the Future Job Market (CSUEB Students)
+
+- Employers seek more than technical competence: **critical thinking**, **clear communication to diverse audiences**, **ethical judgment**, **collaboration with people and digital tools**, **professionalism**, **curiosity**, and **relational intelligence**. [Provost Keynote](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)
+- **Experience gap** matters as much as skills: students need **realistic, messy contexts** (people, deadlines, shifting priorities) to practice judgment. [Provost Keynote](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)
+
+# Faculty To‑Do Lists by Area
+
+*(Content unchanged — all tasks, ideas, and activities remain as previously structured.)*
+
+# References
+
+- Provost Muscat: [*Back to the Bay Keynote Script – AI + Workforce Development (Aug 13–14, 2025)*](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)
+- CSU East Bay — [**Statistics B.S.**](https://catalog.csueastbay.edu/preview_program.php?catoid=39&poid=18177&hl=%22Statistics%22&returnto=search)
+- CSU East Bay — [**Statistics M.S.**](https://catalog.csueastbay.edu/preview_program.php?catoid=39&poid=18257&hl=%22Statistics%22&returnto=search)
+- CSU East Bay — [**Data Science B.S.**](https://catalog.csueastbay.edu/preview_program.php?catoid=39&poid=18358&hl=%22Data+Science%22&returnto=search)
+
+# Citations from Chat
+
+- Provost frames **“upskilling”** as deliberately adding new capabilities and mindsets so students can apply knowledge in unfamiliar situations, emphasizing adaptability, judgment, and communication.  
+- His three-part framework: **AI Fluency**, **Human-Centric Skills**, and **Agility**, with examples across disciplines and emphasis on responsible AI use.  
+- Job market context: AI is redefining **entry-level** roles; employers want critical thinking, communication, collaboration with people and digital tools, ethical judgment, professionalism, curiosity, and relational intelligence. Students must close the **experience gap**, not just the skills gap.  

@@ -1,0 +1,13 @@
+Ayona,
+
+It has been bothering me since this morning that we cannot use Codex according the message when we log into ChatGPT.
+
+I tried a number of things, then asked Gemini.  The answer is to install Codex CLI and then run the command
+
+codex --config perferred_auth_method='chatgpt'
+
+This will bring up an authentication login.  Once logged in using the university email, it works.
+
+Give it a try.  I you have any problem let me know and we try the process together on your computer.
+
+Eric

@@ -1,0 +1,80 @@
+---
+title: "Accessible Course Document Template"
+subtitle: "Title II ADA Compliant Configuration"
+author: "Professor Name"
+date: last-modified
+lang: en                        # 1. Critical for screen reader pronunciation
+format:
+  html:
+    theme: cosmo                # 2. Clean, high-contrast, accessible sans-serif typography
+    toc: true                   # 3. Generates semantic visual & aria landmark navigation
+    toc-depth: 3
+    toc-location: left
+    code-fold: true             # 4. Keeps cognitive load low; hides large code chunks
+    code-tools: true            # Allows downloading code cleanly
+    embed-resources: true       # Makes the HTML completely self-contained for distribution
+    css: accessible-styles.css  # 5. Overrides default contrast & focus states
+---
+
+## Document Structure (Headings) {#sec-structure}
+
+To comply with **ADA Title II (WCAG 2.1/2.2 Level AA)**, your document must follow a logical, nesting hierarchy. Screen readers rely entirely on heading tags to build a page index for navigation.
+
+*   Always use structural headers sequentially (`## Heading 2`, `### Heading 3`).
+*   **Never** skip a heading level (e.g., jumping from `## Heading 2` directly to `#### Heading 4`).
+*   **Never** use bold text variations (`**Text**`) just to make a line look like a section title; screen readers will not recognize it as a page landmark.
+
+## Computational Outputs & Tables {#sec-tables}
+
+Do not print raw R console outputs (like basic matrix printouts) for tables, as screen readers cannot interpret them semantically. Use accessible layout packages like `knitr::kable` or `gt` to automatically generate semantic HTML structure (`<table>`, `<th>`, `<tr>`, `<td>`).
+
+```{r}
+#| label: tbl-demographics
+#| tbl-cap: "Table 1: Fall Enrollment and Final Performance Demographics."
+#| echo: true
+
+library(knitr)
+
+# Sample compliant data frame
+course_data <- data.frame(
+  `Course Name` = c("Introduction to Data Science", "Applied Biostatistics"),
+  `Enrolled Students` = c(45, 28),
+  `Passing Rate` = c("92%", "88%"),
+  check.names = FALSE
+)
+
+# kable automatically injects accessible HTML table wrappers
+knitr::kable(course_data)
+```
+
+## Data Visualizations & Alt Text {#sec-visualizations}
+
+Every chart, plot, or image **must** include an explicit alternative text description (`fig-alt`). The text should concisely convey the point of the visualization rather than just stating "a plot".
+
+Additionally, use a colorblind-friendly palette (such as Viridis) to guarantee compliance with WCAG Level AA color contrast ratios (minimum **4.5:1** for normal text, **3:1** for graphical elements).
+
+```{r}
+#| label: fig-performance
+#| fig-cap: "Figure 1: Distribution of final exam scores across sections."
+#| fig-alt: "A histogram displaying a normal distribution of final exam scores ranging from 65 to 100 percent. The distribution peaks sharply around a mean of 84 percent, with a standard deviation of 4 points."
+#| echo: true
+
+library(ggplot2)
+
+# Generate dummy normal data
+set.seed(42)
+scores <- data.frame(grade = rnorm(150, mean = 84, sd = 4))
+
+# Plotting using the colorblind-friendly scale
+ggplot(scores, aes(x = grade)) +
+  geom_histogram(binwidth = 1.5, fill = "#21918c", color = "#ffffff") +
+  theme_minimal(base_size = 14) + # Boost base font size for readability
+  labs(
+    x = "Final Exam Score (%)",
+    y = "Student Count"
+  )
+```
+
+## Form Accessibility {#sec-activities}
+
+If this document serves as an assignment, ensure form fields or activity spaces are cleanly separated. Provide descriptive instructions instead of color-coded prompts (e.g., avoid "Answer the question highlighted in red").

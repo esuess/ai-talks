@@ -1,0 +1,31 @@
+/* Custom Overrides for WCAG 2.1/2.2 Level AA Contrast and Focus */
+
+/* 1. Ensure maximum text contrast against backgrounds */
+body {
+  color: #1a1a1a !important; /* Deep contrast off-black */
+  background-color: #ffffff !important;
+}
+
+/* 2. Style links with high contrast and explicit underlines */
+a {
+  color: #0056b3 !important; /* Deep accessible blue */
+  text-decoration: underline !important;
+}
+
+a:hover, a:focus {
+  color: #003366 !important;
+  text-decoration: none !important;
+}
+
+/* 3. High-visibility focus indicators for keyboard navigation */
+*:focus {
+  outline: 3px solid #ffbf47 !important; /* Explicit focus ring */
+  outline-offset: 2px !important;
+}
+
+/* 4. Table cell visibility enhancement */
+table th {
+  background-color: #f2f2f2 !important;
+  color: #000000 !important;
+  border-bottom: 2px solid #333333 !important;
+}

@@ -1,0 +1,13 @@
+This template bundle contains a strictly optimized .qmd core document configuration alongside a supporting .css style sheet override that ensures your rendered HTML outputs natively conform to the strict visual contrast and focus guidelines required under ADA Title II (WCAG 2.1/2.2 Level AA).
+
+How to Implement This in Your Workflow
+1. Move both files into your target R project folder.
+2. Ensure you have the ggplot2 and knitr libraries installed in R.
+3. Open accessible-template.qmd in RStudio or VS Code, and hit Render to compile your highly accessible HTML file.
+
+Critical Accessibility Anchors Enforced in This Template
+• Language Mapping (lang: en): This ensures that screen readers dynamically load the proper English speech synthesis engine, rather than dropping back to a student's default OS locale.
+• Logical Screen Landmarks (toc: true): Generating a structured Table of Contents forces Quarto to build <nav> elements, semantic landmark tags, and explicit aria-labelledby components. This allows keyboard-only or switch-access users to jump fluidly to specific headers.
+• Semantic Table Wrappers (knitr::kable): Using a standardized dataframe wrapper forces Quarto to inject clean <th> (table headers) and <tr> (table rows). This allows screen readers to declare cell values in context (e.g., "Course Name: Introduction to Data Science") instead of reading a flat line of unformatted text.
+• Programmatic Alt-Text Injection (#| fig-alt:): Instead of relying on a visual caption below a plot, using the chunk parameter #| fig-alt: tightly binds a non-visual text description explicitly inside the HTML <img> tag markup.
+• Keyboard Visibility Ring (accessible-styles.css): Visually impaired or mobility-restricted students who navigate purely via the Tab key require a clear visual anchor. The attached CSS forces a high-contrast 3px focus ring (#ffbf47) on every interactive hyperlink, code-fold widget, and button, correcting standard browser focus failures.

@@ -1,0 +1,75 @@
+---
+title: "Summary of Provost's Speech on AI and Upskilling"
+author: "Eric A. Suess"
+date: "September 15, 2025"
+output:
+  html_document:
+    theme: united
+    toc: true
+    toc_float: true
+---
+
+## Introduction
+
+The Provost's recent speech highlighted the importance of AI in higher education and the need for students to develop skills beyond technical competence. This document summarizes the key points from the speech and provides detailed todo lists for faculty to help students upskill in three main areas: AI Fluency, Human-Centric Skills, and Agility, with a focus on Statistics and Data Science.
+
+## Summary of Provost's Speech
+
+The Provost emphasized that AI is redefining entry-level jobs and that graduates need to mature professionally faster. Employers expect graduates to have critical thinking, clear communication, collaboration, ethical judgment, and adaptability skills.
+
+### Key Areas for Upskilling
+
+1. **AI Fluency**: Understanding AI's capabilities and limitations.
+   - **Machine Learning**: Familiarity with libraries like TensorFlow, PyTorch, h2o.ai for predictive modeling.
+   - **AI Tools (GPTs, LLMs)**: Understanding the application of large language models in tasks such as text generation, summarization, and data analysis. Tools like ollama, LMStudio, and Misty for local models, and API access to cloud-based models.
+
+2. **Human-Centric Skills**: Interpersonal and cognitive abilities that AI cannot replace.
+   - Effective communication of complex statistical concepts.
+   - Collaboration in team-based projects involving data science.
+   - Ethical judgment in data privacy and algorithmic bias.
+
+3. **Agility**: The ability to adapt quickly to changing conditions.
+   - Adjusting statistical models based on new data or changing requirements.
+   - Adapting to new tools or methodologies in data science.
+
+## Todo Lists for Faculty
+
+### AI Fluency
+
+- Integrate Machine Learning into coursework using tools like TensorFlow, PyTorch, and h2o.ai.
+- Teach students to use AI tools like GPTs and LLMs through practical applications, such as text analysis or data generation.
+- Encourage the use of CLI tools like Gemini CLI, Qwen CLI, Aider, and OpenCoder CLI for code development.
+
+### Human-Centric Skills
+
+- Incorporate group projects requiring collaboration and communication.
+- Encourage students to work on real-world problems demanding ethical judgment.
+- Provide feedback mechanisms to develop interpersonal skills.
+
+### Agility
+
+- Design coursework requiring adaptation to new information or conditions.
+- Encourage reflection on learning processes and adjustment of approaches.
+- Incorporate scenario-based learning simulating real-world challenges.
+
+## Experiential Learning Activities for Statistics and Data Science
+
+### AI Fluency
+
+- Projects involving Machine Learning for predictive modeling using R and Python.
+- Applications of AI tools like GPTs and LLMs for text analysis or data generation.
+- Using CLI tools for code development and problem-solving.
+
+### Human-Centric Skills
+
+- Community-based projects requiring collaboration and empathy.
+- Role-playing exercises for conflict resolution and negotiation.
+
+### Agility
+
+- Adaptive project-based learning with changing requirements.
+- Simulations of real-world scenarios for quick thinking and problem-solving.
+
+## Conclusion
+
+By focusing on AI Fluency, Human-Centric Skills, and Agility, faculty can help Statistics and Data Science students develop the necessary skills to thrive in an AI-driven world.

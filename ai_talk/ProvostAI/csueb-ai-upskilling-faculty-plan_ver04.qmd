@@ -1,0 +1,194 @@
+---
+title: "Faculty To‑Do Lists to Help Students Upskill with AI (CSU East Bay)"
+author: "Department of Statistics & Data Science — CSU East Bay"
+date: 2025-09-20
+format:
+  pdf:
+    fontsize: 11pt
+    toc: true
+    number-sections: true
+    embed-resources: true
+  html:
+    toc: true
+    number-sections: true
+    embed-resources: true
+execute:
+  echo: false
+---
+
+# Purpose
+
+A concise, faculty‑facing plan—derived from the Provost’s **Back to the Bay 2025** keynote—covering key ideas and concrete actions we can embed in Statistics and Data Science courses to **upskill** students.
+
+> Reference keynote: [*Back to the Bay Keynote Script – AI + Workforce Development*](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf), August 13–14, 2025. Office of Academic Affairs, CSU East Bay.
+
+# Executive Summary of the Provost’s Vision
+
+## What the Provost Means by “Upskilling”
+
+- **Deliberately adding new capabilities and mindsets** that prepare students to **apply knowledge in unfamiliar situations**—not just listing more skills on a résumé.  
+- Goal: Graduates who **learn quickly**, **communicate effectively**, **exercise judgment**, and **work across disciplines** in a world where **the only constant is change**.  
+- Motivation: AI is **redefining “entry‑level”** work; employers expect more **complex, judgment‑based** tasks earlier in careers.  
+
+## Three-Part Framework
+
+1. **AI Fluency** — Understand how AI works, what it can and **cannot** do, and how to apply it **responsibly**.  
+2. **Human‑Centric Skills** — Empathy, ethics, communication, teamwork, leadership, and professionalism that **AI cannot replace**.  
+3. **Agility** — The capacity to **adapt quickly** when conditions change and to course‑correct with confidence.  
+
+# Main Areas the Keynote Highlighted for Higher Education
+
+- **Demographic & trust headwinds** for higher education; we must **prove value** and improve student **readiness** earlier in the curriculum.  
+- **AI adoption in industry** is accelerating; “entry‑level” expectations are moving toward **judgment, communication, and collaboration**.  
+- We must intentionally cultivate: **AI fluency**, **human‑centric skills**, and **agility** across **courses**, **co‑curriculars**, **community projects**, and **research**.  
+
+# Main Areas for the Future Job Market (CSUEB Students)
+
+- Employers seek more than technical competence: **critical thinking**, **clear communication to diverse audiences**, **ethical judgment**, **collaboration with people and digital tools**, **professionalism**, **curiosity**, and **relational intelligence**.  
+- **Experience gap** matters as much as skills: students need **realistic, messy contexts** (people, deadlines, shifting priorities) to practice judgment.  
+
+# Faculty To‑Do Lists by Area
+
+## 1. AI Fluency — What It Means
+
+For students:  
+- Baseline literacy in **model capabilities/limits**, **data provenance**, **prompting & verification**, **privacy & security**, and **responsible use**.  
+- Ability to **choose and justify** when to use (or not use) AI tools.  
+
+For faculty:  
+- Integrate **scaffolded, low‑stakes uses** of AI with explicit **guardrails**, **attribution**, and **evaluation** standards.  
+
+### Faculty To‑Do (Statistics & Data Science)
+
+- **Syllabus & Policy**
+  - Add an **AI use policy**: permitted tools (e.g., ChatGPT Edu, code copilots), **disclosure/attribution**, **verification steps**, and **privacy** expectations.  
+  - Create a **simple decision rubric** (“use AI / do not use AI / use with verification”) for common task types.  
+
+- **In‑Class Micro‑Labs (15–25 min)**
+  - Prompt‑engineering warmups: design and test prompts for **EDA**, **data cleaning**, **simulation setup**, then **compare outputs**.  
+  - **Model limits** demo: adversarial cases (e.g., extrapolation beyond data, spurious correlations) and **error analysis**.  
+
+- **Assignments**
+  - Require **AI‑aided** and **AI‑free** versions of selected tasks; students submit a **tool log** and a **verification note**.  
+  - Add **reproducibility** checkpoints: students must **re‑run code** end‑to‑end; attach a **session info** block.  
+
+- **Assessment**
+  - Include **viva‑style checks** or short **code‑explanations** to validate understanding beyond AI outputs.  
+  - Use **rubrics** that reward **method choice**, **assumption checks**, and **interpretation**, not just final answers.  
+
+## 2. Human‑Centric Skills — What It Means
+
+For students:  
+- Practice **empathy, ethics, teamwork, leadership**, and **clear communication** under constraints and stakeholder diversity.  
+
+For faculty:  
+- Design tasks where **the human lens is essential**: ambiguity, trade‑offs, equity, and audience‑aware storytelling.  
+
+### Faculty To‑Do (Statistics & Data Science)
+
+- **Communication Across Audiences**
+  - Require a **two‑pass deliverable**: (a) technical memo; (b) **one‑page brief** for a **non‑technical** stakeholder.  
+  - Add **visual narrative** checks: students must justify figure choices (markings, scales, uncertainty displays).  
+
+- **Ethics & Equity**
+  - Short ethics prompts tied to content (e.g., **bias in training data**, disparate impact, data privacy). Students propose **mitigations**.  
+  - Include a **model risk statement** with each project: assumptions, failure modes, **potential harm**, and **monitoring**.  
+
+- **Teamwork & Professionalism**
+  - Structured team roles: **Lead**, **Reviewer**, **Communicator**, **Scribe**—rotate mid‑project.  
+  - Use **issue trackers**/Kanban for deadlines; grade **process artifacts** (meeting notes, task boards).  
+
+- **Mentoring Moments**
+  - Implement **peer code‑reviews** and **peer feedback** rounds with a short **reflective memo** on received feedback.  
+
+## 3. Agility — What It Means
+
+For students:  
+- Comfort with **changing requirements**, **new data**, and **iteration**; ability to **pivot** while preserving rigor.  
+
+For faculty:  
+- Create **time‑boxed sprints**, **mid‑stream requirement changes**, and **A/B comparisons** of solution paths.  
+
+### Faculty To‑Do (Statistics & Data Science)
+
+- **Agility Sprints**
+  - Run 1–2 week sprints where the **data generating process** shifts mid‑sprint.  
+  - Include a **retro**: what changed, how the team adapted, what to automate next time.  
+
+- **Model‑Change Drills**
+  - Provide a baseline model; then supply **new features** or **shifted distributions** and assess **update speed** and **validation**.  
+
+- **Tooling**
+  - Encourage **notebooks + scripts + Makefiles** (or `targets` in R) for **re‑runnable pipelines** under change.  
+
+# Experiential Learning Activities (by Area)
+
+> Design for real‑world context, stakeholders, deadlines, and evolving constraints. Where AI assists, require **verification and reflection**.
+
+## AI Fluency — Activity Ideas
+
+- **AI‑Aided EDA & Verification Lab**  
+  Students use AI to propose EDA steps on a noisy dataset; they must **verify** at least three AI claims with code and explain any discrepancies.  
+
+- **Baseline vs. AI‑Assisted Forecasting**  
+  Compare a classical model and an AI‑assisted approach on a time series. Evaluate with  
+  $$RMSE = \sqrt{\frac1n \sum_i (\hat y_i - y_i)^2}$$  
+  and report **pros/cons**.  
+
+- **Prompt‑to‑Pipeline**  
+  Start from an English prompt; produce a minimal, reproducible R pipeline (e.g., `targets`) with **unit tests** for key functions.  
+
+## Human‑Centric Skills — Activity Ideas
+
+- **Stakeholder Brief + Technical Appendix**  
+  Teams analyze a dataset with equity implications (e.g., admissions, lending). Deliver:  
+  (1) a **one‑page policy brief**; (2) a **technical appendix** with sensitivity analysis and uncertainty intervals  
+  $$[\hat{\theta} \pm z_{0.975}\,SE(\hat{\theta})]$$.  
+
+- **Ethics Case Clinic**  
+  Short cases where AI output conflicts with community values. Students propose a **decision rule**, e.g., cost‑sensitive loss  
+  $$L = c_1\,1{\{FP\}} + c_2\,1{\{FN\}}$$  
+  and justify $c_1, c_2$ for a chosen stakeholder.  
+
+- **Peer Review & Relational Intelligence**  
+  Structured code/document reviews with **actionable feedback**; students track how revisions improved clarity and fairness.  
+
+## Agility — Activity Ideas
+
+- **Concept Drift Response Drill**  
+  Provide train/test from $P_0$; then reveal test‑2 from $P_1$ with drift. Students must: detect drift, re‑tune, and justify a deployment gate (e.g., **stop** if AUC drops $> 5\%$).  
+
+- **Live Data Hackday**  
+  Pull an open API; mid‑day, change the KPI. Students pivot, update pipeline, and present a **retro** on trade‑offs.  
+
+- **Rapid Experimentation Plan**  
+  Students design an A/B test with power calculation  
+  $$n = 2\left(\frac{z_{1-\alpha/2} + z_{1-\beta}}{\delta/\sigma}\right)^2,$$  
+  and discuss operational risks (ethics, data quality, monitoring).  
+
+# Alignment with CSUEB Programs
+
+- **Statistics B.S.** — Embed AI‑assisted EDA, ethics mini‑prompts, and agility sprints in regression, probability, and capstone.  
+- **Statistics M.S.** — Add concept‑drift labs, model‑risk statements, and stakeholder briefs in applied projects.  
+- **Data Science B.S.** — Use prompt‑to‑pipeline, reproducible MLOps practices, and live API hackdays across the curriculum.  
+
+# Implementation Timeline (One Semester)
+
+- **Weeks 1–2**: Publish AI policy & rubrics; run AI‑fluency micro‑labs.  
+- **Weeks 3–7**: Launch first team project with **stakeholder brief** + ethics prompts; add peer reviews.  
+- **Weeks 8–10**: Agility sprint with mid‑course requirement change; model‑change drill.  
+- **Weeks 11–14**: Capstone‑style project; include **experience‑gap** elements (deadlines, role rotation, external feedback).  
+- **Finals**: Oral validations; reflective memo on **AI use**, **verification**, and **professional growth**.  
+
+# References
+
+- Provost Muscat: [*Back to the Bay Keynote Script – AI + Workforce Development (Aug 13–14, 2025)*](https://www.csueastbay.edu/oaa/files/docs/provost-muscat-b2b-keynote.pdf)  
+- CSU East Bay — [**Statistics B.S.**](https://catalog.csueastbay.edu/preview_program.php?catoid=39&poid=18177&hl=%22Statistics%22&returnto=search)  
+- CSU East Bay — [**Statistics M.S.**](https://catalog.csueastbay.edu/preview_program.php?catoid=39&poid=18257&hl=%22Statistics%22&returnto=search)  
+- CSU East Bay — [**Data Science B.S.**](https://catalog.csueastbay.edu/preview_program.php?catoid=39&poid=18358&hl=%22Data+Science%22&returnto=search)  
+
+# Citations from Chat
+
+- Provost frames **“upskilling”** as deliberately adding new capabilities and mindsets so students can apply knowledge in unfamiliar situations, emphasizing adaptability, judgment, and communication.  
+- His three-part framework: **AI Fluency**, **Human-Centric Skills**, and **Agility**, with examples across disciplines and emphasis on responsible AI use.  
+- Job market context: AI is redefining **entry-level** roles; employers want critical thinking, communication, collaboration with people and digital tools, ethical judgment, professionalism, curiosity, and relational intelligence. Students must close the **experience gap**, not just the skills gap.  
