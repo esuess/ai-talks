@@ -1,7 +1,8 @@
 Talk28
 
-
 Read the file ai_talks_titles.txt Give me a summary of an R Quarto presentation for the 28 titles.  These talks do not have dates yet.  Make similar .qmd file for these titles as were made for the first 2Please0 titles.  Store the files in the talk subdirectories.
+
+I do not want to scare an of my coworkers, please remove "—not abandon it." or change this to something encouraging.
 
 
 Talk11 - Talk22 pi
