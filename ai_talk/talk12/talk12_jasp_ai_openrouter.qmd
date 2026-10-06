@@ -1,7 +1,7 @@
 ---
 title: "Using AI in JASP for Psychology"
 author: "Eric A. Suess"
-subtitle: "Connecting JASP’s AI Agent through OpenRouter<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+subtitle: "Connecting JASP’s AI Agent through OpenRouter<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and Pi Agent.</small>"
 format:
   revealjs:
     theme: simple

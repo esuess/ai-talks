@@ -1,7 +1,7 @@
 ---
 title: "Who to Learn Practical AI Skills From Online"
 author: "Eric A. Suess"
-subtitle: "YouTube, newsletters, courses, documentation, and Facebook communities<br>Date to be announced · 12:15–1:15 PM · Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+subtitle: "YouTube, newsletters, courses, documentation, and Facebook communities<br>Date to be announced · 12:15–1:15 PM · Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and Pi Agent.</small>"
 format:
   revealjs:
     theme: simple

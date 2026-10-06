@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Prof. Eric A. Suess">
-<meta name="dcterms.date" content="2026-09-26">
+<meta name="dcterms.date" content="2026-10-05">
 
 <title>AI for Statistics and Data Science</title>
 <style>
@@ -2403,7 +2403,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 26, 2026</p>
+      <p class="date">October 5, 2026</p>
     </div>
   </div>
   
@@ -2492,14 +2492,19 @@ window.Quarto = {
 </section>
 <section id="codex" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="codex"><span class="header-section-number">4</span> Codex</h2>
+<p>For CLI sign-in with the university ChatGPT account:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Requested spelling (not a documented configuration key):</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># codex --config perferred_auth_method=&#39;chatgpt&#39;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--config</span> forced_login_method=<span class="st">&#39;&quot;chatgpt&quot;&#39;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Use <code>forced_login_method</code>, as documented in the <a href="https://learn.chatgpt.com/docs/config-file/config-reference">configuration reference</a>, and complete the browser sign-in with the university account.</p>
 <p>Codex is OpenAI’s agentic software-development environment. Current official documentation exposes it through the ChatGPT desktop app, a terminal CLI, an editor extension, and cloud workflows. Unlike ordinary code completion, Codex can inspect a project, edit files, run installed tools, and report verification results. The <a href="https://learn.chatgpt.com/docs/codex/cli">Codex CLI guide</a> emphasizes local-repository work, user-selected permissions, and repeatable scripting/CI workflows.</p>
 <p>For local work, OpenAI documents two authentication paths: <strong>Sign in with ChatGPT</strong> for subscription access or use an <strong>API key</strong> for usage-based access. <code>codex login</code> starts the browser flow for ChatGPT sign-in. A university-managed ChatGPT account can work when the institution has provisioned the user, assigned an eligible seat/role, enabled the relevant Codex surface, and permitted the required login flow. Plan eligibility, administrator enablement, quotas, device-code access, and SSO requirements are institution-specific. Codex cloud requires ChatGPT sign-in. See <a href="https://learn.chatgpt.com/docs/auth">OpenAI authentication</a>.</p>
 <p>Safe first use:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install only after checking the current official instructions:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://chatgpt.com/codex/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/a-version-controlled-project</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--sandbox</span> read-only <span class="at">--ask-for-approval</span> on-request</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install only after checking the current official instructions:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://chatgpt.com/codex/install.sh <span class="kw">|</span> <span class="fu">sh</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/a-version-controlled-project</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--sandbox</span> read-only <span class="at">--ask-for-approval</span> on-request</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The install command and read-only permission form are documented in the <a href="https://learn.chatgpt.com/docs/codex/cli">CLI quickstart</a> and <a href="https://learn.chatgpt.com/docs/agent-approvals-security">agent approvals and security guide</a>. Start by asking Codex to explain the repository or propose a plan. Before allowing edits, create a Git checkpoint, restrict the working directory, inspect commands, review the diff, and run appropriate tests. Never embed credentials in a prompt or repository; use university-approved authentication and credential storage.</p>
 </section>
 <section id="a-paired-statistics-example-in-r-and-python" class="level2" data-number="5">
@@ -2544,65 +2549,65 @@ window.Quarto = {
 <section id="r-with-tidyverse-conventions" class="level3" data-number="5.1">
 <h3 data-number="5.1" class="anchored" data-anchor-id="r-with-tidyverse-conventions"><span class="header-section-number">5.1</span> R with Tidyverse conventions</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">student =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">study_hours =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">quiz_score =</span> <span class="fu">c</span>(<span class="dv">68</span>, <span class="dv">72</span>, <span class="dv">78</span>, <span class="dv">83</span>, <span class="dv">91</span>)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>summary_r <span class="ot">&lt;-</span> students <span class="sc">|&gt;</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_study_hours =</span> <span class="fu">mean</span>(study_hours),</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_study_hours =</span> <span class="fu">sd</span>(study_hours),</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_quiz_score =</span> <span class="fu">mean</span>(quiz_score),</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_quiz_score =</span> <span class="fu">sd</span>(quiz_score),</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">correlation =</span> <span class="fu">cor</span>(study_hours, quiz_score)</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>summary_r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>students <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">student =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">study_hours =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>),</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">quiz_score =</span> <span class="fu">c</span>(<span class="dv">68</span>, <span class="dv">72</span>, <span class="dv">78</span>, <span class="dv">83</span>, <span class="dv">91</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>summary_r <span class="ot">&lt;-</span> students <span class="sc">|&gt;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_study_hours =</span> <span class="fu">mean</span>(study_hours),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_study_hours =</span> <span class="fu">sd</span>(study_hours),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_quiz_score =</span> <span class="fu">mean</span>(quiz_score),</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_quiz_score =</span> <span class="fu">sd</span>(quiz_score),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">correlation =</span> <span class="fu">cor</span>(study_hours, quiz_score)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>summary_r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="equivalent-python-using-the-standard-library" class="level3" data-number="5.2">
 <h3 data-number="5.2" class="anchored" data-anchor-id="equivalent-python-using-the-standard-library"><span class="header-section-number">5.2</span> Equivalent Python using the standard library</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statistics <span class="im">import</span> mean, stdev</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>students <span class="op">=</span> [</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&quot;student&quot;</span>: <span class="dv">1</span>, <span class="st">&quot;study_hours&quot;</span>: <span class="dv">2</span>, <span class="st">&quot;quiz_score&quot;</span>: <span class="dv">68</span>},</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&quot;student&quot;</span>: <span class="dv">2</span>, <span class="st">&quot;study_hours&quot;</span>: <span class="dv">3</span>, <span class="st">&quot;quiz_score&quot;</span>: <span class="dv">72</span>},</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&quot;student&quot;</span>: <span class="dv">3</span>, <span class="st">&quot;study_hours&quot;</span>: <span class="dv">4</span>, <span class="st">&quot;quiz_score&quot;</span>: <span class="dv">78</span>},</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&quot;student&quot;</span>: <span class="dv">4</span>, <span class="st">&quot;study_hours&quot;</span>: <span class="dv">5</span>, <span class="st">&quot;quiz_score&quot;</span>: <span class="dv">83</span>},</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&quot;student&quot;</span>: <span class="dv">5</span>, <span class="st">&quot;study_hours&quot;</span>: <span class="dv">6</span>, <span class="st">&quot;quiz_score&quot;</span>: <span class="dv">91</span>},</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>hours <span class="op">=</span> [row[<span class="st">&quot;study_hours&quot;</span>] <span class="cf">for</span> row <span class="kw">in</span> students]</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> [row[<span class="st">&quot;quiz_score&quot;</span>] <span class="cf">for</span> row <span class="kw">in</span> students]</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>mean_hours <span class="op">=</span> mean(hours)</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>mean_score <span class="op">=</span> mean(scores)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>cross_products <span class="op">=</span> <span class="bu">sum</span>(</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    (x <span class="op">-</span> mean_hours) <span class="op">*</span> (y <span class="op">-</span> mean_score)</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x, y <span class="kw">in</span> <span class="bu">zip</span>(hours, scores)</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>correlation <span class="op">=</span> cross_products <span class="op">/</span> sqrt(</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">sum</span>((x <span class="op">-</span> mean_hours) <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> hours)</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span> <span class="bu">sum</span>((y <span class="op">-</span> mean_score) <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> y <span class="kw">in</span> scores)</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>summary_python <span class="op">=</span> {</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;n&quot;</span>: <span class="bu">len</span>(students),</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;mean_study_hours&quot;</span>: mean_hours,</span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sd_study_hours&quot;</span>: stdev(hours),</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;mean_quiz_score&quot;</span>: mean_score,</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sd_quiz_score&quot;</span>: stdev(scores),</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;correlation&quot;</span>: correlation,</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary_python)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> math <span class="im">import</span> sqrt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statistics <span class="im">import</span> mean, stdev</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>students <span class="op">=</span> [</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&quot;student&quot;</span>: <span class="dv">1</span>, <span class="st">&quot;study_hours&quot;</span>: <span class="dv">2</span>, <span class="st">&quot;quiz_score&quot;</span>: <span class="dv">68</span>},</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&quot;student&quot;</span>: <span class="dv">2</span>, <span class="st">&quot;study_hours&quot;</span>: <span class="dv">3</span>, <span class="st">&quot;quiz_score&quot;</span>: <span class="dv">72</span>},</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&quot;student&quot;</span>: <span class="dv">3</span>, <span class="st">&quot;study_hours&quot;</span>: <span class="dv">4</span>, <span class="st">&quot;quiz_score&quot;</span>: <span class="dv">78</span>},</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&quot;student&quot;</span>: <span class="dv">4</span>, <span class="st">&quot;study_hours&quot;</span>: <span class="dv">5</span>, <span class="st">&quot;quiz_score&quot;</span>: <span class="dv">83</span>},</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    {<span class="st">&quot;student&quot;</span>: <span class="dv">5</span>, <span class="st">&quot;study_hours&quot;</span>: <span class="dv">6</span>, <span class="st">&quot;quiz_score&quot;</span>: <span class="dv">91</span>},</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>hours <span class="op">=</span> [row[<span class="st">&quot;study_hours&quot;</span>] <span class="cf">for</span> row <span class="kw">in</span> students]</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>scores <span class="op">=</span> [row[<span class="st">&quot;quiz_score&quot;</span>] <span class="cf">for</span> row <span class="kw">in</span> students]</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>mean_hours <span class="op">=</span> mean(hours)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>mean_score <span class="op">=</span> mean(scores)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>cross_products <span class="op">=</span> <span class="bu">sum</span>(</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    (x <span class="op">-</span> mean_hours) <span class="op">*</span> (y <span class="op">-</span> mean_score)</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x, y <span class="kw">in</span> <span class="bu">zip</span>(hours, scores)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>correlation <span class="op">=</span> cross_products <span class="op">/</span> sqrt(</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="bu">sum</span>((x <span class="op">-</span> mean_hours) <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> hours)</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span> <span class="bu">sum</span>((y <span class="op">-</span> mean_score) <span class="op">**</span> <span class="dv">2</span> <span class="cf">for</span> y <span class="kw">in</span> scores)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>summary_python <span class="op">=</span> {</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;n&quot;</span>: <span class="bu">len</span>(students),</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;mean_study_hours&quot;</span>: mean_hours,</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sd_study_hours&quot;</span>: stdev(hours),</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;mean_quiz_score&quot;</span>: mean_score,</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;sd_quiz_score&quot;</span>: stdev(scores),</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;correlation&quot;</span>: correlation,</span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary_python)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Both programs produce, to three decimals:</p>
 <table class="caption-top table">
@@ -2725,10 +2730,10 @@ window.Quarto = {
 <h2 data-number="10" class="anchored" data-anchor-id="herdr-for-running-agents"><span class="header-section-number">10</span> Herdr for running agents</h2>
 <p>The verified spelling is <strong>Herdr</strong>. Its documentation calls it a terminal workspace manager for AI coding agents: a persistent background server owns real terminal panes, while the UI groups panes into project workspaces and reports recognized agent states such as working, blocked, done, or idle. It can run Codex, OpenCode, Pi, Hermes Agent, and other terminal processes; it does not replace their models, authentication, permissions, or sandboxes. See <a href="https://herdr.dev/docs/agents/">Herdr’s agent guide</a> and <a href="https://herdr.dev/docs/quick-start/">quick start</a>.</p>
 <p>A basic workflow after completing the official installation is:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/a-project</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">herdr</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># In a Herdr pane, start one configured agent, for example:</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--sandbox</span> read-only <span class="at">--ask-for-approval</span> on-request</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/a-project</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">herdr</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># In a Herdr pane, start one configured agent, for example:</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">codex</span> <span class="at">--sandbox</span> read-only <span class="at">--ask-for-approval</span> on-request</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Give each project its own workspace, split panes only when parallel work is genuinely independent, watch the sidebar for agents requiring decisions, and inspect each agent’s output/diff yourself. Detaching leaves the server and agents running; <code>herdr</code> reattaches, and <code>herdr server stop</code> ends the session. Detection may be approximate when an agent lacks a direct integration, when a wrapper hides the foreground process, or when nested terminal multiplexers are used. Persistent panes also mean processes and costs may continue while the UI is detached.</p>
 </section>
 <section id="omarchy-an-agent-oriented-linux-environment" class="level2" data-number="11">

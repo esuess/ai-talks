@@ -1,7 +1,7 @@
 ---
 title: "What Is an Agent Skill?"
 author: "Eric A. Suess"
-subtitle: "Procedural knowledge in Hermes Agent and pi<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+subtitle: "Procedural knowledge in Hermes Agent and pi<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and Pi Agent.</small>"
 format:
   revealjs:
     theme: simple

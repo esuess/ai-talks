@@ -3,7 +3,7 @@ title: "Positron, VS Code, and Other Coding IDEs"
 author: "Eric A. Suess"
 date: "November 19, 2026"
 date-format: "MMMM D, YYYY"
-subtitle: "12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+subtitle: "12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and Pi Agent.</small>"
 format:
   revealjs:
     theme: simple

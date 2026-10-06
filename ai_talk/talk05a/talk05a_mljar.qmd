@@ -3,7 +3,7 @@ title: "MLJAR Studio and AutoML"
 author: "Eric A. Suess"
 date: "December 3, 2026"
 date-format: "MMMM D, YYYY"
-subtitle: "From assisted notebooks to responsible automated modeling<br>12:15–1:15 PM · Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and pi.</small>"
+subtitle: "From assisted notebooks to responsible automated modeling<br>12:15–1:15 PM · Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex and Pi Agent.</small>"
 format:
   revealjs:
     theme: simple
