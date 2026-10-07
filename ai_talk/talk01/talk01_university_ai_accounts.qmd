@@ -1,7 +1,7 @@
 ---
 title: "Using Your University OpenAI ChatGPT Account and Microsoft Copilot with Office 365"
 author: "Eric A. Suess"
-date: "October 8, 2026"
+date: "October 15, 2026"
 date-format: "MMMM D, YYYY"
 subtitle: "12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex.</small>"
 format:
@@ -564,7 +564,7 @@ What would you like to try with your university AI accounts?
 
 ::: {.callout-note}
 ### Join the Discussion
-**Date:** October 8, 2026  
+**Date:** October 15, 2026  
 **Time:** 12:15 – 1:15 PM  
 **Zoom:** <https://csueb.zoom.us/j/88674490934>
 :::
