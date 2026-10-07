@@ -7,6 +7,8 @@ project:
     - talk00/talk00_provost_keynote_summary_checklist.html
     - talk00/talk00_ai_infographics.pdf
     - talk01/talk01_university_ai_accounts.html
+    - talk01/lln_running_mean.f95
+    - talk01/Makevars.f95
     - talk02/talk02_desktop_apps_local_files.html
     - talk03/talk03_university_chatgpt_codex_posit_assistant.html
     - talk04/talk04_positron_vscode.html

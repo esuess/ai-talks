@@ -29,11 +29,13 @@ A summary of Provost Muscat’s Back to the Bay keynote and a practical checklis
 
 ### University ChatGPT and Microsoft Copilot Accounts
 
-**October 8, 2026**
+**October 15, 2026**
 
 Learn how to use university OpenAI ChatGPT and Microsoft Copilot accounts with Office 365.
 
 [View Talk 01](talk01/talk01_university_ai_accounts.html){.talk-link}
+
+[Download the Fortran source](talk01/lln_running_mean.f95){.talk-secondary} · [Download Makevars](talk01/Makevars.f95){.talk-secondary}
 :::
 
 ::: {.talk-card}
