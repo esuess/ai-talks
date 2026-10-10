@@ -288,7 +288,7 @@ Guide coding agents toward explicit assumptions, simpler solutions, surgical cha
 ::: {.talk-card .talk-placeholder}
 ## Talk 20a
 
-### Karpathy Skill in pi Autoresearch
+### Karpathy Skill in pi autoresearch
 
 **Date to be announced**
 
