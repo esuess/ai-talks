@@ -19,6 +19,7 @@
 18. statsforecast, neuralforecat, Nixla, TimesFM
 19. Jev, laya
 20. Karpathy Skill in pi
+20a. Karpathy Skill in pi autoresearch
 21. Unsloth Studio model retraining
 22. ollama, ollaya, LMStudio
 23. How to ask ChatGPT to provide instructions for Committee Meeting using Robert's Rules.
@@ -31,6 +32,7 @@
   c. https://rfortherestofus.com/2026/02/introducing-the-pdfcheck-r-package-for-checking-the-accessibility-of-pdfs
   d. https://github.com/rfortherestofus/pdfcheck/
 28. Statistics in the Age of AI
+29. Design a new undergraduate Actuarial Science Option in the CSU East Bay Statistics undegraduate BS Statistics program.
 
 Dates
 

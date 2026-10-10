@@ -1,3 +1,7 @@
+Talk29
+
+Read the file ai_talks_titles.txt Give me a summary of an R Quarto presentation for the 29 titles.  These talks do not have dates yet.  Make similar .qmd file for talk 29 as those that were made for the first 20 titles.  Store the files got this talk in subdirectory talk29.  Do some research to find the main websites for students related to Actuarial Science and to the main Actuaria professional organizations in the US.  Include the information about how the actuarial tests work.  Also, to design the program use the courses in the CSU Eat Bay undergraduate Statistics program and propose one or two courses to add that would help prepare for the exams. Here is the link to the website for the Statistics, BS Program.
+
 Talk28
 
 Read the file ai_talks_titles.txt Give me a summary of an R Quarto presentation for the 28 titles.  These talks do not have dates yet.  Make similar .qmd file for these titles as were made for the first 2Please0 titles.  Store the files in the talk subdirectories.
@@ -76,5 +80,9 @@ Update the R Quarto Website including the new files in talk28.  Make place holde
 
 Commit and push to Github
 
-Please committee the changes in the talks and push them to Github.
+Please commit the changes in the talks and push them to Github.
 
+   
+Pi subagents
+   
+Update each talk in the ./ai_talk folder to update the subauthor in each  using subagents.

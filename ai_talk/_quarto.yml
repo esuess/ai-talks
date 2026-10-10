@@ -34,6 +34,11 @@ project:
     - talk28/talk28_statistics_in_the_age_of_ai.html
     - talk28/talk28_statistics_in_the_age_of_ai.qmd
     - talk28/talk28.css
+    - talk29/talk29_actuarial_science_option.html
+    - talk29/talk29_actuarial_science_option.qmd
+    - talk29/talk29.css
+    - talk29/catalog/Program_ Statistics, B.S. - CSU East Bay.pdf
+    - talk29/catalog/Statistics, B.S. - CSU East Bay - Modern Campus Catalog™.pdf
 
 website:
   title: "AI and Data Science Talks"

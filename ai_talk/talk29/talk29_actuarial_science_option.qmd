@@ -1,0 +1,381 @@
+---
+title: "Designing an Undergraduate Actuarial Science Option"
+author: "Eric A. Suess"
+subtitle: "A proposal within CSU East Bay’s B.S. in Statistics<br>Date to be announced · 12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex.</small>"
+format:
+  revealjs:
+    theme: simple
+    css: talk29.css
+    slide-number: true
+    transition: fade
+    incremental: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Show the code"
+    width: 1280
+    height: 800
+execute:
+  echo: true
+  warning: false
+  message: false
+editor: visual
+---
+
+## Today’s goals
+
+By the end of this session, we should be able to:
+
+- Explain what actuaries do and how U.S. credentials work.
+- Identify authoritative websites for students.
+- Map the current CSU East Bay Statistics B.S. to early actuarial exams.
+- Identify the most important curricular gaps.
+- Evaluate a two-course Actuarial Science Option proposal.
+- Distinguish degree preparation from professional exam credit.
+
+## Why actuarial science fits Statistics
+
+Actuaries use data and mathematical models to measure uncertain financial outcomes.
+
+- Probability describes the frequency and size of losses.
+- Statistical models support pricing, forecasting, and risk classification.
+- Financial mathematics connects future cash flows to present decisions.
+- Computing turns models into repeatable business analyses.
+- Communication connects technical results to policy and management.
+
+CSU East Bay already supplies much of this foundation in its B.S. in Statistics.
+
+## What actuaries do
+
+Actuaries work wherever uncertain future events have financial consequences:
+
+- Property and casualty insurance
+- Life insurance and annuities
+- Health insurance and employee benefits
+- Retirement plans and pensions
+- Enterprise risk management
+- Investments, analytics, consulting, and government
+
+The occupation combines mathematics, statistics, computing, business knowledge, and professional judgment.
+
+## The U.S. professional landscape
+
+::: {.compact}
+| Organization | Main role |
+|---|---|
+| [Society of Actuaries (SOA)](https://www.soa.org/) | Credentials and education for life, health, retirement, investments, and enterprise risk |
+| [Casualty Actuarial Society (CAS)](https://www.casact.org/) | Credentials and education for property and casualty risk |
+| [American Academy of Actuaries](https://actuary.org/) | U.S. public policy, qualification standards, and professionalism |
+| [ASPPA College of Pension Actuaries](https://www.asppa-net.org/) | Professional home for pension actuaries |
+| [Conference of Consulting Actuaries](https://www.ccactuaries.org/) | Professional education and community for consulting actuaries |
+:::
+
+The five organizations jointly support the U.S. Code of Professional Conduct.
+
+## Best starting websites for students
+
+::: {.compact}
+- [Be An Actuary](https://www.beanactuary.org/) — careers, majors, exams, internships, and scholarships.
+- [Society of Actuaries (SOA)](https://www.soa.org/) — the SOA pathway and candidate resources.
+- [CAS Student Central](https://www.casstudentcentral.org/) — free membership, study resources, webinars, internships, and scholarships.
+- [The Actuarial Foundation](https://actuarialfoundation.org/) — education, scholarships, and outreach.
+- [SOA exam schedule](https://www.soa.org/education/exam-schedule/) — current test windows and deadlines.
+- [SOA VEE directory](https://www.soa.org/education/exam-req/instructions-for-vee-directory/) — verify approved courses and effective dates.
+:::
+
+Always use the current syllabus and official schedule when planning an exam.
+
+## Two additional links from my university page
+
+- [International Actuarial Association](https://actuaries.org/) — a global perspective on the profession; this talk focuses on U.S. credentials.
+- [The Infinite Actuary](https://www.theinfiniteactuary.com/) — third-party exam-preparation materials; check current availability and costs, and use official SOA/CAS syllabi as the authority.
+
+My [Actuarial Science links list](https://cox.csueastbay.edu/~esuess/links/) also includes Be An Actuary and SOA, already covered here. Its *Actuarial Program and Career Guide* is not used for current exam rules because some of its information is dated.
+
+## Two credential pathways
+
+| SOA pathway | CAS pathway |
+|---|---|
+| Life, health, retirement, investments, enterprise risk | Property and casualty insurance |
+| Associate of the Society of Actuaries (**ASA**) | Associate of the Casualty Actuarial Society (**ACAS**) |
+| Fellow of the Society of Actuaries (**FSA**) | Fellow of the Casualty Actuarial Society (**FCAS**) |
+
+Students do not need to choose immediately. Probability and financial mathematics are useful foundations for both pathways.
+
+## How the exam process works
+
+1. Create an account with the sponsoring organization.
+2. Read the current syllabus, rules, calculator policy, dates, and fees.
+3. Register for a specific testing window before its deadline.
+4. Schedule a computer-based testing appointment when required.
+5. Prepare beyond the related college course using official sample material and timed practice.
+6. Sit for the exam; unsuccessful attempts may be retaken in a later window.
+7. Accumulate exams, educational validations, modules, and professionalism requirements toward a credential.
+
+Exam requirements and fees change. Verify them before each registration.
+
+## The usual first exams
+
+::: {.compact}
+| Exam | Current format | Main content | Strongest CSUEB preparation |
+|---|---|---|---|
+| **Exam P** | 3 hours; 30 multiple-choice questions; CBT | Probability, random variables, distributions, and risk applications | Calculus plus **STAT 320** and extensive exam practice |
+| **Exam FM** | 2.5 hours; 30 multiple-choice questions; CBT | Interest theory, annuities, loans, bonds, duration, and immunization | Calculus plus the proposed financial mathematics course |
+:::
+
+For current details, use the official [Exam P](https://www.soa.org/education/exam-req/edu-exam-p-detail.aspx) and [Exam FM](https://www.soa.org/education/exam-req/edu-exam-fm-detail.aspx) pages.
+
+::: {.notes}
+P and FM are common entry points, but the organizations allow flexibility. A university course can cover concepts without reproducing the pace and breadth of an exam-preparation program.
+:::
+
+## What happens after P and FM?
+
+The current **ASA** pathway includes:
+
+- Exams P, FM, FAM, SRM, PA, and either ALTAM or ASTAM
+- VEE in Economics, Accounting and Finance, and Mathematical Statistics
+- Pre-Actuarial Foundations and Actuarial Science Foundations
+- Advanced Topics in Predictive Analytics and the FAP e-learning course
+- The Associate Professionalism Course
+
+[Official ASA requirements](https://www.soa.org/education/exam-req/edu-asa-req)
+
+## The CAS associate pathway
+
+The current **ACAS** pathway includes:
+
+- Credit for Exams 1 and 2 through accepted exam options
+- MAS-I, MAS-II, Exams 5 and 6
+- Three Data and Insurance Series Courses
+- VEE in Economics and Accounting and Finance
+- Property and Casualty Predictive Analytics (**PCPA**): an exam and a project
+- The CAS Course on Professionalism
+
+[CAS exam registration and requirements](https://www.casact.org/exams-admissions/exam-registration)
+
+::: {.notes}
+CAS requirements changed for candidates seeking ACAS beginning in 2026. Students must check the current CAS Syllabus of Basic Education and waiver rules rather than relying on an older pathway chart.
+:::
+
+## VEE is not another actuarial exam
+
+**Validation by Educational Experience (VEE)** gives credit for approved academic coursework in specified subjects.
+
+- Approval applies to a particular course, institution, and date range.
+- A similarly titled course is not automatically approved.
+- Candidates must meet the required grade and application rules.
+- SOA and CAS requirements overlap, but they are not identical.
+
+Program design should identify likely VEE courses, then confirm them in the official directory and seek approval where needed.
+
+## What employers usually want
+
+An entry-level candidate is stronger with a combination of:
+
+- A quantitative bachelor’s degree
+- Progress on one or more preliminary exams
+- Probability, statistics, finance, economics, and accounting
+- R, spreadsheets, databases, and clear reproducible analysis
+- Writing, presentation, and teamwork
+- An internship or other evidence of applied work
+
+No single major is required. Passing exams does not replace communication or workplace experience.
+
+## Current CSU East Bay foundation
+
+The **2026–27 Statistics B.S. catalog** specifies a 49–50-unit major within a 120-unit degree:
+
+- **Introductory core (10–11 units):** MATH 130, plus **two** of CS 101, MATH 131, MATH 215, STAT 206, or STAT 215. An actuarial student could choose MATH 131 and CS 101; the catalog does not require that pairing.
+- **Advanced core (24 units):** STAT 330, STAT 331, and STAT 432; **one** of STAT 320 or STAT 321; and **four** courses from the catalog's specified advanced-elective list.
+- **Emphasis (15 units):** required for students **not** completing the Data Science concentration; an approved Statistics, Mathematics, Computer Science, or coherent outside-area plan.
+- **GE/graduation requirements (52 units)** and approximately **18–19 free-elective units**, subject to double-counting and advising.
+
+[2026–27 catalog excerpt](catalog/Program_%20Statistics,%20B.S.%20-%20CSU%20East%20Bay.pdf) · [2025–26 catalog excerpt](catalog/Statistics,%20B.S.%20-%20CSU%20East%20Bay%20-%20Modern%20Campus%20Catalog%E2%84%A2.pdf) · [2026–27 roadmap](https://catalog.csueastbay.edu/mime/media/view/43/41242/26-27%20STAT%20BS%20Degree%20Roadmap.xlsx%20-%20GE.pdf)
+
+## Curriculum-to-exam map
+
+::: {.smaller}
+| Catalog course or choice | Actuarial contribution | Remaining need |
+|---|---|---|
+| MATH 130; choose MATH 131 among introductory options | Calculus foundation for P and FM | Check exam syllabi and further mathematics needs |
+| STAT 320 (choose instead of STAT 321) | Analytic probability foundation for Exam P | Exam-specific coverage and timed practice |
+| STAT 330 | Mathematical statistics; potential VEE preparation | Verify coverage and official course approval |
+| STAT 331 and STAT 432 | Modeling and inference | Connect models to insurance decisions |
+| CS 101 (introductory choice); STAT 450 or STAT 312 (advanced choices) | Programming and data workflow | Add R/SQL/spreadsheet practice where needed |
+| Approved emphasis and free electives | Potential economics, accounting, or finance coursework | Confirm area approval and VEE eligibility |
+:::
+
+**STAT 320 is an actuarial recommendation, not a catalog requirement.** Other current advanced choices include STAT 452 (Statistical Learning), STAT 475 (Stochastic Processes), and STAT 481 (Bayesian Statistics); check their syllabi before claiming specific exam coverage.
+
+## The principal gaps
+
+The present Statistics B.S. does not explicitly require:
+
+1. A dedicated course in interest theory and financial mathematics.
+2. An integrated course in actuarial loss, survival, and contingency models. Existing STAT 475 may provide related background; its title alone does not establish actuarial coverage.
+3. A coordinated VEE plan in economics and accounting/finance.
+4. Structured exam advising, practice, internships, and an actuarial student community.
+
+Two proposed courses could address the first two gaps **only after curricular approval**; the others require advising and partnerships.
+
+## New course 1: Financial Mathematics for Actuarial Science
+
+**Proposed 3-unit upper-division course**
+
+- Measurement of interest and equations of value
+- Annuities and perpetuities
+- Loans and amortization
+- Bonds and rates of return
+- Duration, convexity, and immunization
+- Cash-flow matching and practical spreadsheet/R calculations
+
+**Purpose:** align closely with the conceptual foundation of Exam FM while remaining a rigorous university course.
+
+**Suggested prerequisite:** the calculus sequence.
+
+## New course 2: Actuarial Risk Models
+
+**Proposed 3-unit upper-division course**
+
+- Frequency and severity models
+- Aggregate loss distributions
+- Deductibles, limits, and insurance payments
+- Survival models and life contingencies
+- Premiums, reserves, and risk measures
+- Simulation, model checking, and communication in R
+
+**Purpose:** bridge the statistics core to later actuarial mathematics and risk-modeling work, especially foundations used in FAM and CAS study.
+
+**Suggested prerequisites:** STAT 320 and STAT 330.
+
+## A reproducible actuarial example
+
+This simulation combines claim frequency and claim severity to estimate an insurer’s annual aggregate loss.
+
+```{r}
+#| label: fig-aggregate-loss
+#| fig-cap: "Simulated annual aggregate insurance losses"
+#| fig-width: 9
+#| fig-height: 4.2
+#| code-fold: true
+library(tidyverse)
+
+set.seed(310)
+annual_losses <- tibble(
+  simulation = 1:10000,
+  claim_count = rpois(10000, lambda = 20)
+) |>
+  mutate(
+    total_loss = map_dbl(
+      claim_count,
+      \(n) sum(rgamma(n, shape = 2, scale = 2500))
+    )
+  )
+
+ggplot(annual_losses, aes(total_loss)) +
+  geom_histogram(bins = 45, fill = "#1f4e79", color = "white") +
+  scale_x_continuous(
+    breaks = c(50000, 100000, 150000, 200000),
+    labels = scales::label_dollar()
+  ) +
+  labs(x = "Annual aggregate loss", y = "Simulations") +
+  theme_minimal(base_size = 15)
+```
+
+## A proposed 120-unit option structure
+
+::: {.compact}
+| Catalog component | Actuarial design (subject to approval) |
+|---|---|
+| Introductory core · 10–11 units | MATH 130; choose MATH 131 and CS 101 among the two allowed choices |
+| Advanced core · 24 units | STAT 330, 331, 432; choose STAT 320; propose adding the two **new** 3-unit courses to the catalog's advanced-elective list, then select them plus two existing listed electives |
+| Emphasis · 15 units | Seek approval for a coherent Economics or Business Administration plan, or another approved plan; verify specific VEE courses separately |
+| GE/graduation · 52 units; free electives · about 18–19 units | Consider accounting/finance, computing, an internship, or further mathematics within remaining space |
+:::
+
+**This is not an approved option or a completed individual degree audit.** Adding the two new courses to the advanced-elective list requires a catalog change; their prerequisites, offerings, emphasis choices, GE overlap, and total units need an adviser-approved course plan. Mixing Economics and Business Administration in one emphasis is not automatically authorized.
+
+## Illustrative four-year sequence
+
+::: {.smaller}
+| Stage | Academic priorities | Professional milestone |
+|---|---|---|
+| Year 1 | MATH 130; consider MATH 131 and CS 101 as the two introductory choices | Explore careers; join Be An Actuary and CAS Student Central |
+| Year 2 | Continue approved core, GE, and emphasis courses | Begin probability and FM foundations; seek job shadowing |
+| Year 3 | Take STAT 320 and the required advanced courses when offered; proposed Financial Mathematics if approved | Prepare for P or FM; apply for internships |
+| Year 4 | Complete four approved advanced electives and the emphasis; proposed Actuarial Risk Models if approved | Pursue another exam when ready; build a portfolio |
+:::
+
+Neither downloaded catalog excerpt gives course-by-course prerequisites or an annual offering schedule. Confirm both before publishing a term-by-term roadmap.
+
+## Support beyond courses
+
+A credible option also needs low-cost student infrastructure:
+
+- A faculty adviser familiar with both SOA and CAS pathways
+- An actuarial/data-risk student club
+- Alumni and employer speakers
+- Exam-planning workshops and peer study groups
+- Internship relationships with insurers, consultants, government, and risk teams
+- A small library of current official syllabi and approved study resources
+- Annual review of exams, VEE status, and curriculum alignment
+
+## Program approval and external recognition
+
+::: {.compact}
+Recommended sequence:
+
+1. Conduct student and employer demand research.
+2. Map each proposed syllabus against current P, FM, and later-exam learning objectives.
+3. Identify VEE-compatible CSUEB courses and pursue approval where appropriate.
+4. Obtain department, college, and university approvals for both courses, their place on the advanced-elective list, and an approved emphasis plan.
+5. Audit a complete 120-unit student pathway and verify prerequisites and offerings before promising a fixed exam schedule.
+6. Consider [SOA Universities and Colleges with Actuarial Programs](https://www.soa.org/institutions/) recognition after the curriculum and student support are established.
+:::
+
+## Important boundaries
+
+- This is a **discussion proposal**, not an approved CSU East Bay option.
+- A course can prepare students without guaranteeing an exam pass.
+- Course completion does not itself create exam credit unless an official pathway grants it.
+- VEE status must be confirmed for exact courses and dates.
+- Exam structures, fees, windows, and syllabi can change.
+- The official university catalog governs degree requirements.
+
+## Discussion activity
+
+In small groups, choose one question:
+
+1. Should the option prioritize Exam P/FM preparation or broader risk analytics?
+2. Which existing area-of-emphasis courses best support VEE Economics and Accounting and Finance?
+3. Can both proposed courses fit without displacing an essential Statistics elective?
+4. Which Bay Area employers or alumni could support internships and advising?
+
+Report one recommendation and one concern.
+
+## Key takeaways
+
+- The Statistics B.S. already supplies a strong quantitative and computing core.
+- Exam P aligns most directly with calculus and STAT 320.
+- Exam FM exposes the clearest curricular gap.
+- Two proposed courses might fit without adding units **if** approved as advanced electives and verified in a complete degree audit.
+- VEE planning, advising, internships, and annual review are as important as course titles.
+- Official SOA, CAS, Academy, and university sources must remain the source of truth.
+
+## References and official links
+
+::: {.smaller}
+- [CSU East Bay 2026–27 Statistics B.S. catalog excerpt](catalog/Program_%20Statistics,%20B.S.%20-%20CSU%20East%20Bay.pdf), [2025–26 excerpt](catalog/Statistics,%20B.S.%20-%20CSU%20East%20Bay%20-%20Modern%20Campus%20Catalog%E2%84%A2.pdf), and [2026–27 degree roadmap](https://catalog.csueastbay.edu/mime/media/view/43/41242/26-27%20STAT%20BS%20Degree%20Roadmap.xlsx%20-%20GE.pdf)
+- [Society of Actuaries: ASA requirements](https://www.soa.org/education/exam-req/edu-asa-req), [Exam P](https://www.soa.org/education/exam-req/edu-exam-p-detail.aspx), [Exam FM](https://www.soa.org/education/exam-req/edu-exam-fm-detail.aspx), and [exam schedule](https://www.soa.org/education/exam-schedule/)
+- [Casualty Actuarial Society: exam registration](https://www.casact.org/exams-admissions/exam-registration) and [CAS Student Central](https://www.casstudentcentral.org/)
+- [American Academy of Actuaries](https://actuary.org/) and [U.S. Code of Professional Conduct](https://actuary.org/professionalism/code-of-conduct/)
+- [Be An Actuary](https://www.beanactuary.org/) and [The Actuarial Foundation](https://actuarialfoundation.org/)
+- [Prof. Suess's Actuarial Science links list](https://cox.csueastbay.edu/~esuess/links/), [International Actuarial Association](https://actuaries.org/), and [The Infinite Actuary](https://www.theinfiniteactuary.com/) (third-party exam preparation)
+
+Information checked October 10, 2026. Requirements may change; verify current official pages.
+:::
+
+## Questions?
+
+What would make an Actuarial Science Option distinctive, sustainable, and genuinely useful to CSU East Bay students?
+

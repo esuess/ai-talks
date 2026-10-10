@@ -35,7 +35,6 @@ Learn how to use university OpenAI ChatGPT and Microsoft Copilot accounts with O
 
 [View Talk 01](talk01/talk01_university_ai_accounts.html){.talk-link}
 
-[Download the Fortran source](talk01/lln_running_mean.f95){.talk-secondary} · [Download Makevars](talk01/Makevars.f95){.talk-secondary}
 :::
 
 ::: {.talk-card}
@@ -286,6 +285,30 @@ Guide coding agents toward explicit assumptions, simpler solutions, surgical cha
 [View Talk 20](talk20/talk20_karpathy_skill_pi.html){.talk-link}
 :::
 
+::: {.talk-card .talk-placeholder}
+## Talk 20a
+
+### Karpathy Skill in pi Autoresearch
+
+**Date to be announced**
+
+Explore autoresearch as an extension of the Karpathy skill in pi.
+
+[Materials coming soon]{.talk-status}
+:::
+
+::: {.talk-card .talk-placeholder}
+## Talk 20b
+
+### Title to be announced
+
+**Date to be announced**
+
+The topic has not yet been added to the titles document.
+
+[Materials coming soon]{.talk-status}
+:::
+
 ::: {.talk-card}
 ## Talk 21
 
@@ -380,5 +403,17 @@ Review rendered R/Quarto notebooks for accessibility, including WCAG 1.4.1 on th
 Explore the paper’s five themes, MS and BS program ideas, the three C’s, first-course ML concepts and textbooks, and potential industry partners near Hayward.
 
 [View Talk 28](talk28/talk28_statistics_in_the_age_of_ai.html){.talk-link}
+:::
+
+::: {.talk-card}
+## Talk 29
+
+### Designing an Undergraduate Actuarial Science Option
+
+**Date to be announced**
+
+Connect CSU East Bay’s Statistics B.S. to actuarial careers, professional exams, student resources, and a practical two-course option proposal.
+
+[View Talk 29](talk29/talk29_actuarial_science_option.html){.talk-link}
 :::
 ::::

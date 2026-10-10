@@ -18,7 +18,7 @@
     "href": "index.html#talk-01",
     "title": "AI and Data Science Talks",
     "section": "Talk 01",
-    "text": "Talk 01\n\nUniversity ChatGPT and Microsoft Copilot Accounts\nOctober 15, 2026\nLearn how to use university OpenAI ChatGPT and Microsoft Copilot accounts with Office 365.\nView Talk 01\nDownload the Fortran source · Download Makevars"
+    "text": "Talk 01\n\nUniversity ChatGPT and Microsoft Copilot Accounts\nOctober 15, 2026\nLearn how to use university OpenAI ChatGPT and Microsoft Copilot accounts with Office 365.\nView Talk 01"
   },
   {
     "objectID": "index.html#talk-02",
@@ -161,6 +161,20 @@
     "text": "Talk 20\n\nThe Karpathy Guidelines Skill in pi\nDate to be announced\nGuide coding agents toward explicit assumptions, simpler solutions, surgical changes, and evidence-based completion claims.\nView Talk 20"
   },
   {
+    "objectID": "index.html#talk-20a",
+    "href": "index.html#talk-20a",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 20a",
+    "text": "Talk 20a\n\nKarpathy Skill in pi Autoresearch\nDate to be announced\nExplore autoresearch as an extension of the Karpathy skill in pi.\nMaterials coming soon"
+  },
+  {
+    "objectID": "index.html#talk-20b",
+    "href": "index.html#talk-20b",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 20b",
+    "text": "Talk 20b\n\nTitle to be announced\nDate to be announced\nThe topic has not yet been added to the titles document.\nMaterials coming soon"
+  },
+  {
     "objectID": "index.html#talk-21",
     "href": "index.html#talk-21",
     "title": "AI and Data Science Talks",
@@ -215,5 +229,12 @@
     "title": "AI and Data Science Talks",
     "section": "Talk 28",
     "text": "Talk 28\n\nStatistics in the Age of AI\nDate to be announced\nExplore the paper’s five themes, MS and BS program ideas, the three C’s, first-course ML concepts and textbooks, and potential industry partners near Hayward.\nView Talk 28"
+  },
+  {
+    "objectID": "index.html#talk-29",
+    "href": "index.html#talk-29",
+    "title": "AI and Data Science Talks",
+    "section": "Talk 29",
+    "text": "Talk 29\n\nDesigning an Undergraduate Actuarial Science Option\nDate to be announced\nConnect CSU East Bay’s Statistics B.S. to actuarial careers, professional exams, student resources, and a practical two-course option proposal.\nView Talk 29"
   }
 ]
