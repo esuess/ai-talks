@@ -297,18 +297,6 @@ Explore autoresearch as an extension of the Karpathy skill in pi.
 [Materials coming soon]{.talk-status}
 :::
 
-::: {.talk-card .talk-placeholder}
-## Talk 20b
-
-### Title to be announced
-
-**Date to be announced**
-
-The topic has not yet been added to the titles document.
-
-[Materials coming soon]{.talk-status}
-:::
-
 ::: {.talk-card}
 ## Talk 21
 
