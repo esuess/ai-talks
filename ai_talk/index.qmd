@@ -29,7 +29,7 @@ A summary of Provost Muscat’s Back to the Bay keynote and a practical checklis
 
 ### University ChatGPT and Microsoft Copilot Accounts
 
-**October 15, 2026**
+**October 22, 2026**
 
 Learn how to use university OpenAI ChatGPT and Microsoft Copilot accounts with Office 365.
 
@@ -42,7 +42,7 @@ Learn how to use university OpenAI ChatGPT and Microsoft Copilot accounts with O
 
 ### Desktop AI Applications and Local Files
 
-**October 22, 2026**
+**Date to be announced**
 
 Use ChatGPT Desktop, Codex, and local files, and compare Google Gemini with Google Antigravity.
 
@@ -54,7 +54,7 @@ Use ChatGPT Desktop, Codex, and local files, and compare Google Gemini with Goog
 
 ### Codex CLI and Posit Assistant
 
-**November 5, 2026**
+**Date to be announced**
 
 Use a university ChatGPT account with Codex CLI in RStudio and explore Posit Assistant.
 
@@ -66,7 +66,7 @@ Use a university ChatGPT account with Codex CLI in RStudio and explore Posit Ass
 
 ### Positron, VS Code, and Other Coding IDEs
 
-**November 19, 2026**
+**Date to be announced**
 
 Compare coding environments for R, Python, notebooks, Quarto, and general programming.
 
@@ -78,7 +78,7 @@ Compare coding environments for R, Python, notebooks, Quarto, and general progra
 
 ### Gemini Notebook, Colab, Jupyter, Quarto, and Marimo
 
-**December 3, 2026**
+**Date to be announced**
 
 Compare source-grounded AI notebooks, computational notebooks, reproducible publishing, and reactive Python workflows.
 
@@ -98,7 +98,7 @@ All talks after **Talk 05** are **Work in Progress**. Topics and materials may b
 
 ### MLJAR Studio and AutoML
 
-**December 3, 2026**
+**Date to be announced**
 
 Explore MLJAR Studio, automated model comparison, evaluation practices, and responsible predictive modeling.
 
