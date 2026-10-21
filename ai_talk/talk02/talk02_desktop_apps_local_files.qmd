@@ -1,8 +1,6 @@
 ---
 title: "Using ChatGPT Desktop App, Codex, Local Files, and Google Gemini vs. Google Antigravity"
 author: "Eric A. Suess"
-date: "October 22, 2026"
-date-format: "MMMM D, YYYY"
 subtitle: "12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex & Antigravity.</small>"
 format:
   revealjs:
@@ -327,7 +325,6 @@ What local file workflows or AI desktop tools are you most excited to explore?
 
 ::: {.callout-note}
 ### Join the Discussion
-**Date:** October 22, 2026  
 **Time:** 12:15 – 1:15 PM  
 **Zoom:** <https://csueb.zoom.us/j/88674490934>
 :::

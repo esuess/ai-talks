@@ -200,6 +200,21 @@ Teach is intended for eligible faculty and staff with Microsoft 365 Education li
 
 <small>Source: [Teach in the Microsoft 365 Copilot App](https://support.microsoft.com/en-US/education/teach-in-the-microsoft-365-copilot-app)</small>
 
+## Copilot add-ons and Copilot Studio
+
+**Add-ons extend Copilot with specialized agents, knowledge, and tools.**
+
+- **Find agents:** Open **All Agents**, review an agent, and select **Add** or **Request approval**.
+- **Copilot Studio:** Build and customize agents with instructions for a specific task.
+- **Knowledge sources:** Give an agent approved course documents or SharePoint content to use when answering questions.
+- **Tools and connectors:** Connect an agent to other services to retrieve information or perform actions.
+
+**Teaching example:** Build a course FAQ agent that answers from your syllabus and approved course materials.
+
+Available agents, connections, and publishing options depend on university licensing, permissions, and administrator settings.
+
+<small>Sources: [Add agents to Copilot](https://support.microsoft.com/en-us/microsoft-365-copilot/get-more-agents-in-the-microsoft-365-copilot-app) and [Extend agents with Copilot Studio](https://learn.microsoft.com/en-us/microsoft-copilot-studio/extend-agent-capabilities)</small>
+
 ## Exercise: Copilot lesson prompt
 
 Run this prompt in Microsoft Copilot:
@@ -263,6 +278,17 @@ Use one project for an ongoing body of work, but start a separate chat for each 
 Sites is in public beta and is available on eligible plans, including Edu. Availability, publishing, and sharing can be controlled by university administrators.
 
 <small>Source: [ChatGPT Sites](https://learn.chatgpt.com/docs/sites)</small>
+
+## Check your ChatGPT usage
+
+1. Click the **CSU East Bay icon** at the **bottom-left** of the ChatGPT window.
+2. Select **Settings > Usage**.
+3. Review your **5-hour limit** and **weekly limit**, including the usage remaining and reset times shown.
+4. Click the **Analytics** tab at the top to see **monthly utilization** of the different **models and tools**.
+
+Use this view to understand your usage and plan larger tasks around the limits shown for your university account.
+
+<small>Sources: University workspace navigation described for this session; [OpenAI usage limits](https://learn.chatgpt.com/docs/pricing) and [Settings > Usage](https://learn.chatgpt.com/docs/sign-in-with-chatgpt).</small>
 
 ## From explanation to interactive experience
 

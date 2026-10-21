@@ -1,8 +1,6 @@
 ---
 title: "Using Your University OpenAI ChatGPT Account with Codex CLI and Posit Assistant"
 author: "Eric A. Suess"
-date: "November 5, 2026"
-date-format: "MMMM D, YYYY"
 subtitle: "12:15–1:15 PM<br>Zoom: <https://csueb.zoom.us/j/88674490934><br><small>Slides produced with the help of OpenAI Codex & Antigravity.</small>"
 format:
   revealjs:
@@ -338,7 +336,6 @@ Product availability and features may vary depending on university licensing, op
 
 ::: {.callout-note}
 ### Join the Discussion
-**Date:** November 5, 2026  
 **Time:** 12:15 – 1:15 PM  
 **Zoom Session:** [https://csueb.zoom.us/j/88674490934](https://csueb.zoom.us/j/88674490934)
 :::
