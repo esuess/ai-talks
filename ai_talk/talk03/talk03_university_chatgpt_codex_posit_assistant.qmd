@@ -21,15 +21,16 @@ execute:
 editor: visual
 ---
 
-## Today’s goals
+## Today’s goals {.small}
 
 By the end of this session, you should be able to:
 
 - Sign in to your university **OpenAI ChatGPT** account using institutional SSO.
-- Understand that standard user login sessions power these workflows **without requiring developer API keys**.
+- Distinguish university account sign-in from the **local 9router API key** used by Posit Assistant.
 - Download, install, and authenticate the **OpenAI Codex CLI** in your terminal.
 - Use the **Terminal Pane in RStudio** to interact with Codex CLI alongside your analysis.
-- Connect and use **Posit Assistant** in RStudio / Positron.
+- Connect **RStudio Posit Assistant** to a university Codex account through **9router**.
+- Install and use **`pa`**, the Posit Assistant command-line tool.
 - Enable and use **GitHub Copilot in RStudio** for real-time code completion.
 - Build clean Tidyverse data pipelines with the modern native pipe (`|>`) on the `mtcars` dataset.
 
@@ -44,7 +45,7 @@ Many universities provide access to enterprise or education **OpenAI ChatGPT** a
 
 - **How to access:** Sign in at [chatgpt.com](https://chatgpt.com/) using your university email and institutional SSO credentials.
 - **No Developer API Keys Needed:** You do not need a paid developer API key or credit card. Tooling connects through browser-based account sign-in sessions.
-- **Enterprise Protections:** University accounts typically include institutional privacy safeguards and FERPA compliance.
+- **Institutional Approval:** Confirm Codex access and permission to use 9router. A local gateway does not automatically extend university privacy guarantees to every connected tool.
 
 ---
 
@@ -143,27 +144,142 @@ Posit RStudio Terminal User Guide:
 
 ---
 
-## Posit Assistant in RStudio & Positron
+## Posit Assistant in RStudio & Positron {.small}
 
-**Posit Assistant** brings conversational and contextual AI assistance directly into Posit data science environments.
+[**Posit Assistant**](https://assistant.posit.co) brings conversational AI assistance into data science environments.
 
-::: {.callout-tip}
-### Official Website & Guide
-Posit Assistant Portal:  
-[**https://assistant.posit.co**](https://assistant.posit.co)
-:::
+- **In-editor context:** Ask about scripts, errors, and the current analysis.
+- **R workflows:** Request help with `dplyr`, `ggplot2`, and Quarto; verify the output yourself.
+- **Provider choice:** Posit AI Pass is one managed option, not the only connection route.
+- **Today’s route:** Use an OpenAI-compatible connection to **9router**, which forwards requests to the university **OpenAI Codex account**.
 
-### Access & Pricing
+The following steps use **RStudio’s Assistant sidebar**, not GitHub Copilot settings. Install the current RStudio and Assistant versions; provider interfaces vary by release.
 
-- **Free Trial:** Users can sign up for a **30-day free trial**.
-- **Paid Tier:** After the trial, access requires **$20 per month** (via Posit AI Pass).
-- **Usage Limits:** The monthly subscription provides somewhat limited usage caps (actually quite little access for intensive workloads).
+---
 
-### What Posit Assistant Provides
+## Set up 9router {.small}
 
-- **In-Editor Context:** Understands your active R session, loaded libraries, and open scripts.
-- **Tidyverse Fluency:** Tailored specifically for modern R, `dplyr`, and `ggplot2` workflows.
-- **Interactive Chat Sidebar:** Request code refactoring, explanations of complex error messages, or documentation lookups without leaving the IDE.
+[9router](https://9router.com/) exposes an OpenAI-compatible API for connected accounts.
+
+1. Install **Node.js 20 or newer**, then run in a terminal:
+
+```bash
+npm install -g 9router
+9router
+```
+
+2. Open <http://localhost:20128/dashboard>.
+3. Keep 9router running on the **same computer as RStudio and `pa`** for this demonstration.
+
+Do not expose the local gateway publicly. A local gateway is **not local inference**: this Codex route still sends requests to OpenAI.
+
+---
+
+## Add the university Codex account to 9router {.small}
+
+In the 9router dashboard:
+
+1. Open **Providers > OpenAI Codex > Add Connection** (sometimes labeled **Connect Codex**).
+2. Follow the browser-based **OpenAI OAuth sign-in**.
+3. Sign in with the **university OpenAI ChatGPT account** and complete institutional SSO if prompted.
+4. Verify the intended account/workspace, authorize the connection, and wait for **Connected Successfully!**
+
+This requires Codex eligibility and university permission to use a third-party gateway. University affiliation alone guarantees neither.
+
+No separate OpenAI developer API key is needed for this OAuth route. Do not paste a university password or OAuth token into Assistant.
+
+---
+
+## Create the 9router key and choose a model {.small}
+
+**Local API key:**
+
+1. Open <http://localhost:20128/dashboard/endpoint>.
+2. Under **API Keys**, choose **Create Key**.
+3. Name it `Posit Assistant demo`, then choose **Create > Copy**.
+
+**Codex model:**
+
+4. Open **Providers > OpenAI Codex > Available Models**.
+5. Choose an available model and use its **Copy** icon to copy the complete ID, including the `cx/` routing prefix.
+
+The key is generated by **9router**, not OpenAI. Keep it out of slides, source files, screenshots, and version control. Account usage limits still apply.
+
+---
+
+## Connect RStudio Posit Assistant to 9router {.small}
+
+1. Click the **top-right Assistant toolbar icon** in RStudio; click **Install Posit Assistant** if prompted.
+2. Trust only the intended project. Open **Configure provider**, or **gear > Configure AI providers**.
+3. Connect **OpenAI Compatible** (the supported legacy option used in this demonstration).
+
+| Setting | Value |
+|---|---|
+| **Base URL** | `http://localhost:20128/v1` |
+| **API key** | The local key created in **9router > API Keys** |
+| **Model picker** | The exact copied `cx/…` model ID |
+
+Use the **base URL**, not JASP’s full `/v1/chat/completions` endpoint. If needed, apply the shared settings on the next slide and reload the model list.
+
+Ask for a read-only explanation of `mtcars`, then test a harmless tool action. Check the chosen model and results; text chat alone does not prove tool compatibility.
+
+---
+
+## Shared provider settings for RStudio and PA {.small}
+
+For an explicit chat-completions route, back up and **merge** this example into `~/.posit/ai/providers.json`; do not overwrite other provider settings.
+
+```json
+{
+  "version": 1,
+  "providers": {
+    "openai-compatible": {
+      "baseUrl": "http://localhost:20128/v1",
+      "protocol": "openai-chat",
+      "models": { "allow": ["cx/EXACT-COPIED-MODEL-ID"] }
+    }
+  }
+}
+```
+
+- Replace the placeholder with the model ID copied from 9router. The allow-list filters discovered models; it does not create one.
+- Enter the key through provider configuration, **not in this JSON**. Reload the model list or restart Assistant after changes.
+- New custom providers are also supported; this example uses the built-in **OpenAI Compatible** provider consistently in both interfaces.
+
+---
+
+## Posit Assistant on the command line: PA CLI {.small}
+
+[Official PA installer](https://assistant.posit.co/downloads/tui/) — current downloads are **development builds**. macOS/Linux installation:
+
+```bash
+curl -fsSL https://assistant.posit.co/builds/install-tui.sh | bash
+pa --version
+pa
+```
+
+In `pa`, press **Ctrl+O**, select **OpenAI Compatible**, and supply the 9router base URL and local key. Use the shared provider settings from the previous slide; keep 9router running.
+
+From the project directory, list models and use the exact `provider/model-id` shown:
+
+```bash
+pa --list-models
+MODEL='openai-compatible/cx/EXACT-COPIED-MODEL-ID'
+pa -m "$MODEL"                          # Interactive conversation
+pa -m "$MODEL" "Explain the R scripts; do not edit files."
+```
+
+The last command is a one-shot/headless prompt. Review tool requests and changes; avoid approval-bypass flags. The download page also provides the Windows PowerShell installer.
+
+---
+
+## What the PA CLI looks like {.small}
+
+Run `pa` to open Posit Assistant’s terminal interface.
+
+![](images/pa-cli-terminal.png){height=510px fig-alt="Actual Posit Assistant PA CLI startup screen in a terminal, showing the welcome message, prompt entry area, and model selector."}
+
+Actual startup screen in an isolated demo workspace. The local default model shown is **not** an authenticated university Codex session; select your configured **9router Codex model** before sending a prompt.
 
 ---
 
@@ -288,16 +404,16 @@ cars_data |>
 
 ---
 
-## Comparing the Three AI Tools in RStudio
+## Comparing AI Tools in RStudio and the Terminal {.small}
 
-| Feature | Codex CLI | Posit Assistant | GitHub Copilot |
+| Feature | Codex CLI | Posit Assistant (IDE / `pa`) | GitHub Copilot |
 |---|---|---|---|
-| **Location in RStudio** | Terminal tab (`Shift+Alt+T`) | Chat sidebar / IDE pane | Inline Source Editor |
+| **Location** | Terminal tab (`Shift+Alt+T`) | Chat sidebar / `pa` terminal | Inline Source Editor |
 | **Primary Interaction** | Interactive shell dialogue | Contextual conversation | Real-time ghost text |
-| **Authentication** | University ChatGPT login | Posit / Browser sign-in | GitHub account login |
+| **Authentication** | University ChatGPT login | 9router key → university Codex | GitHub account login |
 | **Best Used For** | Script scaffolding & shell tasks | Explaining code & debugging | Fast typing & autocompletion |
-| **Cost / Access** | University ChatGPT account | 30-day trial, then $20/mo (limited access) | GitHub account subscription |
-| **API Key Needed?** | **No** (browser login) | **No** (service sign-in) | **No** (account login) |
+| **Cost / Access** | University account limits | Connected provider/account limits | GitHub account subscription |
+| **API Key Needed?** | **No** (browser login) | **Yes** for 9router: local gateway key | **No** (account login) |
 
 ---
 
@@ -310,11 +426,12 @@ cars_data |>
 
 ---
 
-## Key takeaways
+## Key takeaways {.small}
 
 - **University ChatGPT Accounts:** Provide powerful AI assistance via standard web SSO without requiring developer API keys.
 - **Codex CLI:** Brings interactive coding companion workflows directly into your shell and the RStudio Terminal pane.
-- **Posit Assistant:** Offers in-editor context for Tidyverse data science, available via a 30-day free trial and paid subscription.
+- **Posit Assistant + 9router:** Connect RStudio using the base URL, a local 9router key, and the exact Codex model ID.
+- **PA CLI:** Run the same Assistant from a terminal with `pa`; use `-m` to select a configured model.
 - **GitHub Copilot:** Delivers fast, real-time ghost-text autocompletion in RStudio to accelerate routine coding.
 - **Critical Verification:** Always verify generated R pipelines with the native pipe (`|>`), protect sensitive data, and maintain reproducible Quarto notebooks.
 
@@ -325,7 +442,10 @@ cars_data |>
 All links were accessed October 2026.
 
 - OpenAI: [Codex CLI on GitHub](https://github.com/openai/codex), [ChatGPT Documentation](https://learn.chatgpt.com/docs/use-chatgpt), and [OpenAI Codex](https://openai.com/codex/)
-- Posit: [Posit Assistant](https://assistant.posit.co), [Positron IDE](https://positron.posit.co), [RStudio Terminal Guide](https://docs.posit.co/ide/user/ide/guide/tools/terminal.html), and [RStudio GitHub Copilot Guide](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
+- Posit: [Posit Assistant](https://assistant.posit.co), [RStudio setup](https://assistant.posit.co/downloads/rstudio/), [RStudio Terminal Guide](https://docs.posit.co/ide/user/ide/guide/tools/terminal.html), and [RStudio GitHub Copilot Guide](https://docs.posit.co/ide/user/ide/guide/tools/copilot.html)
+- Posit provider configuration: [Providers](https://assistant.posit.co/docs/getting-started/providers/), [providers.json](https://assistant.posit.co/docs/reference/providers-config/), and [settings reference](https://assistant.posit.co/docs/reference/providers-settings/)
+- Posit PA CLI: [Installation](https://assistant.posit.co/downloads/tui/) and [TUI usage](https://assistant.posit.co/docs/reference/tui/)
+- [9router](https://9router.com/) and [installation / setup documentation](https://github.com/decolua/9router#readme)
 - Quarto & R: [Quarto Revealjs Presentations](https://quarto.org/docs/presentations/revealjs/), [Tidyverse Ecosystem](https://www.tidyverse.org/), and [gt Package Documentation](https://gt.rstudio.com/)
 
 Product availability and features may vary depending on university licensing, operating system, and administrative settings.
