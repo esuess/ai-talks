@@ -1,6 +1,6 @@
 1. Using your university OpenAI ChatGPT account and using your Microsoft CoPilot account with Office365
 2. Using the ChatGPT Desktop App, Chat and Codex, with local files, and using Google Gemini App vs Google Antigravity Desktop App
-3. Install and use your university OpenAI ChatGPT account with Codex CLI and using it in RStudio, or using Posit Assistant 
+3. Using your university OpenAI ChatGPT account with Codex CLI, connecting RStudio Posit Assistant through 9router to the university Codex account, and installing and using the Posit Assistant PA CLI
 4. What is Positron, VSCode and other Coding IDEs?
 5. Google Gemini Notebook (formally NotebookLM), Google Colab, Jupyter Notebooks, JupyterLab, Quarto Notebooks with R, Python or Julia
 5a. MLJAR and AutoML
@@ -10,7 +10,7 @@
 9. How to learn practical AI skills from online, Youtube and Facebook
 10. AI developed Linux os Omarchy demo
 11. Using AI with version control: Github, gh, codeberg, forgejo, Aider
-12. Using AI in JASP for Psychology with OpenRouter
+12. Using AI in JASP for Psychology through OpenRouter and 9router, including setup and connection to the university OpenAI Codex account
 13. RTutor.ai 2.0 has evolved.  Try Datably.ai the new AI-native data science platform.  
 14. What is a skill?  Hermes Agent.  pi agent skills.  
 15. VSCode Extensions, VSCode Insiders, Zed, Qoder, Positron
